@@ -1,5 +1,7 @@
 package physique.io;
 
+import metier.entitys.BorneAcces;
+
 
 public class BorneAccesServiceIOImpl implements BorneAccesServiceIO {
 
@@ -9,13 +11,12 @@ public class BorneAccesServiceIOImpl implements BorneAccesServiceIO {
     }
 
     @Override
-    public void OuvrirPorte(BorneAcces borneAcces) {
+    public void ouvrirPorte(BorneAcces borneAcces) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void affichageLed(BorneAcces borneAcces) {
+    public void affichageLed(BorneAcces borneAcces) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
 }
