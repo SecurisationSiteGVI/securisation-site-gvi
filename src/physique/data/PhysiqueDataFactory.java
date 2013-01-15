@@ -18,7 +18,11 @@ public class PhysiqueDataFactory {
     private static DetecteurIntrusionServiceORM detecteurIntrusionSrv = new DetecteurIntrusionServiceORMImpl();
    private static PositionServiceORM positionSrv = new PositionServiceORMImpl();
    private static BadgeServiceORM badgeSrv = new BadgeServiceORMImpl();
+   private static AttributionUtilisateurBadgeServiceORM attributionUtilisateurBadgeSrv = new AttributionUtilisateurBadgeServiceORMImpl();
    
+   public static AttributionUtilisateurBadgeServiceORM getAttributionUtilisateurBadgeServiceORM(){
+        return attributionUtilisateurBadgeSrv;
+    }
    public static BadgeServiceORM getBadgeServiceORM(){
         return badgeSrv;
     }
