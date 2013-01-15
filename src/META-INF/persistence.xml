@@ -3,6 +3,24 @@
   <persistence-unit name="securisation-site-gviPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>metier.entitys.Utilisateur</class>
+    <class>metier.entitys.Technicien</class>
+    <class>metier.entitys.Administrateur</class>
+    <class>metier.entitys.Badge</class>
+    <class>metier.entitys.AttributionUtilisateurBadge</class>
+    <class>metier.entitys.NumeroPredefinis</class>
+    <class>metier.entitys.Secteur</class>
+    <class>metier.entitys.AuthorisationAcces</class>
+    <class>metier.entitys.Evenement</class>
+    <class>metier.entitys.Intrusion</class>
+    <class>metier.entitys.Photo</class>
+    <class>metier.entitys.Acces</class>
+    <class>metier.entitys.Position</class>
+    <class>metier.entitys.BorneAcces</class>
+    <class>metier.entitys.Camera</class>
+    <class>metier.entitys.AttributionSecteurBorneAcces</class>
+    <class>metier.entitys.DetecteurIntrusion</class>
+    <class>metier.entitys.AttributionSecteurDetecteurIntrusion</class>
+    <class>metier.entitys.AttributionSecteurCamera</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/securisation"/>
       <property name="javax.persistence.jdbc.password" value="damien"/>
