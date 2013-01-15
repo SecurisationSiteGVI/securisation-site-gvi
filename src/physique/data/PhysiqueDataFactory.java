@@ -16,7 +16,11 @@ public class PhysiqueDataFactory {
     private static EvenementServiceORM evenementSrv = new EvenementServiceORMImpl();
     private static NumeroPredefinisServiceORM numeroPredefinisSrv = new NumeroPredefinisServiceORMImpl();
     private static DetecteurIntrusionServiceORM detecteurIntrusionSrv = new DetecteurIntrusionServiceORMImpl();
+   private static PositionServiceORM positionSrv = new PositionServiceORMImpl();
    
+   public static PositionServiceORM getPositionServiceORM(){
+        return positionSrv;
+    }
     public static DetecteurIntrusionServiceORM getDetecteurIntrusionServiceORM(){
         return detecteurIntrusionSrv;
     }
