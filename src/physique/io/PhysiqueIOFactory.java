@@ -1,5 +1,11 @@
 package physique.io;
 
+/**
+ * @author ragotalexis
+ * @author
+ * @author
+ * @author
+ */
 
 public class PhysiqueIOFactory {
     
