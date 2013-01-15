@@ -56,7 +56,7 @@ public class Badge implements Serializable {
 
     @Override
     public String toString() {
-        return "metier.entitys.Badge[ id=" + getId() + " ]";
+        return "Badge n°"+numero;
     }
 
     public int getNumero() {
