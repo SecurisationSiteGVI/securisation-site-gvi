@@ -17,7 +17,11 @@ public class PhysiqueDataFactory {
     private static NumeroPredefinisServiceORM numeroPredefinisSrv = new NumeroPredefinisServiceORMImpl();
     private static DetecteurIntrusionServiceORM detecteurIntrusionSrv = new DetecteurIntrusionServiceORMImpl();
    private static PositionServiceORM positionSrv = new PositionServiceORMImpl();
+   private static BadgeServiceORM badgeSrv = new BadgeServiceORMImpl();
    
+   public static BadgeServiceORM getBadgeServiceORM(){
+        return badgeSrv;
+    }
    public static PositionServiceORM getPositionServiceORM(){
         return positionSrv;
     }
