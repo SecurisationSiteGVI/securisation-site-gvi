@@ -20,7 +20,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class AttributionSecteurCamera implements Serializable {
     private static final long serialVersionUID = 1L;
-
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -42,7 +41,7 @@ public class AttributionSecteurCamera implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (getId() != null ? getId().hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -53,7 +52,7 @@ public class AttributionSecteurCamera implements Serializable {
             return false;
         }
         AttributionSecteurCamera other = (AttributionSecteurCamera) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -61,23 +60,7 @@ public class AttributionSecteurCamera implements Serializable {
 
     @Override
     public String toString() {
-        return "metier.entitys.AttributionSecteurCamera[ id=" + getId() + " ]";
-    }
-
-    public Secteur getSecteur() {
-        return secteur;
-    }
-
-    public void setSecteur(Secteur secteur) {
-        this.secteur = secteur;
-    }
-
-    public List<Camera> getCameras() {
-        return cameras;
-    }
-
-    public void setCameras(List<Camera> cameras) {
-        this.cameras = cameras;
+        return "AttributionSecteur sur secteur :"+secteur;
     }
     
 }
