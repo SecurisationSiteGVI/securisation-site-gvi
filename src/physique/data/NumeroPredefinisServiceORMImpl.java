@@ -39,7 +39,7 @@ public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceOR
     @Override
     public List<NumeroPredefinis> getAll() {
         Connexion.getPersistance();
-        Query query =Connexion.em.createNamedQuery("");
+        Query query =Connexion.em.createNamedQuery("NumeroPredefinisGetAll");
         List<NumeroPredefinis> numeroPredefinis = query.getResultList();
         Connexion.disconect();
         return numeroPredefinis;
