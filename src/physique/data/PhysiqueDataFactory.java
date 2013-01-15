@@ -14,7 +14,11 @@ public class PhysiqueDataFactory {
     private static UtilisateurServiceORM utilisateurSrv = new UtilisateurServiceORMImpl();
     private static AuthorisationAccesServiceORM authorisationAccesSrv = new AuthorisationAccesServiceORMImpl();
     private static EvenementServiceORM evenementSrv = new EvenementServiceORMImpl();
+    private static NumeroPredefinisServiceORM numeroPredefinisSrv = new NumeroPredefinisServiceORMImpl();
     
+    public static NumeroPredefinisServiceORM getNumeroPredefinisServiceORM(){
+        return numeroPredefinisSrv;
+    }
     public static CameraServiceORM getCameraServiceORM(){
         return cameraSrv;
     }
