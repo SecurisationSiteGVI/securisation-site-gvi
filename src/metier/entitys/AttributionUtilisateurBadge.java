@@ -55,7 +55,7 @@ public class AttributionUtilisateurBadge implements Serializable {
 
     @Override
     public String toString() {
-        return "metier.entitys.AttributionUtilisateurBadge[ id=" + id + " ]";
+        return utilisateur +" "+badge;
     }
     
 }
