@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
  * @author damien
  */
 @Entity
-public class Acces implements Serializable {
+public class Acces extends Evenement implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -31,13 +31,7 @@ public class Acces implements Serializable {
     @OneToOne
     private BorneAcces borneAcces;
     
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+  
 
     @Override
     public int hashCode() {
