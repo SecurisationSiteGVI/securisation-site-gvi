@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 /**
@@ -17,6 +18,7 @@ import javax.persistence.Temporal;
  * @author damien
  */
 @Entity
+@NamedQuery(name="EvenementGetAll",query="SELECT e FROM Evenement e")
 public class Evenement implements Serializable {
     private static final long serialVersionUID = 1L;
 
