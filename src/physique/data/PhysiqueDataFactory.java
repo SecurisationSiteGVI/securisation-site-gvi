@@ -20,7 +20,12 @@ public class PhysiqueDataFactory {
     private static PositionServiceORM positionSrv = new PositionServiceORMImpl();
     private static BadgeServiceORM badgeSrv = new BadgeServiceORMImpl();
     private static AttributionUtilisateurBadgeServiceORM attributionUtilisateurBadgeSrv = new AttributionUtilisateurBadgeServiceORMImpl();
-
+    private static AttributionSecteurBorneAccesServiceORM attributionSecteurBorneAccesSrv = new AttributionSecteurBorneAccesServiceORMImpl();
+    
+     public static AttributionSecteurBorneAccesServiceORM getAttributionSecteurBorneAccesServiceORM() {
+        return attributionSecteurBorneAccesSrv;
+    }
+    
     public static AttributionUtilisateurBadgeServiceORM getAttributionUtilisateurBadgeServiceORM() {
         return attributionUtilisateurBadgeSrv;
     }
