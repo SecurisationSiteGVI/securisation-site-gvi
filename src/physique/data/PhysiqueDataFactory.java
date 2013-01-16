@@ -21,7 +21,21 @@ public class PhysiqueDataFactory {
     private static BadgeServiceORM badgeSrv = new BadgeServiceORMImpl();
     private static AttributionUtilisateurBadgeServiceORM attributionUtilisateurBadgeSrv = new AttributionUtilisateurBadgeServiceORMImpl();
     private static AttributionSecteurBorneAccesServiceORM attributionSecteurBorneAccesSrv = new AttributionSecteurBorneAccesServiceORMImpl();
+    private static AttributionSecteurCameraServiceORM attributionSecteurCameraSrv = new AttributionSecteurCameraServiceORMImpl();
+    private static AttributionSecteurDetectionIntrusionServiceORM attributionSecteurDetectionIntrusionSrv = new AttributionSecteurDetectionIntrusionServiceORMImpl();
+    private static SecteurServiceORM secteurSrv = new SecteurServiceORMImpl();
     
+    public static AttributionSecteurCameraServiceORM getAttributionSecteurCameraServiceORM() {
+        return attributionSecteurCameraSrv;
+    }
+    
+    public static AttributionSecteurDetectionIntrusionServiceORM getAttributionSecteurDetectionIntrusionServiceORM() {
+        return attributionSecteurDetectionIntrusionSrv;
+    }
+
+    public static SecteurServiceORM getSecteurServiceORM() {
+        return secteurSrv;
+    }
      public static AttributionSecteurBorneAccesServiceORM getAttributionSecteurBorneAccesServiceORM() {
         return attributionSecteurBorneAccesSrv;
     }
