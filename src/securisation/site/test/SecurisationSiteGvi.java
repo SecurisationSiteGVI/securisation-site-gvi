@@ -17,12 +17,6 @@ public class SecurisationSiteGvi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Utilisateur u = new Utilisateur();
-        u.setAdresse("adddre");
-        u.setCodePostale(27930);
-        u.setEmail("cdsd");
-        u.setNom("d");
-        u.setPrenom("sd");
-      PhysiqueDataFactory.getUtilisateurServiceORM().add(u);        
+        InitBDD i = new InitBDD(true);    
     }
 }
