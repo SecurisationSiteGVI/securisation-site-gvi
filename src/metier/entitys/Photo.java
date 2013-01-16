@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
@@ -31,7 +32,7 @@ public class Photo extends Evenement implements Serializable {
     private Long id;
     private Byte[] image;
     @OneToOne
-    @Column(nullable=false)
+    @JoinColumn(nullable=false)
     private Camera camera;
    
 

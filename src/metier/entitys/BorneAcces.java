@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
@@ -29,7 +30,7 @@ public class BorneAcces implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    @Column(nullable=false)
+    @JoinColumn(nullable=false)
     private Position position;
     private String nom;
     @Column(nullable=false)

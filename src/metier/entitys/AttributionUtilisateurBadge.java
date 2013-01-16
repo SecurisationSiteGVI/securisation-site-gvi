@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
@@ -25,7 +26,7 @@ public class AttributionUtilisateurBadge implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    @Column(nullable=false)
+    @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
     @OneToOne
     private Badge badge;

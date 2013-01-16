@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -37,10 +38,10 @@ public class AuthorisationAcces implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date heureFermeture;
     @OneToOne
-    @Column(nullable=false)
+    @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
     @OneToMany
-    @Column(nullable=false)
+    @JoinColumn(nullable=false)
     private List<Secteur> secteurs;
     public Long getId() {
         return id;
