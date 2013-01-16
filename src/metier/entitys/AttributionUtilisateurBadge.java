@@ -5,6 +5,7 @@
 package metier.entitys;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class AttributionUtilisateurBadge implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
+    @Column(nullable=false)
     private Utilisateur utilisateur;
     @OneToOne
     private Badge badge;

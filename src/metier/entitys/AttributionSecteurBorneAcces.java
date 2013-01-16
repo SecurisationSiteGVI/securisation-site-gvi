@@ -6,6 +6,7 @@ package metier.entitys;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +31,7 @@ public class AttributionSecteurBorneAcces implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
+    @Column(nullable=false)
     private Secteur secteur;
     @OneToMany
     private List<BorneAcces> borneAccess;

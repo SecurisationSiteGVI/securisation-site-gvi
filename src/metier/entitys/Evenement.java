@@ -6,6 +6,7 @@ package metier.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,7 @@ public class Evenement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(nullable=false)
     private Date dateEvt;
     
     public Long getId() {

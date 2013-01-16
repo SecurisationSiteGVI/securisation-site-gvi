@@ -5,6 +5,7 @@
 package metier.entitys;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,8 +28,10 @@ public class DetecteurIntrusion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false)
     private String nom;
     @OneToOne
+    @Column(nullable=false)
     private Position position;
     
     public Long getId() {

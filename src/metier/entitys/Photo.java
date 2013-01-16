@@ -7,6 +7,7 @@ package metier.entitys;
 import com.sun.imageio.plugins.jpeg.JPEG;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,7 @@ public class Photo extends Evenement implements Serializable {
     private Long id;
     private Byte[] image;
     @OneToOne
+    @Column(nullable=false)
     private Camera camera;
    
 

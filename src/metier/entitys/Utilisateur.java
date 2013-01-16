@@ -6,6 +6,7 @@ package metier.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,12 +30,16 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false)
     private String nom;
+    @Column(nullable=false)
     private String prenom;
     private String ville;
     private int codePostale;
     private String adresse;
     private int telephonePortable;
+    private int telephoneFixe;
+    @Column(nullable=false)
     private boolean homme;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDeNaissance;
@@ -151,8 +156,12 @@ public class Utilisateur implements Serializable {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public int getTelephoneFixe() {
+        return telephoneFixe;
+    }
+
+    public void setTelephoneFixe(int telephoneFixe) {
+        this.telephoneFixe = telephoneFixe;
     }
     
 }

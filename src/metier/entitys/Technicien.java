@@ -7,6 +7,7 @@ package metier.entitys;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +27,10 @@ public class Technicien extends Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false)
     private String login;
-    private String password;
-    
+    @Column(nullable=false)
+    private String password;  
  
 
     @Override

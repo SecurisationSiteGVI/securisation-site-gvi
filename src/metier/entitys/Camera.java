@@ -5,6 +5,7 @@
 package metier.entitys;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,9 @@ public class Camera implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
+    @Column(nullable=false)
     private Position position;
+    @Column(nullable=false)
     private String nom;
     
     public Long getId() {
