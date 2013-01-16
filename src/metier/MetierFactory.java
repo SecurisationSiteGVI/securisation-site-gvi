@@ -2,7 +2,7 @@ package metier;
 
 /**
  * @author ragotalexis
- * @author
+ * @author 
  * @author
  * @author
  */
