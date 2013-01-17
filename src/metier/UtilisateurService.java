@@ -21,7 +21,7 @@ public interface UtilisateurService {
 
     public List<Utilisateur> getAll();
     public boolean loginIsUtilise(String login) ;
-    public Utilisateur verifificationConnexion(String login, String password);
+    public Technicien verifificationConnexion(String login, String password);
     public List<Technicien> getByLogin(String login);
     
 }
