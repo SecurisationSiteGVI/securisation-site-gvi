@@ -43,5 +43,15 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM{
         Connexion.disconect();
         return utilisateurs;
     }
+
+    @Override
+    public List<Utilisateur> getByLogin(String login) { 
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("TechnicienGetByLogin");
+        query.setParameter("login", login);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
+    }
     
 }

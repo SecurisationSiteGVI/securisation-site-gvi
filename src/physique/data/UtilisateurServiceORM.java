@@ -20,4 +20,6 @@ public interface UtilisateurServiceORM {
     public void update(Utilisateur utilisateur);
 
     public List<Utilisateur> getAll();
+    
+    public List<Utilisateur> getByLogin(String login);
 }
