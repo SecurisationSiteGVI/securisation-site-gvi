@@ -8,28 +8,29 @@ package physique.io;
 public interface CameraServiceIO {
     
 
-    public void piloterCameraGauche() throws Exception;
-    public void piloterCameraDroite() throws Exception;
-    public void piloterCameraHaut() throws Exception;
-    public void piloterCameraBas() throws Exception;
-    public void piloterAutomatiquement() throws Exception;
+    public boolean piloterCameraGauche() throws Exception;
+    public boolean piloterCameraDroite() throws Exception;
+    public boolean piloterCameraHaut() throws Exception;
+    public boolean piloterCameraBas() throws Exception;
+    public boolean piloterAutomatiquement() throws Exception;
    
-    public void zoom() throws Exception;
-    public void luminositer()throws Exception;
-    public void contraste() throws Exception;
-    public void resolution() throws Exception;
-    public void prendrePhoto() throws Exception;
-    public void detectionMouvement() throws Exception;
-    public void choixCamera() throws Exception;
+    public boolean zoom() throws Exception;
+    public boolean luminositer()throws Exception;
+    public boolean contraste() throws Exception;
+    public boolean resolution() throws Exception;
+    public byte[] prendrePhoto() throws Exception;
+    
+    public boolean detectionMouvement() throws Exception;
+    public int[] choixCamera() throws Exception;
 
-    public void sensPriseDeVueHorrizontal() throws Exception;
-    public void sensPriseDeVueVertical() throws Exception;
+    public boolean sensPriseDeVueHorrizontal() throws Exception;
+    public boolean sensPriseDeVueVertical() throws Exception;
     
     public void visionModeUneCamera() throws Exception;
     public void visionModeQuatreCamera() throws Exception;
     public void visionModeNeufCamera() throws Exception;
     
-    public void connectionCamera() throws Exception;
+    public int connectionCamera() throws Exception;
     public void verifierConnectionCamera() throws Exception;
     public void enregistrerPhoto() throws Exception;
 
