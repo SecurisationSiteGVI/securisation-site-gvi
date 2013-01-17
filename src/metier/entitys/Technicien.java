@@ -12,12 +12,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author damien
  */
 @Entity
+@NamedQuery(name="TechnicienGetByLogin",query="SELECT u FROM Technicien u WHERE u.login = :login")
 public class Technicien extends Utilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
 
