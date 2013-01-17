@@ -27,16 +27,32 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
 
     @Override
     public void update(AttributionUtilisateurBadge attributionUtilisateurBadge) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(attributionUtilisateurBadge!=null){
+            if(attributionUtilisateurBadge instanceof AttributionUtilisateurBadge){
+                attributionUtilisateurBadgeSrv.update(attributionUtilisateurBadge);
+            }else{
+                throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
     }
 
     @Override
     public void remove(AttributionUtilisateurBadge attributionUtilisateurBadge) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+       if(attributionUtilisateurBadge!=null){
+            if(attributionUtilisateurBadge instanceof AttributionUtilisateurBadge){
+                attributionUtilisateurBadgeSrv.remove(attributionUtilisateurBadge);
+            }else{
+                throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
     }
 
     @Override
     public List<AttributionUtilisateurBadge> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.attributionUtilisateurBadgeSrv.getAll();
     } 
 }
