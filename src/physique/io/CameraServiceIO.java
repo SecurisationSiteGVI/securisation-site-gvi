@@ -1,13 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package physique.io;
 
 /**
  *
  * @author marvin
  */
+
 public interface CameraServiceIO {
+    
+    public void piloterCamera() throws Exception;
+    public void prendrePhoto() throws Exception;
+    
+    
     
 }
