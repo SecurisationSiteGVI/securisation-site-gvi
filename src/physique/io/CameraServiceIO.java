@@ -16,6 +16,7 @@ public interface CameraServiceIO {
     public void prendrePhoto() throws Exception;
     public void luminositer()throws Exception;
     public void contraste() throws Exception;
+    public void resolution() throws Exception;
     public void sensPriseDeVueHorrizontal() throws Exception;
     public void sensPriseDeVueVertical() throws Exception;
     public void visionModeUneCamera() throws Exception;
