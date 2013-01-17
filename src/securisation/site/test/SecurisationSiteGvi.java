@@ -4,7 +4,8 @@
  */
 package securisation.site.test;
 
-import metier.entitys.Utilisateur;
+import java.util.List;
+import metier.entitys.Technicien;
 import physique.data.PhysiqueDataFactory;
 
 /**
@@ -17,6 +18,7 @@ public class SecurisationSiteGvi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        InitBDD i = new InitBDD(true);    
+        List<Technicien> u = PhysiqueDataFactory.getUtilisateurServiceORM().getByLogin("damienChes");
+        System.out.println(u);
     }
 }

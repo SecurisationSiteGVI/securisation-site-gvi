@@ -4,12 +4,9 @@
  */
 package securisation.site.test;
 
-import com.sun.org.apache.xml.internal.security.Init;
 import metier.MetierFactory;
 import metier.UtilisateurService;
 import metier.entitys.Administrateur;
-import metier.entitys.Technicien;
-import metier.entitys.Utilisateur;
 
 /**
  *

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
@@ -20,7 +21,12 @@ import javax.persistence.Transient;
  * @author damien
  */
 @Entity
-@NamedQuery(name="UtilisateurGetAll",query="SELECT u FROM Utilisateur u")
+@NamedQueries({
+    @NamedQuery(name="UtilisateurGetAll",query="SELECT u FROM Utilisateur u")
+    
+})
+
+
 public class Utilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
 

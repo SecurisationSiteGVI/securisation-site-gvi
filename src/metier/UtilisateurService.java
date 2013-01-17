@@ -5,6 +5,7 @@
 package metier;
 
 import java.util.List;
+import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
 
 /**
@@ -19,4 +20,8 @@ public interface UtilisateurService {
     public void update(Utilisateur utilisateur);
 
     public List<Utilisateur> getAll();
+    public boolean loginIsUtilise(String login) ;
+    public Utilisateur verifificationConnexion(String login, String password);
+    public List<Technicien> getByLogin(String login);
+    
 }
