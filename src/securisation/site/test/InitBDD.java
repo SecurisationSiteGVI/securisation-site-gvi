@@ -22,7 +22,7 @@ public class InitBDD {
     }
     private void initUilisateurs(){
         Administrateur u = new Administrateur();
-        u.setNom("Chesneau");
+        u.setNom("Chesneau");//
         u.setPrenom("Damien");
         u.setLogin("damienChes");
         u.setPassword("damien");
