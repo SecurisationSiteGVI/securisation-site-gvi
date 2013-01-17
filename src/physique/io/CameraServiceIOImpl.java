@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package physique.io;
 
 /**
@@ -9,5 +5,15 @@ package physique.io;
  * @author marvin
  */
 public class CameraServiceIOImpl implements CameraServiceIO{
+
+    @Override
+    public void piloterCamera() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void prendrePhoto() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
