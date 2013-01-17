@@ -64,7 +64,7 @@ public class PhysiqueDataFactory {
         return cameraSrv;
     }
 
-    public static BorneAccesServiceORM getAccesServiceORM() {
+    public static BorneAccesServiceORM getBorneAccesServiceORM() {
         return borneAccesSrv;
     }
 
