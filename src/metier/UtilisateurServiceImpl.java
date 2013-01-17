@@ -68,14 +68,15 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public boolean loginIsUtilise(String login) {
         boolean retour=true;
         List<Technicien> utilisateurs = this.getByLogin(login);
-        if (utilisateurs == null) {
+        if (utilisateurs.isEmpty()) {
+            System.out.println("passage");
             retour = false;
         } 
         return retour;
     }
 
     @Override
-    public Utilisateur verifificationConnexion(String login, String password) {
+    public Technicien verifificationConnexion(String login, String password) {
         boolean retour=false;
         List<Technicien> utilisateurs = this.getByLogin(login);
         Technicien p=null;
