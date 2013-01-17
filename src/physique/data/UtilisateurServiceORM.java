@@ -5,6 +5,8 @@
 package physique.data;
 
 import java.util.List;
+import metier.entitys.Administrateur;
+import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
 
 /**
@@ -21,5 +23,5 @@ public interface UtilisateurServiceORM {
 
     public List<Utilisateur> getAll();
     
-    public List<Utilisateur> getByLogin(String login);
+    public List<Technicien> getByLogin(String login);
 }

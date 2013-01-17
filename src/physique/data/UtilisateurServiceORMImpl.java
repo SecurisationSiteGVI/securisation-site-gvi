@@ -6,6 +6,8 @@ package physique.data;
 
 import java.util.List;
 import javax.persistence.Query;
+import metier.entitys.Administrateur;
+import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
 
 /**
@@ -45,11 +47,11 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM{
     }
 
     @Override
-    public List<Utilisateur> getByLogin(String login) { 
+    public List<Technicien> getByLogin(String login) { 
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("TechnicienGetByLogin");
         query.setParameter("login", login);
-        List<Utilisateur> utilisateurs = query.getResultList();
+        List<Technicien> utilisateurs = query.getResultList();
         Connexion.disconect();
         return utilisateurs;
     }
