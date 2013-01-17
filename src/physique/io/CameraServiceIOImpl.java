@@ -22,6 +22,11 @@ public class CameraServiceIOImpl implements CameraServiceIO{
     }
 
     @Override
+    public void piloterCameraBas() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public void piloterAutomatiquement() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -32,7 +37,17 @@ public class CameraServiceIOImpl implements CameraServiceIO{
     }
 
     @Override
-    public void choixCamera() throws Exception {
+    public void luminositer() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void contraste() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void resolution() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -42,12 +57,12 @@ public class CameraServiceIOImpl implements CameraServiceIO{
     }
 
     @Override
-    public void luminositer() throws Exception {
+    public void detectionMouvement() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void contraste() throws Exception {
+    public void choixCamera() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -77,11 +92,21 @@ public class CameraServiceIOImpl implements CameraServiceIO{
     }
 
     @Override
-    public void resolution() throws Exception {
+    public void connectionCamera() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
- 
+    @Override
+    public void verifierConnectionCamera() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void enregistrerPhoto() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+   
 
   
     
