@@ -76,6 +76,11 @@ public class CameraServiceIOImpl implements CameraServiceIO{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public void resolution() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
  
 
   
