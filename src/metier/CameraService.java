@@ -1,6 +1,7 @@
 package metier;
 
 import java.util.List;
+import metier.entitys.Camera;
 
 /**
  *
@@ -11,10 +12,10 @@ import java.util.List;
 public interface CameraService {
     
         
-    public void add(CameraService cameraService) throws Exception;
-    public void update(CameraService cameraService) throws Exception;
-    public void remove(CameraService cameraService) throws Exception;
-    public List<CameraService> getAll() throws Exception;
+    public void add(Camera camera) throws Exception;
+    public void update(Camera camera) throws Exception;
+    public void remove(Camera camera) throws Exception;
+    public List<Camera> getAll() throws Exception;
     
     
 }
