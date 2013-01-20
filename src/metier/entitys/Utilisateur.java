@@ -25,8 +25,6 @@ import javax.persistence.Transient;
     @NamedQuery(name="UtilisateurGetAll",query="SELECT u FROM Utilisateur u")
     
 })
-
-
 public class Utilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -43,8 +41,8 @@ public class Utilisateur implements Serializable {
     private String ville;
     private int codePostale;
     private String adresse;
-    private int telephonePortable;
-    private int telephoneFixe;
+    private Number telephonePortable;
+    private Number telephoneFixe;
     @Column(nullable=false)
     private boolean homme;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -126,14 +124,9 @@ public class Utilisateur implements Serializable {
         this.adresse = adresse;
     }
 
-    public int getTelephonePortable() {
-        return telephonePortable;
-    }
+   
 
-    public void setTelephonePortable(int telephonePortable) {
-        this.telephonePortable = telephonePortable;
-    }
-
+    
     public boolean isHomme() {
         return homme;
     }
@@ -162,12 +155,24 @@ public class Utilisateur implements Serializable {
         return age;
     }
 
-    public int getTelephoneFixe() {
+    public Number getTelephonePortable() {
+        return telephonePortable;
+    }
+
+    public void setTelephonePortable(Number telephonePortable) {
+        this.telephonePortable = telephonePortable;
+    }
+
+    public Number getTelephoneFixe() {
         return telephoneFixe;
     }
 
-    public void setTelephoneFixe(int telephoneFixe) {
+    public void setTelephoneFixe(Number telephoneFixe) {
         this.telephoneFixe = telephoneFixe;
     }
+
+   
+
+    
     
 }
