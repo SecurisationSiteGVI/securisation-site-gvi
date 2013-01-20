@@ -22,7 +22,8 @@ import javax.persistence.Transient;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "UtilisateurGetAll", query = "SELECT u FROM Utilisateur u")
+    @NamedQuery(name = "UtilisateurGetAll", query = "SELECT u FROM Utilisateur u"),
+        @NamedQuery(name="UtilisateurCount",query="SELECT COUNT(u) FROM Utilisateur u")
 })
 public class Utilisateur implements Serializable {
 
