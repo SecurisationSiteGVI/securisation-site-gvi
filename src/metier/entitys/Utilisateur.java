@@ -22,10 +22,10 @@ import javax.persistence.Transient;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="UtilisateurGetAll",query="SELECT u FROM Utilisateur u")
-    
+    @NamedQuery(name = "UtilisateurGetAll", query = "SELECT u FROM Utilisateur u")
 })
 public class Utilisateur implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -34,23 +34,23 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String nom;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String prenom;
     private String ville;
     private int codePostale;
     private String adresse;
     private Number telephonePortable;
     private Number telephoneFixe;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private boolean homme;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDeNaissance;
     private String email;
     @Transient
     private int age;
-    
+
     public Long getId() {
         return id;
     }
@@ -81,7 +81,7 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return prenom+" "+nom;
+        return prenom + " " + nom;
     }
 
     public String getNom() {
@@ -124,9 +124,6 @@ public class Utilisateur implements Serializable {
         this.adresse = adresse;
     }
 
-   
-
-    
     public boolean isHomme() {
         return homme;
     }
@@ -152,7 +149,13 @@ public class Utilisateur implements Serializable {
     }
 
     public int getAge() {
-        return age;
+        int agen = 0;
+        if (dateDeNaissance != null) {
+            int yearH = dateDeNaissance.getYear();
+            int yearN = new Date().getYear();
+            agen =  yearN-yearH;
+        }
+        return agen;
     }
 
     public Number getTelephonePortable() {
@@ -170,9 +173,4 @@ public class Utilisateur implements Serializable {
     public void setTelephoneFixe(Number telephoneFixe) {
         this.telephoneFixe = telephoneFixe;
     }
-
-   
-
-    
-    
 }
