@@ -22,6 +22,7 @@ public interface UtilisateurServiceORM {
     public void update(Utilisateur utilisateur);
 
     public List<Utilisateur> getAll();
-    
+    public List<Utilisateur> getAllByRange(int debut,int fin);
     public List<Technicien> getByLogin(String login);
+    public int count();
 }

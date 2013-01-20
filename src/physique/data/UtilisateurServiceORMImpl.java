@@ -55,5 +55,26 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM{
         Connexion.disconect();
         return utilisateurs;
     }
+
+    @Override
+    public List<Utilisateur> getAllByRange(int debut, int fin) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(fin);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
+    }
+
+    @Override
+    public int count() {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetAll");
+       int i= query.getMaxResults();
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return i;
+    }
     
 }
