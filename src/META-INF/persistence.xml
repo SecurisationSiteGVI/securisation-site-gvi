@@ -21,6 +21,7 @@
     <class>metier.entitys.DetecteurIntrusion</class>
     <class>metier.entitys.AttributionSecteurDetecteurIntrusion</class>
     <class>metier.entitys.AttributionSecteurCamera</class>
+    <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/securisation"/>
       <property name="javax.persistence.jdbc.password" value="damien"/>
