@@ -7,72 +7,72 @@ package physique.io;
 public class CameraServiceIOImpl implements CameraServiceIO{
 
     @Override
-    public void piloterCameraGauche() throws Exception {
+    public boolean piloterCameraGauche() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void piloterCameraDroite() throws Exception {
+    public boolean piloterCameraDroite() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void piloterCameraHaut() throws Exception {
+    public boolean piloterCameraHaut() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void piloterCameraBas() throws Exception {
+    public boolean piloterCameraBas() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void piloterAutomatiquement() throws Exception {
+    public boolean piloterAutomatiquement() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void zoom() throws Exception {
+    public boolean zoom() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void luminositer() throws Exception {
+    public boolean luminositer() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void contraste() throws Exception {
+    public boolean contraste() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void resolution() throws Exception {
+    public boolean resolution() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void prendrePhoto() throws Exception {
+    public byte[] prendrePhoto() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void detectionMouvement() throws Exception {
+    public boolean detectionMouvement() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void choixCamera() throws Exception {
+    public int[] choixCamera() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void sensPriseDeVueHorrizontal() throws Exception {
+    public boolean sensPriseDeVueHorrizontal() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void sensPriseDeVueVertical() throws Exception {
+    public boolean sensPriseDeVueVertical() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -92,7 +92,7 @@ public class CameraServiceIOImpl implements CameraServiceIO{
     }
 
     @Override
-    public void connectionCamera() throws Exception {
+    public int connectionCamera() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -106,7 +106,6 @@ public class CameraServiceIOImpl implements CameraServiceIO{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-   
 
   
     
