@@ -107,8 +107,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public List<Utilisateur> getAllByRange(int debut, int fin) {
-        return this.utilisateurSrv.getAllByRange(debut, fin);
+    public List<Utilisateur> getAllByRange(int debut, int nbResult) {
+        return this.utilisateurSrv.getAllByRange(debut, nbResult);
     }
 
     @Override
