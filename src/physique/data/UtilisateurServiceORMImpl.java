@@ -14,7 +14,7 @@ import metier.entitys.Utilisateur;
  *
  * @author damien
  */
-public class UtilisateurServiceORMImpl implements UtilisateurServiceORM{
+public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
 
     @Override
     public void add(Utilisateur utilisateur) {
@@ -37,8 +37,8 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM{
         Connexion.disconect();
     }
 
-    @Override 
-    public List<Utilisateur> getAll() { 
+    @Override
+    public List<Utilisateur> getAll() {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("UtilisateurGetAll");
         List<Utilisateur> utilisateurs = query.getResultList();
@@ -47,7 +47,7 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM{
     }
 
     @Override
-    public List<Technicien> getByLogin(String login) { 
+    public List<Technicien> getByLogin(String login) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("TechnicienGetByLogin");
         query.setParameter("login", login);
@@ -68,13 +68,12 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM{
     }
 
     @Override
-    public int count() {
+    public Long count() {
         Connexion.getPersistance();
-        Query query = Connexion.em.createNamedQuery("UtilisateurGetAll");
-       int i= query.getMaxResults();
-        List<Utilisateur> utilisateurs = query.getResultList();
+        Query query = Connexion.em.createNamedQuery("UtilisateurCount");
+        Long i = (Long) query.getSingleResult();
+        System.out.println(i);
         Connexion.disconect();
         return i;
     }
-    
 }

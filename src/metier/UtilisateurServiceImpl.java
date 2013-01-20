@@ -112,7 +112,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public int count() {
+    public Long count() {
         return this.utilisateurSrv.count();
     }
 }

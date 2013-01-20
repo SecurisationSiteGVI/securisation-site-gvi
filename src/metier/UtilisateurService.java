@@ -24,6 +24,6 @@ public interface UtilisateurService {
     public Technicien verifificationConnexion(String login, String password);
     public List<Technicien> getByLogin(String login);
     public List<Utilisateur> getAllByRange(int debut,int fin);
-    public int count();
+    public Long count();
     
 }
