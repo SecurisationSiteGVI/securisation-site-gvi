@@ -105,4 +105,14 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         }
        return utilisateurs;
     }
+
+    @Override
+    public List<Utilisateur> getAllByRange(int debut, int fin) {
+        return this.utilisateurSrv.getAllByRange(debut, fin);
+    }
+
+    @Override
+    public int count() {
+        return this.utilisateurSrv.count();
+    }
 }
