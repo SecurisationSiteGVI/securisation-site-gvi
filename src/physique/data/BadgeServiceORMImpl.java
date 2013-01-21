@@ -46,7 +46,12 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
 
     @Override
     public Long count() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("badgeCount");
+        Long i = (Long) query.getSingleResult();
+        System.out.println(i);
+        Connexion.disconect();
+        return i;
     }
     
 }
