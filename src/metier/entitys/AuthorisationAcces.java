@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,7 +24,10 @@ import javax.persistence.Temporal;
  * @author damien
  */
 @Entity
-@NamedQuery(name="AuthorisationAccesGetAll",query="SELECT a FROM AuthorisationAcces a")
+@NamedQueries({
+    @NamedQuery(name="AuthorisationAccesCount",query="SELECT COUNT(a) FROM AuthorisationAcces a"),
+    @NamedQuery(name="AuthorisationAccesGetAll",query="SELECT a FROM AuthorisationAcces a")
+})
 public class AuthorisationAcces implements Serializable {
     private static final long serialVersionUID = 1L;
     
