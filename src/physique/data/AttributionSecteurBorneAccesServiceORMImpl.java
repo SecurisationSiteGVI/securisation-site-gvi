@@ -46,7 +46,12 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
 
     @Override
     public Long count() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionSecteurBorneAccesCount");
+        Long i = (Long) query.getSingleResult();
+        System.out.println(i);
+        Connexion.disconect();
+        return i;
     }
     
 }
