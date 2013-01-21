@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
@@ -19,7 +20,10 @@ import javax.persistence.OneToOne;
  * @author damien
  */
 @Entity
-@NamedQuery(name="borneAccesGetAll",query="SELECT b FROM BorneAcces b")
+@NamedQueries({
+    @NamedQuery(name="borneAccesCount",query="SELECT COUNT(b) FROM BorneAcces b"),
+    @NamedQuery(name="borneAccesGetAll",query="SELECT b FROM BorneAcces b")
+})
 public class BorneAcces implements Serializable {
     private static final long serialVersionUID = 1L;
 
