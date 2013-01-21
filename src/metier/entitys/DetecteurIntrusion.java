@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
@@ -19,7 +20,11 @@ import javax.persistence.OneToOne;
  * @author damien
  */
 @Entity
-@NamedQuery(name="DetecteurIntrusionGetAll",query="SELECT d FROM DetecteurIntrusion d")
+@NamedQueries({
+    @NamedQuery(name="DetecteurIntrusionCount",query="SELECT COUNT(d) FROM DetecteurIntrusion d"),
+    @NamedQuery(name="DetecteurIntrusionGetAll",query="SELECT d FROM DetecteurIntrusion d")
+})
+
 public class DetecteurIntrusion implements Serializable {
     private static final long serialVersionUID = 1L;
 
