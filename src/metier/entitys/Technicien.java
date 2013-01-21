@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 /**
@@ -19,8 +20,12 @@ import javax.persistence.NamedQuery;
  * @author damien
  */
 @Entity
-@NamedQuery(name="TechnicienGetByLogin",query="SELECT u FROM Technicien u WHERE u.login = :login")
+@NamedQueries({
+    @NamedQuery(name = "TechnicienGetByLogin", query = "SELECT u FROM Technicien u WHERE u.login = :login"),
+    @NamedQuery(name = "TechnicienCount", query = "SELECT COUNT(t) FROM Technicien t")
+})
 public class Technicien extends Utilisateur implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -30,8 +35,7 @@ public class Technicien extends Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String login;
-    private String password;  
- 
+    private String password;
 
     @Override
     public int hashCode() {
@@ -53,7 +57,7 @@ public class Technicien extends Utilisateur implements Serializable {
         return true;
     }
 
-     public String getLogin() {
+    public String getLogin() {
         return login;
     }
 
@@ -68,6 +72,7 @@ public class Technicien extends Utilisateur implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
     public void encode(boolean encode) {
         if (encode) {
             password = this.codeMD5(password);
@@ -95,5 +100,4 @@ public class Technicien extends Utilisateur implements Serializable {
 
         return code;
     }
-    
 }
