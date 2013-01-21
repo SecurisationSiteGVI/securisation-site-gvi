@@ -24,7 +24,6 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="DetecteurIntrusionCount",query="SELECT COUNT(d) FROM DetecteurIntrusion d"),
     @NamedQuery(name="DetecteurIntrusionGetAll",query="SELECT d FROM DetecteurIntrusion d")
 })
-
 public class DetecteurIntrusion implements Serializable {
     private static final long serialVersionUID = 1L;
 
