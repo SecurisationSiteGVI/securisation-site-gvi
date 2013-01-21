@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="EvenementCount",query="SELECT COUNT(es) FROM Evenement e"),
+    @NamedQuery(name="EvenementCount",query="SELECT COUNT(e) FROM Evenement e"),
     @NamedQuery(name="EvenementGetAll",query="SELECT e FROM Evenement e")
 })
 
