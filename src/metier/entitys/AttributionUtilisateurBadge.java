@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
@@ -19,7 +20,10 @@ import javax.persistence.OneToOne;
  * @author damien
  */
 @Entity
-@NamedQuery(name="AttributionUtilisateurBadgeGetAll",query="SELECT a FROM AttributionUtilisateurBadge a")
+@NamedQueries({
+    @NamedQuery(name="AttributionUtilisateurBadgeCount",query="SELECT COUNT(a) FROM AttributionUtilisateurBadge a"),
+    @NamedQuery(name="AttributionUtilisateurBadgeGetAll",query="SELECT a FROM AttributionUtilisateurBadge a")
+})
 public class AttributionUtilisateurBadge implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
