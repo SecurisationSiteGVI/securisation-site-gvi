@@ -23,6 +23,18 @@ public interface UtilisateurServiceORM {
 
     public List<Utilisateur> getAll();
     public List<Utilisateur> getAllByRange(int debut,int nbResult);
+    public List<Utilisateur> getByNom(String nom);
+    public List<Utilisateur> getByNom(String nom,int debut,int nbResult);
+    public List<Utilisateur> getByPrenom(String prenom);
+    public List<Utilisateur> getByPrenom(String prenom,int debut,int nbResult);
+    public List<Utilisateur> getByVille(String ville);
+    public List<Utilisateur> getByVille(String ville,int debut,int nbResult);
+    public List<Utilisateur> getByAdresse(String prenom);
+    public List<Utilisateur> getByAdresse(String prenom,int debut,int nbResult);
+    public List<Utilisateur> getByCodePostale(int code);
+    public List<Utilisateur> getByCodePostale(int code,int debut,int nbResult);
+    public List<Utilisateur> getByEmail(String email);
+    public List<Utilisateur> getByEmail(String email,int debut,int nbResult);
     public List<Technicien> getByLogin(String login);
     public Long count();
 }
