@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 /**
@@ -17,7 +18,11 @@ import javax.persistence.NamedQuery;
  * @author damien
  */
 @Entity
-@NamedQuery(name="SecteurGetAll",query="SELECT s FROM Secteur s")
+@NamedQueries({
+    @NamedQuery(name="SecteurCount",query="SELECT COUNT(s) FROM Secteur s"),
+    @NamedQuery(name="SecteurGetAll",query="SELECT s FROM Secteur s")
+})
+
 public class Secteur implements Serializable {
     private static final long serialVersionUID = 1L;
 
