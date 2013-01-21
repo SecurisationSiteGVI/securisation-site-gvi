@@ -76,4 +76,64 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
         Connexion.disconect();
         return i;
     }
+
+    @Override
+    public List<Utilisateur> getByNom(String nom) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByNom(String nom, int debut, int nbResult) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByPrenom(String prenom) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByPrenom(String prenom, int debut, int nbResult) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByVille(String ville) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByVille(String ville, int debut, int nbResult) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByAdresse(String prenom) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByAdresse(String prenom, int debut, int nbResult) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByCodePostale(int code) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByCodePostale(int code, int debut, int nbResult) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Utilisateur> getByEmail(String email, int debut, int nbResult) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
