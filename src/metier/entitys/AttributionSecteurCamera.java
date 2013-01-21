@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -21,7 +22,10 @@ import javax.persistence.OneToOne;
  * @author damien
  */
 @Entity
-@NamedQuery(name="AttributionSecteurCameraGetAll",query="SELECT a FROM AttributionSecteurCamera a")
+@NamedQueries({
+    @NamedQuery(name="AttributionSecteurCameraCount",query="SELECT COUNT(a) FROM AttributionSecteurCamera a"),
+    @NamedQuery(name="AttributionSecteurCameraGetAll",query="SELECT a FROM AttributionSecteurCamera a")
+})
 public class AttributionSecteurCamera implements Serializable {
     private static final long serialVersionUID = 1L;
     public static long getSerialVersionUID() {
