@@ -43,5 +43,10 @@ public class PositionServiceORMImpl implements PositionServiceORM{
         Connexion.disconect();
         return positions;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

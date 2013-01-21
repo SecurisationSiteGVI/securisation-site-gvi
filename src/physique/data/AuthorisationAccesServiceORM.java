@@ -19,5 +19,7 @@ public interface AuthorisationAccesServiceORM {
 
     public void update(AuthorisationAcces authorisationAcces);
 
+    public Long count();
+
     public List<AuthorisationAcces> getAll();
 }

@@ -43,5 +43,10 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
         Connexion.disconect();
         return badges;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

@@ -4,7 +4,6 @@
  */
 package physique.data;
 
-import java.net.ConnectException;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.BorneAcces;
@@ -43,6 +42,11 @@ public class BorneAccesServiceORMImpl implements BorneAccesServiceORM{
         List<BorneAcces> borneAcceses = query.getResultList();
         Connexion.disconect();
         return borneAcceses;
+    }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

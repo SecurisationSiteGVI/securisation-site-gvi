@@ -44,5 +44,10 @@ public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceOR
         Connexion.disconect();
         return numeroPredefinis;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

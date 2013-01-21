@@ -43,5 +43,10 @@ public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServi
         Connexion.disconect();
         return authorisationAcceses;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

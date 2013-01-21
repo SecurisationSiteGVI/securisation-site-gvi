@@ -43,5 +43,10 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
         Connexion.disconect();
         return attributionUtilisateurBadges;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

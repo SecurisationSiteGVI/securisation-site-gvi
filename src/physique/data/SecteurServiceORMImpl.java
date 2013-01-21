@@ -42,4 +42,9 @@ public class SecteurServiceORMImpl implements SecteurServiceORM{
         Connexion.disconect();
         return secteurs;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

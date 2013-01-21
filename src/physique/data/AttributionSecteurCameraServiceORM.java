@@ -12,11 +12,14 @@ import metier.entitys.AttributionSecteurCamera;
  * @author damien
  */
 public interface AttributionSecteurCameraServiceORM {
+
     public void add(AttributionSecteurCamera attributionSecteurCamera);
 
     public void remove(AttributionSecteurCamera attributionSecteurCamera);
 
     public void update(AttributionSecteurCamera attributionSecteurCamera);
+
+    public Long count();
 
     public List<AttributionSecteurCamera> getAll();
 }

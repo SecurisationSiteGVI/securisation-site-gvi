@@ -16,4 +16,5 @@ public interface NumeroPredefinisServiceORM {
     public void remove(NumeroPredefinis numeroPredefinis);
     public void update(NumeroPredefinis numeroPredefinis);
     public List<NumeroPredefinis> getAll();
+    public Long count();
 }

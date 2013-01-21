@@ -43,5 +43,10 @@ public class EvenementServiceORMImpl implements EvenementServiceORM{
         Connexion.disconect();
         return evenements;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

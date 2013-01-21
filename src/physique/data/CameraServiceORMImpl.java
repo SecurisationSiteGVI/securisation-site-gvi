@@ -43,5 +43,10 @@ public class CameraServiceORMImpl implements CameraServiceORM{
         Connexion.disconect();
         return cameras;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

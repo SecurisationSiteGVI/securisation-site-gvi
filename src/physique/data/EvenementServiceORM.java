@@ -16,4 +16,5 @@ public interface EvenementServiceORM {
     public void remove(Evenement evenement);
     public void update(Evenement evenement);
     public List<Evenement> getAll();
+    public Long count();
 }

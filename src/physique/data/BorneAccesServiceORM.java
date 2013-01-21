@@ -18,6 +18,6 @@ public interface BorneAccesServiceORM {
     public void remove(BorneAcces borneAcces);
 
     public void update(BorneAcces borneAcces);
-
+public Long count();
     public List<BorneAcces> getAll();
 }

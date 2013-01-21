@@ -43,5 +43,10 @@ public class AttributionSecteurCameraServiceORMImpl implements AttributionSecteu
         Connexion.disconect();
         return attributionSecteurCameras;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

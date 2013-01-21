@@ -12,11 +12,14 @@ import metier.entitys.AttributionUtilisateurBadge;
  * @author damien
  */
 public interface AttributionUtilisateurBadgeServiceORM {
+
     public void add(AttributionUtilisateurBadge attributionUtilisateurBadge);
 
     public void remove(AttributionUtilisateurBadge attributionUtilisateurBadge);
 
     public void update(AttributionUtilisateurBadge attributionUtilisateurBadge);
+
+    public Long count();
 
     public List<AttributionUtilisateurBadge> getAll();
 }

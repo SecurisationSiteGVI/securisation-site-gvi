@@ -16,4 +16,5 @@ public interface PositionServiceORM {
     public void remove(Position position);
     public void update(Position position);
     public List<Position> getAll();
+    public Long count();
 }

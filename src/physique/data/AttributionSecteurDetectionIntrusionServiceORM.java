@@ -12,11 +12,14 @@ import metier.entitys.AttributionSecteurDetecteurIntrusion;
  * @author damien
  */
 public interface AttributionSecteurDetectionIntrusionServiceORM {
+
     public void add(AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion);
 
     public void remove(AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion);
 
     public void update(AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion);
+
+    public Long count();
 
     public List<AttributionSecteurDetecteurIntrusion> getAll();
 }

@@ -43,5 +43,10 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
         Connexion.disconect();
         return attributionSecteurBorneAcceses;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

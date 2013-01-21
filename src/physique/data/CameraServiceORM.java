@@ -16,4 +16,5 @@ public interface CameraServiceORM {
     public void remove(Camera camera);
     public void update(Camera camera);
     public List<Camera> getAll();
+    public Long count();
 }

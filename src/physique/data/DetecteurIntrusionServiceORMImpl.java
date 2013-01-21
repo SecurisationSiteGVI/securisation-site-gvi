@@ -43,5 +43,10 @@ public class DetecteurIntrusionServiceORMImpl implements DetecteurIntrusionServi
         Connexion.disconect();
         return detecteurIntrusions;
     }
+
+    @Override
+    public Long count() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
