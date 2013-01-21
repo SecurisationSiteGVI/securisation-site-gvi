@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
@@ -19,7 +20,10 @@ import javax.persistence.OneToOne;
  * @author damien
  */
 @Entity
-@NamedQuery(name="cameraGetAll",query="SELECT c FROM Camera c")
+@NamedQueries({
+    @NamedQuery(name="CameraCount",query="SELECT COUNT(c) FROM Camera c"),
+    @NamedQuery(name="cameraGetAll",query="SELECT c FROM Camera c")
+})
 public class Camera implements Serializable {
     private static final long serialVersionUID = 1L;
 
