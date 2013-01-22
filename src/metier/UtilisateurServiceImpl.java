@@ -115,4 +115,136 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public Long count() {
         return this.utilisateurSrv.count();
     }
+
+    @Override
+    public List<Utilisateur> getByNom(String nom) {
+        List<Utilisateur> utilisateurs = null;
+       if(nom!=null){
+            utilisateurs = this.utilisateurSrv.getByNom(nom);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByNom(String nom, int debut, int nbResult) {
+        List<Utilisateur> utilisateurs = null;
+       if(nom!=null){
+            utilisateurs = this.utilisateurSrv.getByNom(nom, debut, nbResult);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByPrenom(String prenom) {
+       List<Utilisateur> utilisateurs = null;
+       if(prenom!=null){
+            utilisateurs = this.utilisateurSrv.getByPrenom(prenom);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByPrenom(String prenom, int debut, int nbResult) {
+        List<Utilisateur> utilisateurs = null;
+       if(prenom!=null){
+            utilisateurs = this.utilisateurSrv.getByPrenom(prenom, debut, nbResult);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByVille(String ville) {
+        List<Utilisateur> utilisateurs = null;
+       if(ville!=null){
+            utilisateurs = this.utilisateurSrv.getByVille(ville);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByVille(String ville, int debut, int nbResult) {
+        List<Utilisateur> utilisateurs = null;
+       if(ville!=null){
+            utilisateurs = this.utilisateurSrv.getByVille(ville);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByAdresse(String adresse) {
+        List<Utilisateur> utilisateurs = null;
+       if(adresse!=null){
+            utilisateurs = this.utilisateurSrv.getByAdresse(adresse);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByAdresse(String adresse, int debut, int nbResult) {
+        List<Utilisateur> utilisateurs = null;
+       if(adresse!=null){
+            utilisateurs = this.utilisateurSrv.getByAdresse(adresse, debut, nbResult);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByCodePostale(int code) {
+       List<Utilisateur> utilisateurs = null;
+       if(code!=0){
+            utilisateurs = this.utilisateurSrv.getByCodePostale(code);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByCodePostale(int code, int debut, int nbResult) {
+        List<Utilisateur> utilisateurs = null;
+       if(code!=0){
+            utilisateurs = this.utilisateurSrv.getByCodePostale(code, debut, nbResult);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByEmail(String email) {
+        List<Utilisateur> utilisateurs = null;
+       if(email!=null){
+            utilisateurs = this.utilisateurSrv.getByEmail(email);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getByEmail(String email, int debut, int nbResult) {
+        List<Utilisateur> utilisateurs = null;
+       if(email!=null){
+            utilisateurs = this.utilisateurSrv.getByEmail(email, debut, nbResult);
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+       return utilisateurs;
+    }
 }
