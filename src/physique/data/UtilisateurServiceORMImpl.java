@@ -79,61 +79,133 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
 
     @Override
     public List<Utilisateur> getByNom(String nom) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByNom");
+        query.setParameter("nom", nom);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByNom(String nom, int debut, int nbResult) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByNom");
+        query.setParameter("nom", nom);
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByPrenom(String prenom) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByPrenom");
+        query.setParameter("prenom", prenom);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByPrenom(String prenom, int debut, int nbResult) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByPrenom");
+        query.setParameter("prenom", prenom);
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByVille(String ville) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByVille");
+        query.setParameter("ville", ville);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByVille(String ville, int debut, int nbResult) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByVille");
+        query.setParameter("ville", ville);
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
-    public List<Utilisateur> getByAdresse(String prenom) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<Utilisateur> getByAdresse(String adresse) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByAdresse");
+        query.setParameter("adresse", adresse);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
-    public List<Utilisateur> getByAdresse(String prenom, int debut, int nbResult) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<Utilisateur> getByAdresse(String adresse, int debut, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByAdresse");
+        query.setParameter("adresse", adresse);
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByCodePostale(int code) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByCodePostale");
+        query.setParameter("codePostale", code);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByCodePostale(int code, int debut, int nbResult) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByCodePostale");
+        query.setParameter("codePostale", code);
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByEmail");
+        query.setParameter("email", email);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 
     @Override
     public List<Utilisateur> getByEmail(String email, int debut, int nbResult) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("UtilisateurGetByEmail");
+        query.setParameter("email", email);
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
     }
 }
