@@ -72,7 +72,6 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("UtilisateurCount");
         Long i = (Long) query.getSingleResult();
-        System.out.println(i);
         Connexion.disconect();
         return i;
     }
