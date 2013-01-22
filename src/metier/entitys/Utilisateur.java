@@ -27,7 +27,7 @@ import javax.persistence.Transient;
     @NamedQuery(name = "UtilisateurGetByPrenom", query = "SELECT u FROM Utilisateur u WHERE u.prenom = :prenom"),
     @NamedQuery(name = "UtilisateurGetByVille", query = "SELECT u FROM Utilisateur u WHERE u.ville = :ville"),
     @NamedQuery(name = "UtilisateurGetByAdresse", query = "SELECT u FROM Utilisateur u WHERE u.adresse = :adresse"),
-    @NamedQuery(name = "UtilisateurGetByCodePostale", query = "SELECT u FROM Utilisateur u WHERE u.codePostale = :codePostable"),
+    @NamedQuery(name = "UtilisateurGetByCodePostale", query = "SELECT u FROM Utilisateur u WHERE u.codePostale = :codePostale"),
     @NamedQuery(name = "UtilisateurGetByEmail", query = "SELECT u FROM Utilisateur u WHERE u.email = :email"),
        @NamedQuery(name = "UtilisateurCount", query = "SELECT COUNT(u) FROM Utilisateur u")
 })
