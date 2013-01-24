@@ -19,5 +19,6 @@ public class SecurisationSiteGvi {
      */
     public static void main(String[] args) {
         InitBDD n = new InitBDD(Boolean.TRUE);
+//       metier.MetierFactory.getUtilisateurService().getAll();
     }
 }
