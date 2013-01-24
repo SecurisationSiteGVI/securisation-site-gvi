@@ -53,5 +53,15 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
         Connexion.disconect();
         return i;
     }
-    
+
+    @Override
+    public List<Badge> getAll(int debut, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("BadgeGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Badge> badges = query.getResultList();
+        Connexion.disconect();
+        return badges;
+    }  
 }
