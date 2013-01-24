@@ -11,4 +11,5 @@ public interface BadgeService {
     public void update(Badge badge) throws Exception;
     public void remove(Badge badge) throws Exception;
     public List<Badge> getAll() throws Exception;
+    public List<Badge> getAll(int debut, int nbResult) throws Exception;
 }
