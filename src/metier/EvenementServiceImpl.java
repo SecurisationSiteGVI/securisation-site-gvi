@@ -57,5 +57,40 @@ public class EvenementServiceImpl implements EvenementService{
     public List<Evenement> getAll() throws Exception {
         return this.evenementSrv.getAll();
     }
+
+    @Override
+    public List<Evenement> getAll(int debut, int nbResut) {
+        return this.evenementSrv.getAll(debut, nbResut);
+    }
+
+    @Override
+    public List<Evenement> getByPhoto() {
+        return this.evenementSrv.getByPhoto();
+    }
+
+    @Override
+    public List<Evenement> getByPhoto(int debut, int nbResut) {
+        return this.evenementSrv.getByPhoto(debut, nbResut);
+    }
+
+    @Override
+    public List<Evenement> getByAcces() {
+        return this.evenementSrv.getByAcces();
+    }
+
+    @Override
+    public List<Evenement> getByAcces(int debut, int nbResut) {
+        return this.evenementSrv.getByAcces(debut, nbResut);
+    }
+
+    @Override
+    public List<Evenement> getByIntrusion() {
+        return this.evenementSrv.getByIntrusion();
+    }
+
+    @Override
+    public List<Evenement> getByIntrusion(int debut, int nbResut) {
+        return this.getByIntrusion(debut, nbResut);
+    }
     
 }
