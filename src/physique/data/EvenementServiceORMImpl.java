@@ -12,7 +12,7 @@ import metier.entitys.Evenement;
  *
  * @author damien
  */
-public class EvenementServiceORMImpl implements EvenementServiceORM{
+public class EvenementServiceORMImpl implements EvenementServiceORM {
 
     @Override
     public void add(Evenement evenement) {
@@ -53,5 +53,75 @@ public class EvenementServiceORMImpl implements EvenementServiceORM{
         Connexion.disconect();
         return i;
     }
-    
+
+    @Override
+    public List<Evenement> getAll(int debut, int nbResut) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("EvenementGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResut);
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
+
+    @Override
+    public List<Evenement> getByPhoto() {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("PhotoGetAll");
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
+
+    @Override
+    public List<Evenement> getByPhoto(int debut, int nbResut) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("PhotoGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResut);
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
+
+    @Override
+    public List<Evenement> getByAcces() {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AccesGetAll");
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
+
+    @Override
+    public List<Evenement> getByAcces(int debut, int nbResut) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AccesGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResut);
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
+
+    @Override
+    public List<Evenement> getByIntrusion() {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("IntrusionGetAll");
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
+
+    @Override
+    public List<Evenement> getByIntrusion(int debut, int nbResut) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("IntrusionGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResut);
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
 }
