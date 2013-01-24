@@ -53,10 +53,15 @@ public class BadgeServiceImpl implements BadgeService {
     public List<Badge> getAll() throws Exception {
         return this.badgeSrv.getAll();
     }
-
+    
     @Override
     public List<Badge> getAll(int debut, int nbResult) throws Exception {
         return this.badgeSrv.getAll(debut, nbResult);
+    }
+
+    @Override
+    public Long count() {
+        return this.badgeSrv.count();
     }
 
 }
