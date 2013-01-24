@@ -54,4 +54,9 @@ public class BadgeServiceImpl implements BadgeService {
         return this.badgeSrv.getAll();
     }
 
+    @Override
+    public List<Badge> getAll(int debut, int nbResult) throws Exception {
+        return this.badgeSrv.getAll(debut, nbResult);
+    }
+
 }
