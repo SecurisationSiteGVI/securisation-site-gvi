@@ -20,7 +20,8 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="PhotoCount",query="SELECT COUNT(p) FROM Photo p")
+    @NamedQuery(name="PhotoCount",query="SELECT COUNT(p) FROM Photo p"),
+    @NamedQuery(name="PhotoGetAll",query="SELECT p FROM Photo p")
 })
 public class Photo extends Evenement implements Serializable {
     private static final long serialVersionUID = 1L;
