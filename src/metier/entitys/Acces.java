@@ -22,6 +22,7 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQueries({
     @NamedQuery(name="AccesCount",query="SELECT COUNT(a) FROM Acces a"),
+    @NamedQuery(name="AccesGetAll",query="SELECT a FROM Acces a")
 })
 public class Acces extends Evenement implements Serializable {
     private static final long serialVersionUID = 1L;
