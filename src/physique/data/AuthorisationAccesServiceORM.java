@@ -24,6 +24,5 @@ public interface AuthorisationAccesServiceORM {
 
     public List<AuthorisationAcces> getAll();
     public List<AuthorisationAcces> getAll(int debut, int nbResult);
-    public List<Badge> getBadgesNotAssign();
-    public List<Badge> getBadgesNotAssign(int debut, int nbResult);
+    
 }
