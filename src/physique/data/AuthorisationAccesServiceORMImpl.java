@@ -7,6 +7,7 @@ package physique.data;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.AuthorisationAcces;
+import metier.entitys.Badge;
 
 /**
  *
@@ -53,5 +54,17 @@ public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServi
         Connexion.disconect();
         return i;
     }
+
+    @Override
+    public List<AuthorisationAcces> getAll(int debut, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AuthorisationAccesGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<AuthorisationAcces> authorisationAcceses = query.getResultList();
+        Connexion.disconect();
+        return authorisationAcceses;
+    }
+
     
 }
