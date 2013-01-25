@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.AttributionUtilisateurBadge;
+import metier.entitys.Badge;
 
 /**
  *
@@ -22,4 +23,7 @@ public interface AttributionUtilisateurBadgeServiceORM {
     public Long count();
 
     public List<AttributionUtilisateurBadge> getAll();
+    public List<AttributionUtilisateurBadge> getAll(int debut, int nbResult);
+    public List<Badge> getBadgesNotAssign();
+    public List<Badge> getBadgesNotAssign(int debut, int nbResult);
 }
