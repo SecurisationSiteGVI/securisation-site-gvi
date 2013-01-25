@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.AuthorisationAcces;
+import metier.entitys.Badge;
 
 /**
  *
@@ -22,4 +23,7 @@ public interface AuthorisationAccesServiceORM {
     public Long count();
 
     public List<AuthorisationAcces> getAll();
+    public List<AuthorisationAcces> getAll(int debut, int nbResult);
+    public List<Badge> getBadgesNotAssign();
+    public List<Badge> getBadgesNotAssign(int debut, int nbResult);
 }
