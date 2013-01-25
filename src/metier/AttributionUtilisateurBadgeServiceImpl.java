@@ -4,6 +4,7 @@ import java.util.List;
 import javax.management.InstanceNotFoundException;
 import metier.entitys.AttributionUtilisateurBadge;
 import metier.entitys.Badge;
+import metier.entitys.Utilisateur;
 import physique.data.AttributionUtilisateurBadgeServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -70,5 +71,15 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     @Override
     public List<Badge> getBadgesNotAssign(int debut, int nbResult) {
         return this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(debut, nbResult);
+    }
+
+    @Override
+    public List<Utilisateur> getUtilisateurNotAssign() {
+        return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign();
+    }
+
+    @Override
+    public List<Utilisateur> getUtilisateurNotAssign(int debut, int nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign(debut, nbResult);
     }
 }
