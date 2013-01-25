@@ -3,6 +3,7 @@ package metier;
 import java.util.List;
 import javax.management.InstanceNotFoundException;
 import metier.entitys.AttributionUtilisateurBadge;
+import metier.entitys.Badge;
 import physique.data.AttributionUtilisateurBadgeServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -55,4 +56,19 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     public List<AttributionUtilisateurBadge> getAll() throws Exception {
         return this.attributionUtilisateurBadgeSrv.getAll();
     } 
+
+    @Override
+    public List<AttributionUtilisateurBadge> getAll(int debut, int nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getAll(debut, nbResult);
+    }
+
+    @Override
+    public List<Badge> getBadgesNotAssign() {
+        return this.attributionUtilisateurBadgeSrv.getBadgesNotAssign();
+    }
+
+    @Override
+    public List<Badge> getBadgesNotAssign(int debut, int nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getBadgesNotAssign(debut, nbResult);
+    }
 }
