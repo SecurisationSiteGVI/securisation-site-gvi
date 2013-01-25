@@ -7,6 +7,7 @@ package physique.data;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.AttributionUtilisateurBadge;
+import metier.entitys.Badge;
 
 /**
  *
@@ -52,6 +53,37 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
         System.out.println(i);
         Connexion.disconect();
         return i;
+    }
+
+    @Override
+    public List<AttributionUtilisateurBadge> getAll(int debut, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetAll");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<AttributionUtilisateurBadge> attributionUtilisateurBadges = query.getResultList();
+        Connexion.disconect();
+        return attributionUtilisateurBadges;
+    }
+
+    @Override
+    public List<Badge> getBadgesNotAssign() {
+       Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetBadgesNotAssign");
+        List<Badge> badges = query.getResultList();
+        Connexion.disconect();
+        return badges;
+    }
+
+    @Override
+    public List<Badge> getBadgesNotAssign(int debut, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetBadgesNotAssign");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Badge> badges = query.getResultList();
+        Connexion.disconect();
+        return badges;
     }
     
 }
