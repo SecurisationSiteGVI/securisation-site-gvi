@@ -106,5 +106,26 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
         Connexion.disconect();
         return utilisateurs;
     }
-    
+
+    @Override 
+    public List<Utilisateur> getUtilisateurNotAssignByNom(String nom) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetUtilisateurNotAssignByNom");
+        query.setParameter("nom", nom);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
+    }
+
+    @Override
+    public List<Utilisateur> getUtilisateurNotAssignByNom(String nom,int debut, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetUtilisateurNotAssignByNom");
+        query.setParameter("nom", nom);        
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Utilisateur> utilisateurs = query.getResultList();
+        Connexion.disconect();
+        return utilisateurs;
+    }    
 }
