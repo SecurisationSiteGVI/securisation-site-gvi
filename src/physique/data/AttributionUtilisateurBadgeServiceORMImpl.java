@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.AttributionUtilisateurBadge;
 import metier.entitys.Badge;
+import metier.entitys.Utilisateur;
 
 /**
  *
@@ -87,23 +88,23 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
     }
 
     @Override
-    public List<Badge> getUtilisateurNotAssign() {
+    public List<Utilisateur> getUtilisateurNotAssign() {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetUtilisateurNotAssign");
-        List<Badge> badges = query.getResultList();
+        List<Utilisateur> utilisateurs = query.getResultList();
         Connexion.disconect();
-        return badges;
+        return utilisateurs;
     }
 
     @Override
-    public List<Badge> getUtilisateurNotAssign(int debut, int nbResult) {
+    public List<Utilisateur> getUtilisateurNotAssign(int debut, int nbResult) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetUtilisateurNotAssign");
         query.setFirstResult(debut);
         query.setMaxResults(nbResult);
-        List<Badge> badges = query.getResultList();
+        List<Utilisateur> utilisateurs = query.getResultList();
         Connexion.disconect();
-        return badges;
+        return utilisateurs;
     }
     
 }
