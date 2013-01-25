@@ -82,4 +82,14 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     public List<Utilisateur> getUtilisateurNotAssign(int debut, int nbResult) {
         return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssign(debut, nbResult);
     }
+
+    @Override
+    public List<Utilisateur> getUtilisateurNotAssignByNom(String nom) {
+        return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssignByNom(nom);
+    }
+
+    @Override
+    public List<Utilisateur> getUtilisateurNotAssignByNom(String nom, int debut, int nbResult) {
+        return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssignByNom(nom, debut, nbResult);
+    }
 }
