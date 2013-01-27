@@ -128,4 +128,14 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
         Connexion.disconect();
         return utilisateurs;
     }    
+
+    @Override
+    public AttributionUtilisateurBadge getByUtilisateur(Utilisateur utilisateur) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgegetByUtilisateur");
+        query.setParameter("id", utilisateur.getId());        
+        AttributionUtilisateurBadge attributionUtilisateurBadge = (AttributionUtilisateurBadge) query.getSingleResult();
+        Connexion.disconect();
+        return attributionUtilisateurBadge;
+    }
 }
