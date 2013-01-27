@@ -22,7 +22,7 @@ public interface AttributionUtilisateurBadgeServiceORM {
     public void update(AttributionUtilisateurBadge attributionUtilisateurBadge);
 
     public Long count();
-    
+    public AttributionUtilisateurBadge getByUtilisateur(Utilisateur utilisateur);
     public List<AttributionUtilisateurBadge> getAll();
     public List<AttributionUtilisateurBadge> getAll(int debut, int nbResult);
     public List<Badge> getBadgesNotAssign();
