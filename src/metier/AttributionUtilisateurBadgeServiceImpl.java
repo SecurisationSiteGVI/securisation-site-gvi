@@ -92,4 +92,19 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     public List<Utilisateur> getUtilisateurNotAssignByNom(String nom, int debut, int nbResult) {
         return this.attributionUtilisateurBadgeSrv.getUtilisateurNotAssignByNom(nom, debut, nbResult);
     }
+
+    @Override
+    public AttributionUtilisateurBadge getByUtilisateur(Utilisateur utilisateur) {
+        AttributionUtilisateurBadge attributionUtilisateurBadge = null;
+        if(utilisateur!=null){
+            if(utilisateur instanceof Utilisateur){
+               attributionUtilisateurBadge =  attributionUtilisateurBadgeSrv.getByUtilisateur(utilisateur);
+            }else{
+               System.out.append("L'instance ne corespond pas a l'objet passé en argument");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionUtilisateurBadge;
+    }
 }
