@@ -5,6 +5,7 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.AttributionUtilisateurBadge;
 import metier.entitys.Badge;
@@ -14,7 +15,7 @@ import metier.entitys.Utilisateur;
  *
  * @author damien
  */
-public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUtilisateurBadgeServiceORM{
+public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUtilisateurBadgeServiceORM {
 
     @Override
     public void add(AttributionUtilisateurBadge attributionUtilisateurBadge) {
@@ -69,7 +70,7 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
 
     @Override
     public List<Badge> getBadgesNotAssign() {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetBadgesNotAssign");
         List<Badge> badges = query.getResultList();
         Connexion.disconect();
@@ -107,7 +108,7 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
         return utilisateurs;
     }
 
-    @Override 
+    @Override
     public List<Utilisateur> getUtilisateurNotAssignByNom(String nom) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetUtilisateurNotAssignByNom");
@@ -118,24 +119,30 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
     }
 
     @Override
-    public List<Utilisateur> getUtilisateurNotAssignByNom(String nom,int debut, int nbResult) {
+    public List<Utilisateur> getUtilisateurNotAssignByNom(String nom, int debut, int nbResult) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetUtilisateurNotAssignByNom");
-        query.setParameter("nom", nom);        
+        query.setParameter("nom", nom);
         query.setFirstResult(debut);
         query.setMaxResults(nbResult);
         List<Utilisateur> utilisateurs = query.getResultList();
         Connexion.disconect();
         return utilisateurs;
-    }    
+    }
 
     @Override
     public AttributionUtilisateurBadge getByUtilisateur(Utilisateur utilisateur) {
-        Connexion.getPersistance();
-        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgegetByUtilisateur");
-        query.setParameter("id", utilisateur.getId());        
-        AttributionUtilisateurBadge attributionUtilisateurBadge = (AttributionUtilisateurBadge) query.getSingleResult();
-        Connexion.disconect();
+        AttributionUtilisateurBadge attributionUtilisateurBadge = null;
+        try {
+            Connexion.getPersistance();
+            Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgegetByUtilisateur");
+            query.setParameter("id", utilisateur.getId());
+            attributionUtilisateurBadge = (AttributionUtilisateurBadge) query.getSingleResult();
+            Connexion.disconect();
+        } catch (NoResultException e) {
+            System.out.println("Pas de resultat dans la bdd" + e);
+        }
+
         return attributionUtilisateurBadge;
     }
 }
