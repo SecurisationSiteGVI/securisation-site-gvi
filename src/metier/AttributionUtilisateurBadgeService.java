@@ -20,4 +20,5 @@ public interface AttributionUtilisateurBadgeService {
     public List<Utilisateur> getUtilisateurNotAssign(int debut, int nbResult);
     public List<Utilisateur> getUtilisateurNotAssignByNom(String nom);
     public List<Utilisateur> getUtilisateurNotAssignByNom(String nom,int debut, int nbResult);
+    public AttributionUtilisateurBadge getByUtilisateur(Utilisateur utilisateur);
 }
