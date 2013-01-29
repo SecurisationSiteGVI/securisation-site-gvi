@@ -48,8 +48,8 @@ public class Utilisateur implements Serializable {
     private String ville;
     private int codePostale;
     private String adresse;
-    private Number telephonePortable;
-    private Number telephoneFixe;
+    private String telephonePortable;
+    private String telephoneFixe;
     @Column(nullable = false)
     private boolean homme;
     @Temporal(javax.persistence.TemporalType.DATE)
