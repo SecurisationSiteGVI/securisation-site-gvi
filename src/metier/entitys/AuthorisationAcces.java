@@ -45,7 +45,6 @@ public class AuthorisationAcces implements Serializable {
     @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
     @OneToMany
-    @JoinColumn(nullable=false)
     private List<Secteur> secteurs;
     public Long getId() {
         return id;
