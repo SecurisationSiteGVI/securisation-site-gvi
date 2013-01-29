@@ -16,11 +16,11 @@ public class PhysiqueIOFactory {
     
     
     public BorneAccesServiceIO getBorneAccesServiceIO() {
-        return this.borneAccesSrv;
+        return borneAccesSrv;
     }
 
     public  CameraServiceIO CameraServiceIOImpl() {
-        return this.cameraSrv ;
+        return cameraSrv ;
     }
 
 
