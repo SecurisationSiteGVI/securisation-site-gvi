@@ -5,8 +5,10 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.AttributionSecteurCamera;
+import metier.entitys.AttributionSecteurDetecteurIntrusion;
 import metier.entitys.Secteur;
 
 /**
@@ -56,11 +58,16 @@ public class AttributionSecteurCameraServiceORMImpl implements AttributionSecteu
     }
 
     @Override
-    public List<AttributionSecteurCamera> getBySecteur(Secteur secteur) {
+    public AttributionSecteurCamera getBySecteur(Secteur secteur) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionSecteurCameraGetBySecteur");
         query.setParameter("id", secteur.getId());
-        List<AttributionSecteurCamera> attributionSecteurCameras = query.getResultList();
+        AttributionSecteurCamera attributionSecteurCameras = null;
+        try {
+            attributionSecteurCameras = (AttributionSecteurCamera) query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("Pas de résultat dans la base");
+        }
         Connexion.disconect();
         return attributionSecteurCameras;
     }

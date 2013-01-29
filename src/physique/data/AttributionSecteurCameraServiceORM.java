@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.AttributionSecteurCamera;
+import metier.entitys.AttributionSecteurDetecteurIntrusion;
 import metier.entitys.Secteur;
 
 /**
@@ -24,5 +25,5 @@ public interface AttributionSecteurCameraServiceORM {
 
     public List<AttributionSecteurCamera> getAll();
     
-    public List<AttributionSecteurCamera> getBySecteur(Secteur secteur);
+    public AttributionSecteurCamera getBySecteur(Secteur secteur);
 }

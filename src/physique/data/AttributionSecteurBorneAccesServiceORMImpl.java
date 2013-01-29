@@ -5,6 +5,7 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.AttributionSecteurBorneAcces;
 import metier.entitys.Secteur;
@@ -56,11 +57,17 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
     }
 
     @Override
-    public List<AttributionSecteurBorneAcces> getBySecteur(Secteur secteur) {
+    public AttributionSecteurBorneAcces getBySecteur(Secteur secteur) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionSecteurBorneAccesGetBySecteur");
         query.setParameter("id", secteur.getId());
-        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = query.getResultList();
+        AttributionSecteurBorneAcces attributionSecteurBorneAcceses = null;
+        try{
+             attributionSecteurBorneAcceses = (AttributionSecteurBorneAcces) query.getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("Pas de résultat dans la base");
+        }
+       
         Connexion.disconect();
         return attributionSecteurBorneAcceses;
     }

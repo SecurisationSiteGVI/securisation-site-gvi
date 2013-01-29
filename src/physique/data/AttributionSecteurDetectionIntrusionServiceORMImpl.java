@@ -5,6 +5,7 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.AttributionSecteurDetecteurIntrusion;
 import metier.entitys.Secteur;
@@ -13,7 +14,7 @@ import metier.entitys.Secteur;
  *
  * @author damien
  */
-public class AttributionSecteurDetectionIntrusionServiceORMImpl implements AttributionSecteurDetectionIntrusionServiceORM{
+public class AttributionSecteurDetectionIntrusionServiceORMImpl implements AttributionSecteurDetectionIntrusionServiceORM {
 
     @Override
     public void add(AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion) {
@@ -56,13 +57,17 @@ public class AttributionSecteurDetectionIntrusionServiceORMImpl implements Attri
     }
 
     @Override
-    public List<AttributionSecteurDetecteurIntrusion> getBySecteur(Secteur secteur) {
+    public AttributionSecteurDetecteurIntrusion getBySecteur(Secteur secteur) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionSecteurDetecteurIntrusionGetBySecteur");
         query.setParameter("id", secteur.getId());
-        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions = query.getResultList();
+        AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusions = null;
+        try {
+            attributionSecteurDetecteurIntrusions = (AttributionSecteurDetecteurIntrusion) query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("Pas de résultat dans la base");
+        }
         Connexion.disconect();
         return attributionSecteurDetecteurIntrusions;
     }
-    
 }
