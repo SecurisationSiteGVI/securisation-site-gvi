@@ -24,7 +24,8 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQueries({
     @NamedQuery(name="AttributionSecteurBorneAccesCount",query="SELECT COUNT(a) FROM AttributionSecteurBorneAcces a"),
-    @NamedQuery(name="AttributionSecteurBorneAccesGetAll",query="SELECT a FROM AttributionSecteurBorneAcces a")
+    @NamedQuery(name="AttributionSecteurBorneAccesGetAll",query="SELECT a FROM AttributionSecteurBorneAcces a"),
+    @NamedQuery(name="AttributionSecteurBorneAccesGetBySecteur",query="SELECT a FROM AttributionSecteurBorneAcces a WHERE a.secteur.id = :id")
 })
 public class AttributionSecteurBorneAcces implements Serializable {
     private static final long serialVersionUID = 1L;
