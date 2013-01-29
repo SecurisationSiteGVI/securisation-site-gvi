@@ -17,5 +17,5 @@ public interface AttributionSecteurDetecteurIntrusionService {
     public void update(AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion) throws Exception;
     public void remove(AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion) throws Exception;
     public List<AttributionSecteurDetecteurIntrusion> getAll() throws Exception;
-    public List<AttributionSecteurDetecteurIntrusion> getBySecteur(Secteur secteur);
+    public AttributionSecteurDetecteurIntrusion getBySecteur(Secteur secteur);
 }
