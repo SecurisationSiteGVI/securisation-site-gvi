@@ -165,19 +165,21 @@ public class Utilisateur implements Serializable {
         return agen;
     }
 
-    public Number getTelephonePortable() {
+    public String getTelephonePortable() {
         return telephonePortable;
     }
 
-    public void setTelephonePortable(Number telephonePortable) {
+    public void setTelephonePortable(String telephonePortable) {
         this.telephonePortable = telephonePortable;
     }
 
-    public Number getTelephoneFixe() {
+    public String getTelephoneFixe() {
         return telephoneFixe;
     }
 
-    public void setTelephoneFixe(Number telephoneFixe) {
+    public void setTelephoneFixe(String telephoneFixe) {
         this.telephoneFixe = telephoneFixe;
     }
+
+    
 }
