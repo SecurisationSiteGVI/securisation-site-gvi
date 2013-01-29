@@ -64,8 +64,8 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
     }
 
     @Override
-    public List<AttributionSecteurDetecteurIntrusion> getBySecteur(Secteur secteur) {
-        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions = null;
+    public AttributionSecteurDetecteurIntrusion getBySecteur(Secteur secteur) {
+        AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusions = null;
         if (secteur != null) {
             if (secteur instanceof Secteur) {
                 attributionSecteurDetecteurIntrusions = this.attributionSecteurDetecteurIntrusionSrv.getBySecteur(secteur);

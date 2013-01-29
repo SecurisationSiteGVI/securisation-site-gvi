@@ -17,5 +17,5 @@ public interface AttributionSecteurBorneAccesService {
     public void update(AttributionSecteurBorneAcces attributionSecteurBorneAcces);
     public void remove(AttributionSecteurBorneAcces attributionSecteurBorneAcces);
     public List<AttributionSecteurBorneAcces> getAll();
-     public List<AttributionSecteurBorneAcces> getBySecteur(Secteur secteur);
+     public AttributionSecteurBorneAcces getBySecteur(Secteur secteur);
 }

@@ -64,8 +64,8 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
     }
 
     @Override
-    public List<AttributionSecteurCamera> getBySecteur(Secteur secteur) {
-         List<AttributionSecteurCamera> attributionSecteurCameras =null;
+    public AttributionSecteurCamera getBySecteur(Secteur secteur) {
+         AttributionSecteurCamera attributionSecteurCameras =null;
         if(secteur!=null){
             if(secteur instanceof Secteur){
                 attributionSecteurCameras=this.attributionSecteurCameraSrv.getBySecteur(secteur);

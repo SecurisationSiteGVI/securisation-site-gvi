@@ -62,8 +62,8 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
     }
 
     @Override
-    public List<AttributionSecteurBorneAcces> getBySecteur(Secteur secteur) {
-        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses =null;
+    public AttributionSecteurBorneAcces getBySecteur(Secteur secteur) {
+        AttributionSecteurBorneAcces attributionSecteurBorneAcceses =null;
         if(secteur!=null){
             if(secteur instanceof Secteur){
                 attributionSecteurBorneAcceses=this.attributionSecteurBorneAccesSrv.getBySecteur(secteur);

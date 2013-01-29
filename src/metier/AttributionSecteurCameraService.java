@@ -21,6 +21,6 @@ public interface AttributionSecteurCameraService {
     public void remove(AttributionSecteurCamera attributionSecteurCamera) throws Exception;
     public List<AttributionSecteurCamera> getAll() throws Exception;
     
-    public List<AttributionSecteurCamera> getBySecteur(Secteur secteur);
+    public AttributionSecteurCamera getBySecteur(Secteur secteur);
     
 }
