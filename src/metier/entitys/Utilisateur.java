@@ -48,7 +48,9 @@ public class Utilisateur implements Serializable {
     private String ville;
     private int codePostale;
     private String adresse;
+    @Column(length=15)
     private String telephonePortable;
+    @Column(length=15)
     private String telephoneFixe;
     @Column(nullable = false)
     private boolean homme;
