@@ -6,7 +6,9 @@ package metier;
 
 import java.util.List;
 import javax.management.InstanceNotFoundException;
+import metier.entitys.AttributionSecteurBorneAcces;
 import metier.entitys.AttributionSecteurCamera;
+import metier.entitys.Secteur;
 import physique.data.AttributionSecteurCameraServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -59,6 +61,21 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
     @Override
     public List<AttributionSecteurCamera> getAll() throws Exception {
        return this.attributionSecteurCameraSrv.getAll();
+    }
+
+    @Override
+    public List<AttributionSecteurCamera> getBySecteur(Secteur secteur) {
+         List<AttributionSecteurCamera> attributionSecteurCameras =null;
+        if(secteur!=null){
+            if(secteur instanceof Secteur){
+                attributionSecteurCameras=this.attributionSecteurCameraSrv.getBySecteur(secteur);
+            }else{
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionSecteurCameras;
     }
     
 }

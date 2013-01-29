@@ -6,6 +6,7 @@ package metier;
 
 import java.util.List;
 import metier.entitys.AttributionSecteurBorneAcces;
+import metier.entitys.Secteur;
 import physique.data.AttributionSecteurBorneAccesServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -58,6 +59,21 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
     @Override
     public List<AttributionSecteurBorneAcces> getAll() {
         return this.attributionSecteurBorneAccesSrv.getAll();
+    }
+
+    @Override
+    public List<AttributionSecteurBorneAcces> getBySecteur(Secteur secteur) {
+        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses =null;
+        if(secteur!=null){
+            if(secteur instanceof Secteur){
+                attributionSecteurBorneAcceses=this.attributionSecteurBorneAccesSrv.getBySecteur(secteur);
+            }else{
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionSecteurBorneAcceses;
     }
     
 }

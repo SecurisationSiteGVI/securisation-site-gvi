@@ -7,6 +7,7 @@ package physique.data;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.AttributionSecteurBorneAcces;
+import metier.entitys.Secteur;
 
 /**
  *
@@ -52,6 +53,16 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
         System.out.println(i);
         Connexion.disconect();
         return i;
+    }
+
+    @Override
+    public List<AttributionSecteurBorneAcces> getBySecteur(Secteur secteur) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionSecteurBorneAccesGetBySecteur");
+        query.setParameter("id", secteur.getId());
+        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = query.getResultList();
+        Connexion.disconect();
+        return attributionSecteurBorneAcceses;
     }
     
 }

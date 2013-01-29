@@ -5,7 +5,9 @@
 package metier;
 
 import java.util.List;
+import metier.entitys.AttributionSecteurBorneAcces;
 import metier.entitys.AttributionSecteurCamera;
+import metier.entitys.Secteur;
 
 
 /**
@@ -19,6 +21,6 @@ public interface AttributionSecteurCameraService {
     public void remove(AttributionSecteurCamera attributionSecteurCamera) throws Exception;
     public List<AttributionSecteurCamera> getAll() throws Exception;
     
-    
+    public List<AttributionSecteurCamera> getBySecteur(Secteur secteur);
     
 }

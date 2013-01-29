@@ -7,6 +7,7 @@ package physique.data;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.AttributionSecteurDetecteurIntrusion;
+import metier.entitys.Secteur;
 
 /**
  *
@@ -52,6 +53,16 @@ public class AttributionSecteurDetectionIntrusionServiceORMImpl implements Attri
         System.out.println(i);
         Connexion.disconect();
         return i;
+    }
+
+    @Override
+    public List<AttributionSecteurDetecteurIntrusion> getBySecteur(Secteur secteur) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionSecteurDetecteurIntrusionGetBySecteur");
+        query.setParameter("id", secteur.getId());
+        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions = query.getResultList();
+        Connexion.disconect();
+        return attributionSecteurDetecteurIntrusions;
     }
     
 }

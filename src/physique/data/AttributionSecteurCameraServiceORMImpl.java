@@ -7,12 +7,13 @@ package physique.data;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.AttributionSecteurCamera;
+import metier.entitys.Secteur;
 
 /**
  *
  * @author damien
  */
-public class AttributionSecteurCameraServiceORMImpl implements AttributionSecteurCameraServiceORM{
+public class AttributionSecteurCameraServiceORMImpl implements AttributionSecteurCameraServiceORM {
 
     @Override
     public void add(AttributionSecteurCamera attributionSecteurCamera) {
@@ -53,5 +54,14 @@ public class AttributionSecteurCameraServiceORMImpl implements AttributionSecteu
         Connexion.disconect();
         return i;
     }
-    
+
+    @Override
+    public List<AttributionSecteurCamera> getBySecteur(Secteur secteur) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionSecteurCameraGetBySecteur");
+        query.setParameter("id", secteur.getId());
+        List<AttributionSecteurCamera> attributionSecteurCameras = query.getResultList();
+        Connexion.disconect();
+        return attributionSecteurCameras;
+    }
 }

@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.AttributionSecteurDetecteurIntrusion;
+import metier.entitys.Secteur;
 
 /**
  *
@@ -22,4 +23,5 @@ public interface AttributionSecteurDetectionIntrusionServiceORM {
     public Long count();
 
     public List<AttributionSecteurDetecteurIntrusion> getAll();
+     public List<AttributionSecteurDetecteurIntrusion> getBySecteur(Secteur secteur);
 }
