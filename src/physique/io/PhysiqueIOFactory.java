@@ -6,7 +6,6 @@ import physique.data.CameraServiceORM;
  * @author ragotalexis
  * @author BlondelleMarvin
  * @author
- * @author
  */
 
 public class PhysiqueIOFactory {
@@ -20,7 +19,7 @@ public class PhysiqueIOFactory {
         return this.borneAccesSrv;
     }
 
-    private CameraServiceIO CameraServiceIOImpl() {
+    public  CameraServiceIO CameraServiceIOImpl() {
         return this.cameraSrv ;
     }
 
