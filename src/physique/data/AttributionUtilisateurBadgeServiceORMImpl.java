@@ -145,4 +145,26 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
 
         return attributionUtilisateurBadge;
     }
+
+    @Override
+    public List<Badge> getBadgesNotAssignByNumero(int numero) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetBadgesNotAssignByNumero");
+        query.setParameter("numero", numero);
+        List<Badge> badges = query.getResultList();
+        Connexion.disconect();
+        return badges;
+    }
+
+    @Override
+    public List<Badge> getBadgesNotAssignByNumero(int numero, int debut, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetBadgesNotAssignByNumero");
+        query.setParameter("numero", numero);
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResult);
+        List<Badge> badges = query.getResultList();
+        Connexion.disconect();
+        return badges;
+    }
 }
