@@ -31,4 +31,7 @@ public interface AttributionUtilisateurBadgeServiceORM {
     public List<Utilisateur> getUtilisateurNotAssign(int debut, int nbResult);
     public List<Utilisateur> getUtilisateurNotAssignByNom(String nom);
     public List<Utilisateur> getUtilisateurNotAssignByNom(String nom,int debut, int nbResult);
+       public List<Badge> getBadgesNotAssignByNumero(int numero);
+    
+    public List<Badge> getBadgesNotAssignByNumero(int numero, int debut, int nbResult);
 }
