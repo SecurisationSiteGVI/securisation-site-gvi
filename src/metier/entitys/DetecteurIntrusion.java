@@ -69,7 +69,7 @@ public class DetecteurIntrusion implements Serializable {
 
     @Override
     public String toString() {
-        return "metier.entitys.DetecteurIntrusion[ id=" + getId() + " ]";
+        return nom;
     }
 
     public String getNom() {
