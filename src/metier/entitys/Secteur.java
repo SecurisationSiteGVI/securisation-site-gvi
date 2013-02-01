@@ -65,7 +65,7 @@ public class Secteur implements Serializable {
 
     @Override
     public String toString() {
-        return "metier.entitys.Secteur[ id=" + getId() + " ]";
+        return nom;
     }
 
     public String getNom() {
