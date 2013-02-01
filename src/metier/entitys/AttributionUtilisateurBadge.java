@@ -26,7 +26,8 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="AttributionUtilisateurBadgeGetBadgesNotAssign",query="SELECT b FROM Badge b WHERE b.id NOT in (SELECT a.badge.id FROM AttributionUtilisateurBadge a )"),
     @NamedQuery(name="AttributionUtilisateurBadgeGetUtilisateurNotAssign",query="SELECT u FROM Utilisateur u WHERE u.id NOT in (SELECT a.utilisateur.id FROM AttributionUtilisateurBadge a )"),
     @NamedQuery(name="AttributionUtilisateurBadgeGetUtilisateurNotAssignByNom",query="SELECT u FROM Utilisateur u WHERE u.nom = :nom  AND u.id NOT in (SELECT a.utilisateur.id FROM AttributionUtilisateurBadge a )"),
-    @NamedQuery(name="AttributionUtilisateurBadgegetByUtilisateur",query="SELECT a FROM AttributionUtilisateurBadge a WHERE a.utilisateur.id = :id")
+    @NamedQuery(name="AttributionUtilisateurBadgegetByUtilisateur",query="SELECT a FROM AttributionUtilisateurBadge a WHERE a.utilisateur.id = :id"),
+    @NamedQuery(name="AttributionUtilisateurBadgeGetBadgesNotAssignByNumero",query="SELECT b FROM Badge b WHERE b.id NOT in (SELECT a.badge.id FROM AttributionUtilisateurBadge a ) AND b.numero = :numero")
 })
 public class AttributionUtilisateurBadge implements Serializable {
     private static final long serialVersionUID = 1L;
