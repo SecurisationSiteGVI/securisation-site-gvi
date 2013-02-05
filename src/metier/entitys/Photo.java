@@ -5,6 +5,7 @@
 package metier.entitys;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +37,10 @@ public class Photo extends Evenement implements Serializable {
     @OneToOne
     @JoinColumn(nullable=false)
     private Camera camera;
-   
+    @Column(nullable=false)
+    private String ip;
+    @Column(nullable=false)
+    private String type;
 
     @Override
     public int hashCode() {
@@ -77,6 +81,22 @@ public class Photo extends Evenement implements Serializable {
 
     public void setCamera(Camera camera) {
         this.camera = camera;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
 }
