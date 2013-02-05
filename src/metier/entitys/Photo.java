@@ -32,7 +32,7 @@ public class Photo extends Evenement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Byte[] image;
+    private byte[] image;
     @OneToOne
     @JoinColumn(nullable=false)
     private Camera camera;
@@ -63,11 +63,11 @@ public class Photo extends Evenement implements Serializable {
         return "photo de la camera" +getCamera();
     }
 
-    public Byte[] getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Byte[] image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
