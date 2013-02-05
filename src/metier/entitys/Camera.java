@@ -38,7 +38,10 @@ public class Camera implements Serializable {
     private Position position;
     @Column(nullable=false)
     private String nom;
-    
+    @Column(nullable=false)
+    private String ip;
+    @Column(nullable=false)
+    private String type;
     public Long getId() {
         return id;
     }
@@ -87,5 +90,19 @@ public class Camera implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
+     public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
