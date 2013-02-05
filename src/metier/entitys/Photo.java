@@ -37,10 +37,7 @@ public class Photo extends Evenement implements Serializable {
     @OneToOne
     @JoinColumn(nullable=false)
     private Camera camera;
-    @Column(nullable=false)
-    private String ip;
-    @Column(nullable=false)
-    private String type;
+    
 
     @Override
     public int hashCode() {
@@ -83,20 +80,6 @@ public class Photo extends Evenement implements Serializable {
         this.camera = camera;
     }
 
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+   
     
 }
