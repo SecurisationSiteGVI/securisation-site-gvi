@@ -1,8 +1,11 @@
 package metier;
 
+import java.util.Date;
 import java.util.List;
 import metier.entitys.Camera;
+import metier.entitys.Photo;
 import physique.data.CameraServiceORM;
+import physique.data.EvenementServiceORM;
 import physique.data.PhysiqueDataFactory;
 
 
@@ -16,6 +19,8 @@ import physique.data.PhysiqueDataFactory;
 public class CameraServiceImpl implements CameraService{
 
     private CameraServiceORM cameraSrv = PhysiqueDataFactory.getCameraServiceORM();
+    private EvenementService evenementSrv= MetierFactory.getEvenementService();
+    
     @Override
     public void add(Camera camera) throws Exception {
         if(camera!=null){
@@ -105,10 +110,7 @@ public class CameraServiceImpl implements CameraService{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public byte[] prendrePhoto() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
 
     @Override
     public boolean detectionMouvement() throws Exception {
@@ -157,6 +159,11 @@ public class CameraServiceImpl implements CameraService{
 
     @Override
     public void enregistrerPhoto() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public byte[] prendrePhoto(Camera camera) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
