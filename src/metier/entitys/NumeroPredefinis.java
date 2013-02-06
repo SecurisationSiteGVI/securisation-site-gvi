@@ -69,12 +69,13 @@ public class NumeroPredefinis implements Serializable {
         return "liste de numeros";
     }
 
-    public List<Integer> getNumeros() {
+    public List<String> getNumeros() {
         return numeros;
     }
 
-    public void setNumeros(List<Integer> numeros) {
+    public void setNumeros(List<String> numeros) {
         this.numeros = numeros;
     }
+
     
 }
