@@ -4,6 +4,7 @@
  */
 package metier.entitys;
 
+import com.sun.xml.internal.ws.message.saaj.SAAJHeader;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -34,7 +35,7 @@ public class NumeroPredefinis implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable=false)
-    private List<Integer> numeros;
+    private List<String> numeros;
     public Long getId() {
         return id;
     }
