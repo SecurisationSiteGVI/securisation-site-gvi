@@ -4,6 +4,7 @@
  */
 package metier;
 
+import java.util.ArrayList;
 import java.util.List;
 import metier.entitys.NumeroPredefinis;
 import physique.data.NumeroPredefinisServiceORM;
@@ -26,6 +27,34 @@ public class NumeroPredefinisServiceImpl implements NumeroPredefinisService{
             }
         }else{
             throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+    }
+    public void ajouterUnNumero(String numero) throws Exception{
+        List<NumeroPredefinis> numeroPredefinis = this.getAll();
+        if(numeroPredefinis.isEmpty()){
+            NumeroPredefinis numeroPredefini = new NumeroPredefinis();
+            List<String> strings = new ArrayList<String>();
+            strings.add(numero);
+            numeroPredefini.setNumeros(strings);
+            this.add(numeroPredefini);
+        }else{
+            List<String> strings = numeroPredefinis.get(0).getNumeros();
+            strings.add(numero);
+            numeroPredefinis.get(0).setNumeros(strings);
+            this.update(numeroPredefinis.get(0));
+        }
+    }
+    public void supprimerUnNumero(String numero) throws Exception{
+        List<NumeroPredefinis> numeroPredefinis = this.getAll();
+        NumeroPredefinis numeroPredefini =numeroPredefinis.get(0);
+        boolean arret = false;
+        int i= 0;
+        while(arret){
+            if(numeroPredefini.getNumeros().get(i).equals(numero)){
+                numeroPredefini.getNumeros().remove(i);
+                arret = true;
+            }
+            i++;
         }
     }
 
