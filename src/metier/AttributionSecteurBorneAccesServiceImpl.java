@@ -124,7 +124,7 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
             if (attributionSecteurBorneAcceses.get(i).getSecteur().getId().equals(secteur.getId())) {
                 AttributionSecteurBorneAcces acces = attributionSecteurBorneAcceses.get(i);
                 for (int j = 0; j < acces.getBorneAccess().size(); j++) {
-                    if (acces.getBorneAccess().get(i).getId().equals(borneAcces.getId())) {
+                    if (acces.getBorneAccess().get(j).getId().equals(borneAcces.getId())) {
                         acces.getBorneAccess().remove(j);
                         start = false;
                     }
