@@ -49,14 +49,19 @@ public class NumeroPredefinisServiceImpl implements NumeroPredefinisService{
     public void supprimerUnNumero(String numero) throws Exception{
         List<NumeroPredefinis> numeroPredefinis = this.getAll();
         NumeroPredefinis numeroPredefini =numeroPredefinis.get(0);
-        boolean arret = false;
+        boolean start = true;
+        boolean update = false;
         int i= 0;
-        while(arret){
+        while(start){
             if(numeroPredefini.getNumeros().get(i).equals(numero)){
                 numeroPredefini.getNumeros().remove(i);
-                arret = true;
+                start = false;
+                update = true;
             }
             i++;
+        }
+        if(update == true ){
+            this.update(numeroPredefini);
         }
     }
 
