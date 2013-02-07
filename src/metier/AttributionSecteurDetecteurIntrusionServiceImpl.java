@@ -5,8 +5,11 @@
 package metier;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.management.InstanceNotFoundException;
 import metier.entitys.AttributionSecteurDetecteurIntrusion;
+import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Secteur;
 import physique.data.AttributionSecteurDetectionIntrusionServiceORM;
 import physique.data.PhysiqueDataFactory;
@@ -77,4 +80,39 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
         }
         return attributionSecteurDetecteurIntrusions;
     }
+
+    @Override
+    public void attribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void desattribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion) {
+        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions=null;
+        try {
+            attributionSecteurDetecteurIntrusions = this.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(AttributionSecteurCameraServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        boolean start = true;
+        int i = 0;
+        while (start) {
+            if (attributionSecteurDetecteurIntrusions.get(i).getSecteur().getId().equals(secteur.getId())) {
+                AttributionSecteurDetecteurIntrusion asdi = attributionSecteurDetecteurIntrusions.get(i);
+                for (int j = 0; j < asdi.getDetecteurIntrusions().size(); j++) {
+                    if (asdi.getDetecteurIntrusions().get(j).getId().equals(detecteurIntrusion.getId())) {
+                        asdi.getDetecteurIntrusions().remove(j);
+                        start = false;
+                    }
+                }
+                try {
+                    this.update(asdi);
+                } catch (Exception ex) {
+                    Logger.getLogger(AttributionSecteurCameraServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            i++;
+        }
+    }
+    
 }
