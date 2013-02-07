@@ -70,7 +70,12 @@ public class BorneAcces implements Serializable {
 
     @Override
     public String toString() {
-        return nom;
+        
+        String entr= "sorie";
+        if(this.entrer){
+            entr = "entré";
+        }
+        return nom+" "+entr;
     }
 
     public Position getPosition() {
