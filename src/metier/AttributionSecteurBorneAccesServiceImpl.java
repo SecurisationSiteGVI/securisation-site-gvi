@@ -4,8 +4,10 @@
  */
 package metier;
 
+import java.util.ArrayList;
 import java.util.List;
 import metier.entitys.AttributionSecteurBorneAcces;
+import metier.entitys.BorneAcces;
 import metier.entitys.Secteur;
 import physique.data.AttributionSecteurBorneAccesServiceORM;
 import physique.data.PhysiqueDataFactory;
@@ -74,6 +76,54 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return attributionSecteurBorneAcceses;
+    }
+
+    @Override
+    public void attribuerBorneAcces(Secteur secteur, BorneAcces borneAcces) {
+        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = this.getAll();
+        boolean start = true;
+        boolean secteurTrouve=false;
+        int i=0;
+        while(start){
+            if(attributionSecteurBorneAcceses.get(i).getSecteur().getId().equals(secteur.getId())){
+                AttributionSecteurBorneAcces acces = attributionSecteurBorneAcceses.get(i);
+                acces.getBorneAccess().add(borneAcces);
+                this.update(acces);
+                secteurTrouve = true;
+                start=false;
+            }
+            i++;
+        }
+        if(secteurTrouve==false){
+            AttributionSecteurBorneAcces acces = new AttributionSecteurBorneAcces();
+            List<BorneAcces> borneAcceses = new ArrayList<BorneAcces>();
+            borneAcceses.add(borneAcces);
+            acces.setBorneAccess(borneAcceses);
+            acces.setSecteur(secteur);
+            this.add(acces);
+        }
+    }
+
+    @Override
+    public void desattribuerBorneAcces(Secteur secteur, BorneAcces borneAcces) {
+         List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = this.getAll();
+        boolean start = true;
+        
+        int i=0;
+        while(start){
+            if(attributionSecteurBorneAcceses.get(i).getSecteur().getId().equals(secteur.getId())){
+                AttributionSecteurBorneAcces acces = attributionSecteurBorneAcceses.get(i);
+                for(int j =0 ;j<acces.getBorneAccess().size() ; j++){
+                    if(acces.getBorneAccess().get(i).getId().equals(borneAcces.getId())){
+                        acces.getBorneAccess().remove(j);
+                        start=false;
+                    }
+                }
+                this.update(acces);
+            }
+            i++;
+        }
+        
     }
     
 }
