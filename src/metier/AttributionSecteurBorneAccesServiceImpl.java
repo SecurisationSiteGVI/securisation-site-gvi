@@ -16,44 +16,45 @@ import physique.data.PhysiqueDataFactory;
  *
  * @author damien
  */
-public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecteurBorneAccesService{
+public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecteurBorneAccesService {
 
     private AttributionSecteurBorneAccesServiceORM attributionSecteurBorneAccesSrv = PhysiqueDataFactory.getAttributionSecteurBorneAccesServiceORM();
+
     @Override
     public void add(AttributionSecteurBorneAcces attributionSecteurBorneAcces) {
-        if(attributionSecteurBorneAcces!=null){
-            if(attributionSecteurBorneAcces instanceof AttributionSecteurBorneAcces){
+        if (attributionSecteurBorneAcces != null) {
+            if (attributionSecteurBorneAcces instanceof AttributionSecteurBorneAcces) {
                 attributionSecteurBorneAccesSrv.add(attributionSecteurBorneAcces);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(AttributionSecteurBorneAcces attributionSecteurBorneAcces) {
-        if(attributionSecteurBorneAcces!=null){
-            if(attributionSecteurBorneAcces instanceof AttributionSecteurBorneAcces){
+        if (attributionSecteurBorneAcces != null) {
+            if (attributionSecteurBorneAcces instanceof AttributionSecteurBorneAcces) {
                 attributionSecteurBorneAccesSrv.update(attributionSecteurBorneAcces);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(AttributionSecteurBorneAcces attributionSecteurBorneAcces) {
-       if(attributionSecteurBorneAcces!=null){
-            if(attributionSecteurBorneAcces instanceof AttributionSecteurBorneAcces){
+        if (attributionSecteurBorneAcces != null) {
+            if (attributionSecteurBorneAcces instanceof AttributionSecteurBorneAcces) {
                 attributionSecteurBorneAccesSrv.remove(attributionSecteurBorneAcces);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -65,14 +66,14 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
 
     @Override
     public AttributionSecteurBorneAcces getBySecteur(Secteur secteur) {
-        AttributionSecteurBorneAcces attributionSecteurBorneAcceses =null;
-        if(secteur!=null){
-            if(secteur instanceof Secteur){
-                attributionSecteurBorneAcceses=this.attributionSecteurBorneAccesSrv.getBySecteur(secteur);
-            }else{
+        AttributionSecteurBorneAcces attributionSecteurBorneAcceses = null;
+        if (secteur != null) {
+            if (secteur instanceof Secteur) {
+                attributionSecteurBorneAcceses = this.attributionSecteurBorneAccesSrv.getBySecteur(secteur);
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return attributionSecteurBorneAcceses;
@@ -82,19 +83,28 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
     public void attribuerBorneAcces(Secteur secteur, BorneAcces borneAcces) {
         List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = this.getAll();
         boolean start = true;
-        boolean secteurTrouve=false;
-        int i=0;
-        while(start){
-            if(attributionSecteurBorneAcceses.get(i).getSecteur().getId().equals(secteur.getId())){
-                AttributionSecteurBorneAcces acces = attributionSecteurBorneAcceses.get(i);
-                acces.getBorneAccess().add(borneAcces);
-                this.update(acces);
-                secteurTrouve = true;
-                start=false;
+        boolean secteurTrouve = false;
+        int i = 0;
+        while (start) {
+            if (!attributionSecteurBorneAcceses.isEmpty()) {
+                if (i < attributionSecteurBorneAcceses.size()) {
+                    if (attributionSecteurBorneAcceses.get(i).getSecteur().getId().equals(secteur.getId())) {
+                        AttributionSecteurBorneAcces acces = attributionSecteurBorneAcceses.get(i);
+                        acces.getBorneAccess().add(borneAcces);
+                        this.update(acces);
+                        secteurTrouve = true;
+                        start = false;
+                    }
+                }else{
+                    start=false;
+                }
+            } else {
+                start = false;
             }
+
             i++;
         }
-        if(secteurTrouve==false){
+        if (secteurTrouve == false) {
             AttributionSecteurBorneAcces acces = new AttributionSecteurBorneAcces();
             List<BorneAcces> borneAcceses = new ArrayList<BorneAcces>();
             borneAcceses.add(borneAcces);
@@ -106,24 +116,23 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
 
     @Override
     public void desattribuerBorneAcces(Secteur secteur, BorneAcces borneAcces) {
-         List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = this.getAll();
+        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = this.getAll();
         boolean start = true;
-        
-        int i=0;
-        while(start){
-            if(attributionSecteurBorneAcceses.get(i).getSecteur().getId().equals(secteur.getId())){
+
+        int i = 0;
+        while (start) {
+            if (attributionSecteurBorneAcceses.get(i).getSecteur().getId().equals(secteur.getId())) {
                 AttributionSecteurBorneAcces acces = attributionSecteurBorneAcceses.get(i);
-                for(int j =0 ;j<acces.getBorneAccess().size() ; j++){
-                    if(acces.getBorneAccess().get(i).getId().equals(borneAcces.getId())){
+                for (int j = 0; j < acces.getBorneAccess().size(); j++) {
+                    if (acces.getBorneAccess().get(j).getId().equals(borneAcces.getId())) {
                         acces.getBorneAccess().remove(j);
-                        start=false;
+                        start = false;
                     }
                 }
                 this.update(acces);
             }
             i++;
         }
-        
+
     }
-    
 }

@@ -4,9 +4,13 @@
  */
 package metier;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.management.InstanceNotFoundException;
 import metier.entitys.AttributionSecteurDetecteurIntrusion;
+import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Secteur;
 import physique.data.AttributionSecteurDetectionIntrusionServiceORM;
 import physique.data.PhysiqueDataFactory;
@@ -77,4 +81,82 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
         }
         return attributionSecteurDetecteurIntrusions;
     }
+
+    @Override
+    public void attribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion) {
+          List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions = null;
+        try {
+            attributionSecteurDetecteurIntrusions = this.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(AttributionSecteurCameraServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        boolean start = true;
+        boolean secteurTrouve = false;
+        int i = 0;
+        while (start) {
+            if (!attributionSecteurDetecteurIntrusions.isEmpty()) {
+                if (i < attributionSecteurDetecteurIntrusions.size()) {
+                    if (attributionSecteurDetecteurIntrusions.get(i).getSecteur().getId().equals(secteur.getId())) {
+                        AttributionSecteurDetecteurIntrusion asdi = attributionSecteurDetecteurIntrusions.get(i);
+                        asdi.getDetecteurIntrusions().add(detecteurIntrusion);
+                        try {
+                            this.update(asdi);
+                        } catch (Exception ex) {
+                            Logger.getLogger(AttributionSecteurCameraServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        secteurTrouve = true;
+                        start = false;
+                    }
+                }else{
+                    start=false;
+                }
+            } else {
+                start = false;
+            }
+
+            i++;
+        }
+        if (secteurTrouve == false) {
+            AttributionSecteurDetecteurIntrusion asdi = new AttributionSecteurDetecteurIntrusion();
+            List<DetecteurIntrusion> detecteurIntrusions = new ArrayList<DetecteurIntrusion>();
+            detecteurIntrusions.add(detecteurIntrusion);
+            asdi.setDetecteurIntrusions(detecteurIntrusions);
+            asdi.setSecteur(secteur);
+            try {
+                this.add(asdi);
+            } catch (Exception ex) {
+                Logger.getLogger(AttributionSecteurCameraServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    @Override
+    public void desattribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion) {
+        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions=null;
+        try {
+            attributionSecteurDetecteurIntrusions = this.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(AttributionSecteurCameraServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        boolean start = true;
+        int i = 0;
+        while (start) {
+            if (attributionSecteurDetecteurIntrusions.get(i).getSecteur().getId().equals(secteur.getId())) {
+                AttributionSecteurDetecteurIntrusion asdi = attributionSecteurDetecteurIntrusions.get(i);
+                for (int j = 0; j < asdi.getDetecteurIntrusions().size(); j++) {
+                    if (asdi.getDetecteurIntrusions().get(j).getId().equals(detecteurIntrusion.getId())) {
+                        asdi.getDetecteurIntrusions().remove(j);
+                        start = false;
+                    }
+                }
+                try {
+                    this.update(asdi);
+                } catch (Exception ex) {
+                    Logger.getLogger(AttributionSecteurCameraServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            i++;
+        }
+    }
+    
 }
