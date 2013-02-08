@@ -5,15 +5,17 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.AuthorisationAcces;
 import metier.entitys.Badge;
+import metier.entitys.Utilisateur;
 
 /**
  *
  * @author damien
  */
-public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServiceORM{
+public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServiceORM {
 
     @Override
     public void add(AuthorisationAcces authorisationAcces) {
@@ -37,7 +39,7 @@ public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServi
     }
 
     @Override
-    public List<AuthorisationAcces> getAll() { 
+    public List<AuthorisationAcces> getAll() {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AuthorisationAccesGetAll");
         List<AuthorisationAcces> authorisationAcceses = query.getResultList();
@@ -66,5 +68,19 @@ public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServi
         return authorisationAcceses;
     }
 
-    
+    @Override
+    public AuthorisationAcces getByUtilisateur(Utilisateur utilisateur) {
+        AuthorisationAcces authorisationAcceses = null;
+        try {
+            Connexion.getPersistance();
+            Query query = Connexion.em.createNamedQuery("AuthorisationAccesGetByUtilisateur");
+            query.setParameter("id", utilisateur.getId());
+             authorisationAcceses = (AuthorisationAcces) query.getSingleResult();
+
+            Connexion.disconect();
+        } catch (NoResultException e) {
+            System.out.println("Pas de resultat dans la bdd" + e);
+        }
+        return authorisationAcceses;
+    }
 }
