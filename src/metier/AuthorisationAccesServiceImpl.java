@@ -4,6 +4,8 @@
  */
 package metier;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -88,6 +90,39 @@ public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
                         a.getSecteurs().remove(i);
                     }
                 }try {
+                    this.update(a);
+                } catch (Exception ex) {
+                    Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                throw new NullPointerException("L'objet passé en parametre est null.");
+            }
+            
+        }else{
+            throw new NullPointerException("L'objet passé en parametre est null.");
+        }
+    }
+
+    @Override
+    public void atacherSecteurFromUtilisateur(Secteur secteur, Utilisateur utilisateur) {
+         if(secteur!=null){
+            if(utilisateur!=null){
+                AuthorisationAcces a=null;
+                try {
+                    a = this.getByUtilisateur(utilisateur);
+                } catch (Exception ex) {
+                    Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(a.getSecteurs()==null){
+                    List<Secteur> secteurs = new ArrayList<Secteur>();
+                    secteurs.add(secteur);
+                    a.setSecteurs(secteurs);
+                }else{
+                    List<Secteur> secteurs = a.getSecteurs();
+                    secteurs.add(secteur);
+                    a.setSecteurs(secteurs);
+                }
+               try {
                     this.update(a);
                 } catch (Exception ex) {
                     Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);

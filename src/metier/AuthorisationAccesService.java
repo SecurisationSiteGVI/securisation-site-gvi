@@ -15,4 +15,5 @@ public interface AuthorisationAccesService {
     public List<AuthorisationAcces> getAll() throws Exception;
     public AuthorisationAcces getByUtilisateur(Utilisateur utilisateur)throws Exception;
     public void detacherSecteurFromUtilisateur(Secteur secteur, Utilisateur utilisateur);
+    public void atacherSecteurFromUtilisateur(Secteur secteur, Utilisateur utilisateur);
 }
