@@ -13,21 +13,21 @@ import metier.entitys.Camera;
 public class PhysiqueIOFactory {
     
     private static BorneAccesServiceIO borneAccesSrv = new BorneAccesServiceIOImpl();
-    private static List<CameraDriver> cameraDrivers = new ArrayList<>();
+    private static CameraDriver cameraDrivers;
     
     public static BorneAccesServiceIO getBorneAccesServiceIO() {
         return borneAccesSrv;
     }
 
-    public static List<CameraDriver> getCameraDrivers() {
-        if (cameraDrivers.isEmpty()) {
-            Camera cam = new Camera();
-            cam.setIp("172.16.79.214");
-            cam.setNom("Camera Heden 1");
-            cam.setType("Heden");
-            cameraDrivers.add(new CameraDriverHedenImpl(cam));
+    public static CameraDriver getCameraDrivers(Camera camera) {
+        switch (camera.getType()) {
+            case "HEDEN":
+                cameraDrivers = new CameraDriverHedenImpl(camera);
+                break;
+            case "SONY":
+                cameraDrivers = new CameraDriverSonyImpl(camera);
+                break;
         }
-        
         return cameraDrivers ;
     }
 
