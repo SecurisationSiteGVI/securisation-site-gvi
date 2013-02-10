@@ -6,7 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.AuthorisationAcces;
-import metier.entitys.Badge;
+import metier.entitys.Secteur;
 import metier.entitys.Utilisateur;
 
 /**
@@ -26,4 +26,5 @@ public interface AuthorisationAccesServiceORM {
     public List<AuthorisationAcces> getAll();
     public List<AuthorisationAcces> getAll(int debut, int nbResult);
     public AuthorisationAcces getByUtilisateur(Utilisateur utilisateur);
+    public List<Secteur> getSecteurNotAssignByUtilisateur(Utilisateur utilisateur);
 }
