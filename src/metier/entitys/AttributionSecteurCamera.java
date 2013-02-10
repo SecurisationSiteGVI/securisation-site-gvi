@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,6 +28,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="AttributionSecteurCameraGetAll",query="SELECT a FROM AttributionSecteurCamera a"),
     @NamedQuery(name="AttributionSecteurCameraGetBySecteur",query="SELECT a FROM AttributionSecteurCamera a WHERE a.secteur.id = :id")
 })
+@XmlRootElement
 public class AttributionSecteurCamera implements Serializable {
     private static final long serialVersionUID = 1L;
     public static long getSerialVersionUID() {

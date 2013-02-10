@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="borneAccesCount",query="SELECT COUNT(b) FROM BorneAcces b"),
     @NamedQuery(name="borneAccesGetAll",query="SELECT b FROM BorneAcces b")
 })
+@XmlRootElement
 public class BorneAcces implements Serializable {
     private static final long serialVersionUID = 1L;
 

@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -22,6 +23,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name="badgeCount",query="SELECT COUNT(b) FROM Badge b"),
     @NamedQuery(name="BadgeGetAll",query="SELECT b FROM Badge b")
 })
+@XmlRootElement
 public class Badge implements Serializable {
     private static final long serialVersionUID = 1L;
 

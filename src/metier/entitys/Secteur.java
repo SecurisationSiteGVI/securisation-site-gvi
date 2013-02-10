@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -23,6 +24,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name="SecteurGetAll",query="SELECT s FROM Secteur s")
 })
 
+@XmlRootElement
 public class Secteur implements Serializable {
     private static final long serialVersionUID = 1L;
 
