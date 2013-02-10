@@ -112,16 +112,19 @@ public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
                     a = this.getByUtilisateur(utilisateur);
                 } catch (Exception ex) {
                     Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                }if(a==null){
+                    a = new AuthorisationAcces();
                 }
                 if(a.getSecteurs()==null){
                     List<Secteur> secteurs = new ArrayList<Secteur>();
                     secteurs.add(secteur);
                     a.setSecteurs(secteurs);
                 }else{
-                    List<Secteur> secteurs = a.getSecteurs();
+                    List<Secteur> secteurs = new ArrayList<Secteur>();
+                    secteurs.addAll(a.getSecteurs());
                     secteurs.add(secteur);
                     a.setSecteurs(secteurs);
-                }
+                }a.setUtilisateur(utilisateur);
                try {
                     this.update(a);
                 } catch (Exception ex) {
@@ -134,6 +137,16 @@ public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
         }else{
             throw new NullPointerException("L'objet passé en parametre est null.");
         }
+    }
+
+    @Override
+    public List<Secteur> getSecteurNotAssignByUtilisateur(Utilisateur utilisateur) {
+        List<Secteur> secteur =null;
+        if(utilisateur!=null){
+            secteur = this.authorisationAccesSrv.getSecteurNotAssignByUtilisateur(utilisateur);
+        }else{
+            throw new NullPointerException("L'objet passé en parametre est null.");
+        }return secteur;
     }
     
     
