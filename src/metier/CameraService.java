@@ -42,6 +42,6 @@ public interface CameraService {
     public int connectionCamera() throws Exception;
     public void verifierConnectionCamera() throws Exception;
     public void enregistrerPhoto() throws Exception;
-    
+    public Long count();
     
 }

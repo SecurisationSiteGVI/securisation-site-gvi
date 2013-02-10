@@ -95,5 +95,10 @@ public class NumeroPredefinisServiceImpl implements NumeroPredefinisService{
     public List<NumeroPredefinis> getAll() throws Exception {
         return this.numeroPredefinisSrv.getAll();
     }
+
+    @Override
+    public Long count() {
+        return this.numeroPredefinisSrv.count();
+    }
     
 }

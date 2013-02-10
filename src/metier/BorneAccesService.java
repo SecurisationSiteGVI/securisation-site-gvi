@@ -12,4 +12,5 @@ public interface BorneAccesService {
     public void update(BorneAcces borneAcces) throws Exception;
     public void remove(BorneAcces borneAcces) throws Exception;
     public List<BorneAcces> getAll() throws Exception;
+    public Long count();
 }

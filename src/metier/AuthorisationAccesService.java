@@ -17,4 +17,5 @@ public interface AuthorisationAccesService {
     public void detacherSecteurFromUtilisateur(Secteur secteur, Utilisateur utilisateur);
     public void atacherSecteurFromUtilisateur(Secteur secteur, Utilisateur utilisateur);
     public List<Secteur> getSecteurNotAssignByUtilisateur(Utilisateur utilisateur);
+    public Long count();
 }

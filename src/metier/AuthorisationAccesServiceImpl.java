@@ -148,6 +148,11 @@ public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
             throw new NullPointerException("L'objet passé en parametre est null.");
         }return secteur;
     }
+
+    @Override
+    public Long count() {
+        return this.authorisationAccesSrv.count();
+    }
     
     
 }

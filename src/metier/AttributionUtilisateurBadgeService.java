@@ -23,4 +23,5 @@ public interface AttributionUtilisateurBadgeService {
     public AttributionUtilisateurBadge getByUtilisateur(Utilisateur utilisateur);
     public List<Badge> getBadgesNotAssignByNumero(int numero);    
     public List<Badge> getBadgesNotAssignByNumero(int numero, int debut, int nbResult);
+    public Long count();
 }

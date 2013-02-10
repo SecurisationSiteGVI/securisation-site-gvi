@@ -23,5 +23,5 @@ public interface AttributionSecteurCameraService {
     public void attribuerCamera(Secteur secteur, Camera camera);
     public void desattribuerCamera(Secteur secteur, Camera camera);
     public AttributionSecteurCamera getBySecteur(Secteur secteur);
-    
+    public Long count();
 }

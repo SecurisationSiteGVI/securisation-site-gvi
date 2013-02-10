@@ -16,4 +16,5 @@ public interface DetecteurIntrusionService {
     public void update(DetecteurIntrusion detecteurIntrusion) throws Exception;
     public void remove(DetecteurIntrusion detecteurIntrusion) throws Exception;
     public List<DetecteurIntrusion> getAll() throws Exception;
+    public Long count();
 }
