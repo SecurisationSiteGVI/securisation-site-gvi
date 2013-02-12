@@ -19,7 +19,7 @@ public interface CameraDriver {
 //    public boolean luminositer()throws Exception;
 //    public boolean contraste() throws Exception;
 //    public boolean resolution() throws Exception;
-//    public byte[] prendrePhoto() throws Exception;
+    public byte[] prendrePhoto() throws Exception;
 //    
 //    public boolean detectionMouvement() throws Exception;
 //
