@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -20,6 +21,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="CameraCount",query="SELECT COUNT(c) FROM Camera c"),
     @NamedQuery(name="cameraGetAll",query="SELECT c FROM Camera c")
 })
+@XmlRootElement
 public class Camera implements Serializable {
     private static final long serialVersionUID = 1L;
 

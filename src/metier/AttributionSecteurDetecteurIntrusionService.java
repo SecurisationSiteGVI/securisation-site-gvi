@@ -21,4 +21,5 @@ public interface AttributionSecteurDetecteurIntrusionService {
     public AttributionSecteurDetecteurIntrusion getBySecteur(Secteur secteur);
     public void attribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion);
     public void desattribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion);
+    public Long count();
 }

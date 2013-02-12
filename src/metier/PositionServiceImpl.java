@@ -6,7 +6,7 @@ import physique.data.PhysiqueDataFactory;
 import physique.data.PositionServiceORM;
 
 /**
- * @author 
+ * @author damien
  * @author
  * @author
  */
@@ -56,5 +56,10 @@ public class PositionServiceImpl implements PositionService{
     @Override
     public List<Position> getAll() throws Exception {
        return this.positionSrv.getAll();
+    }
+
+    @Override
+    public Long count() {
+       return this.positionSrv.count();
     }
 }

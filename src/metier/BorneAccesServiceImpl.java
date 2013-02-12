@@ -56,4 +56,9 @@ public class BorneAccesServiceImpl implements BorneAccesService{
         return this.borneAccesSrv.getAll();
     }
 
+    @Override
+    public Long count() {
+        return this.borneAccesSrv.count();
+    }
+
 }

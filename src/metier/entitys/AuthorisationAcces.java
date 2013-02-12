@@ -13,11 +13,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -26,8 +28,10 @@ import javax.persistence.Temporal;
 @Entity
 @NamedQueries({
     @NamedQuery(name="AuthorisationAccesCount",query="SELECT COUNT(a) FROM AuthorisationAcces a"),
-    @NamedQuery(name="AuthorisationAccesGetAll",query="SELECT a FROM AuthorisationAcces a")
+    @NamedQuery(name="AuthorisationAccesGetAll",query="SELECT a FROM AuthorisationAcces a"),
+    @NamedQuery(name="AuthorisationAccesGetByUtilisateur",query="SELECT a FROM AuthorisationAcces a WHERE a.utilisateur.id = :id")
 })
+@XmlRootElement
 public class AuthorisationAcces implements Serializable {
     private static final long serialVersionUID = 1L;
     

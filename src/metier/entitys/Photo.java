@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="PhotoCount",query="SELECT COUNT(p) FROM Photo p"),
     @NamedQuery(name="PhotoGetAll",query="SELECT p FROM Photo p")
 })
+@XmlRootElement
 public class Photo extends Evenement implements Serializable {
     private static final long serialVersionUID = 1L;
 

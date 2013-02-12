@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -25,6 +26,7 @@ import javax.persistence.Temporal;
     @NamedQuery(name="EvenementGetAll",query="SELECT e FROM Evenement e")
 })
 
+@XmlRootElement
 public class Evenement implements Serializable {
     private static final long serialVersionUID = 1L;
 

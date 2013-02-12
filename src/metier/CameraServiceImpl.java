@@ -167,5 +167,10 @@ public class CameraServiceImpl implements CameraService{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public Long count() {
+        return this.cameraSrv.count();
+    }
+
 
 }

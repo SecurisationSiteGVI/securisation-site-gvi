@@ -158,5 +158,10 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
             i++;
         }
     }
+
+    @Override
+    public Long count() {
+        return this.attributionSecteurCameraSrv.count();
+    }
     
 }

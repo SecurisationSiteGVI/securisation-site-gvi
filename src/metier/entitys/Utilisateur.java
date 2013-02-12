@@ -15,6 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -31,6 +32,7 @@ import javax.persistence.Transient;
     @NamedQuery(name = "UtilisateurGetByEmail", query = "SELECT u FROM Utilisateur u WHERE u.email = :email"),
        @NamedQuery(name = "UtilisateurCount", query = "SELECT COUNT(u) FROM Utilisateur u")
 })
+@XmlRootElement
 public class Utilisateur implements Serializable {
 
     private static final long serialVersionUID = 1L;

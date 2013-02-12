@@ -1,7 +1,11 @@
 package metier;
 
 import java.util.List;
+import metier.entitys.Acces;
+import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Evenement;
+import metier.entitys.Intrusion;
+import metier.entitys.Photo;
 import physique.data.EvenementServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -64,33 +68,38 @@ public class EvenementServiceImpl implements EvenementService{
     }
 
     @Override
-    public List<Evenement> getByPhoto() {
+    public List<Photo> getByPhoto() {
         return this.evenementSrv.getByPhoto();
     }
 
     @Override
-    public List<Evenement> getByPhoto(int debut, int nbResut) {
+    public List<Photo> getByPhoto(int debut, int nbResut) {
         return this.evenementSrv.getByPhoto(debut, nbResut);
     }
 
     @Override
-    public List<Evenement> getByAcces() {
+    public List<Acces> getByAcces() {
         return this.evenementSrv.getByAcces();
     }
 
     @Override
-    public List<Evenement> getByAcces(int debut, int nbResut) {
+    public List<Acces> getByAcces(int debut, int nbResut) {
         return this.evenementSrv.getByAcces(debut, nbResut);
     }
 
     @Override
-    public List<Evenement> getByIntrusion() {
+    public List<Intrusion> getByIntrusion() {
         return this.evenementSrv.getByIntrusion();
     }
 
     @Override
-    public List<Evenement> getByIntrusion(int debut, int nbResut) {
+    public List<Intrusion> getByIntrusion(int debut, int nbResut) {
         return this.getByIntrusion(debut, nbResut);
+    }
+
+    @Override
+    public Long count() {
+        return this.evenementSrv.count();
     }
     
 }

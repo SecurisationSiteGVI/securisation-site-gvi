@@ -18,4 +18,5 @@ public interface NumeroPredefinisService {
     public List<NumeroPredefinis> getAll() throws Exception;
     public void ajouterUnNumero(String numero) throws Exception;
     public void supprimerUnNumero(String numero) throws Exception;
+    public Long count();
 }

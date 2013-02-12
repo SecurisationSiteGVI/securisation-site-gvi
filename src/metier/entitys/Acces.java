@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="AccesCount",query="SELECT COUNT(a) FROM Acces a"),
     @NamedQuery(name="AccesGetAll",query="SELECT a FROM Acces a")
 })
+@XmlRootElement
 public class Acces extends Evenement implements Serializable {
     private static final long serialVersionUID = 1L;
 

@@ -117,4 +117,9 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     public List<Badge> getBadgesNotAssignByNumero(int numero, int debut, int nbResult) {
         return this.attributionUtilisateurBadgeSrv.getBadgesNotAssignByNumero(numero, debut, nbResult);
     }
+
+    @Override
+    public Long count() {
+        return this.attributionUtilisateurBadgeSrv.count();
+    }
 }

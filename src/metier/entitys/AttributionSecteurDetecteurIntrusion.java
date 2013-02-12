@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,6 +28,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="AttributionSecteurDetecteurIntrusionGetAll",query="SELECT a FROM AttributionSecteurDetecteurIntrusion a"),
     @NamedQuery(name="AttributionSecteurDetecteurIntrusionGetBySecteur",query="SELECT a FROM AttributionSecteurDetecteurIntrusion a WHERE a.secteur.id = :id")
 })
+@XmlRootElement
 public class AttributionSecteurDetecteurIntrusion implements Serializable {
     private static final long serialVersionUID = 1L;
 

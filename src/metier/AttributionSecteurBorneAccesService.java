@@ -21,4 +21,5 @@ public interface AttributionSecteurBorneAccesService {
     public void attribuerBorneAcces(Secteur secteur, BorneAcces borneAcces);
     public void desattribuerBorneAcces(Secteur secteur, BorneAcces borneAcces);
      public AttributionSecteurBorneAcces getBySecteur(Secteur secteur);
+     public Long count();
 }

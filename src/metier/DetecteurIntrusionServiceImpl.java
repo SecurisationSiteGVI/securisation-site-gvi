@@ -59,5 +59,10 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService{
     public List<DetecteurIntrusion> getAll() throws Exception {
         return this.detecteurIntrusionSrv.getAll();
     }
+
+    @Override
+    public Long count() {
+        return this.detecteurIntrusionSrv.count();
+    }
     
 }

@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -29,6 +30,7 @@ import javax.persistence.OneToOne;
     @NamedQuery(name="AttributionUtilisateurBadgegetByUtilisateur",query="SELECT a FROM AttributionUtilisateurBadge a WHERE a.utilisateur.id = :id"),
     @NamedQuery(name="AttributionUtilisateurBadgeGetBadgesNotAssignByNumero",query="SELECT b FROM Badge b WHERE b.id NOT in (SELECT a.badge.id FROM AttributionUtilisateurBadge a ) AND b.numero = :numero")
 })
+@XmlRootElement
 public class AttributionUtilisateurBadge implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

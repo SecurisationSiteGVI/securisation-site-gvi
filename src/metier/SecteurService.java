@@ -14,4 +14,6 @@ public interface SecteurService {
     public void update(Secteur secteur) throws Exception;
     public void remove(Secteur secteur) throws Exception;
     public List<Secteur> getAll() throws Exception;
+    public Long count();
+    
 }

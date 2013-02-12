@@ -58,4 +58,9 @@ public class SecteurServiceImpl implements SecteurService {
     public List<Secteur> getAll() throws Exception {
         return this.secteurSrv.getAll();
     }
+
+    @Override
+    public Long count() {
+        return this.secteurSrv.count();
+    }
 }

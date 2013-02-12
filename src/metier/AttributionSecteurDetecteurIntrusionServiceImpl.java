@@ -158,5 +158,10 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
             i++;
         }
     }
+
+    @Override
+    public Long count() {
+        return this.attributionSecteurDetecteurIntrusionSrv.count();
+    }
     
 }
