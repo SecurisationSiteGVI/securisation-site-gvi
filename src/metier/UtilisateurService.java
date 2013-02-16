@@ -37,5 +37,6 @@ public interface UtilisateurService {
     public List<Utilisateur> getByCodePostale(int code,int debut,int nbResult);
     public List<Utilisateur> getByEmail(String email);
     public List<Utilisateur> getByEmail(String email,int debut,int nbResult);
+    public Utilisateur getById(Long id);
     
 }
