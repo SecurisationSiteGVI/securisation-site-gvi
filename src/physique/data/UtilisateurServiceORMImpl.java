@@ -26,7 +26,8 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
     @Override
     public void remove(Utilisateur utilisateur) {
         Connexion.getPersistance();
-        Connexion.em.remove(Connexion.em.merge(utilisateur));
+        utilisateur = Connexion.em.merge(utilisateur);
+        Connexion.em.remove(utilisateur);
         Connexion.disconect();
     }
 
@@ -206,5 +207,13 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
         List<Utilisateur> utilisateurs = query.getResultList();
         Connexion.disconect();
         return utilisateurs;
+    }
+
+    @Override
+    public Utilisateur getById(Long id) {
+        Connexion.getPersistance();
+        Utilisateur u = Connexion.em.find(Utilisateur.class, id);
+        Connexion.disconect();
+        return u;
     }
 }

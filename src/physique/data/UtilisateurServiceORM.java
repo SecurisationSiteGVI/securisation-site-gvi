@@ -37,4 +37,5 @@ public interface UtilisateurServiceORM {
     public List<Utilisateur> getByEmail(String email,int debut,int nbResult);
     public List<Technicien> getByLogin(String login);
     public Long count();
+    public Utilisateur getById(Long id);
 }
