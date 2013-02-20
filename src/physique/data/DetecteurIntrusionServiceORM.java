@@ -18,6 +18,10 @@ public interface DetecteurIntrusionServiceORM {
     public void remove(DetecteurIntrusion detecteurIntrusion);
 
     public void update(DetecteurIntrusion detecteurIntrusion);
-public Long count();
+
+    public Long count();
+
     public List<DetecteurIntrusion> getAll();
+
+    public DetecteurIntrusion getById(Long id);
 }

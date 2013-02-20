@@ -22,6 +22,8 @@ public interface BadgeServiceORM {
     public Long count();
 
     public List<Badge> getAll();
+
     public List<Badge> getAll(int debut, int nbResult);
-    
+
+    public Badge getById(Long id);
 }

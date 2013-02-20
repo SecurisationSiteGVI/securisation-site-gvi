@@ -23,5 +23,8 @@ public interface AttributionSecteurBorneAccesServiceORM {
     public Long count();
 
     public List<AttributionSecteurBorneAcces> getAll();
+
     public AttributionSecteurBorneAcces getBySecteur(Secteur secteur);
+
+    public AttributionSecteurBorneAcces getById(Long id);
 }

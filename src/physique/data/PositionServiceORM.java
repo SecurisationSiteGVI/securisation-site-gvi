@@ -12,9 +12,16 @@ import metier.entitys.Position;
  * @author damien
  */
 public interface PositionServiceORM {
+
     public void add(Position position);
+
     public void remove(Position position);
+
     public void update(Position position);
+
     public List<Position> getAll();
+
     public Long count();
+
+    public Position getById(Long id);
 }

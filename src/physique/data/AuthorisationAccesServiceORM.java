@@ -24,7 +24,12 @@ public interface AuthorisationAccesServiceORM {
     public Long count();
 
     public List<AuthorisationAcces> getAll();
+
     public List<AuthorisationAcces> getAll(int debut, int nbResult);
+
     public AuthorisationAcces getByUtilisateur(Utilisateur utilisateur);
+
     public List<Secteur> getSecteurNotAssignByUtilisateur(Utilisateur utilisateur);
+
+    public AuthorisationAcces getById(Long id);
 }

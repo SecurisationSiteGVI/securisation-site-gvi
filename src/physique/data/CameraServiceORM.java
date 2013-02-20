@@ -12,9 +12,16 @@ import metier.entitys.Camera;
  * @author damien
  */
 public interface CameraServiceORM {
+
     public void add(Camera camera);
+
     public void remove(Camera camera);
+
     public void update(Camera camera);
+
     public List<Camera> getAll();
+
     public Long count();
+
+    public Camera getById(Long id);
 }

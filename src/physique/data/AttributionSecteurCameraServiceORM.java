@@ -26,4 +26,6 @@ public interface AttributionSecteurCameraServiceORM {
     public List<AttributionSecteurCamera> getAll();
     
     public AttributionSecteurCamera getBySecteur(Secteur secteur);
+    
+    public AttributionSecteurCamera getById(Long id);
 }

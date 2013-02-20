@@ -22,6 +22,9 @@ public interface AttributionSecteurDetectionIntrusionServiceORM {
 
     public Long count();
 
+    public AttributionSecteurDetecteurIntrusion getById(Long id);
+
     public List<AttributionSecteurDetecteurIntrusion> getAll();
-     public AttributionSecteurDetecteurIntrusion getBySecteur(Secteur secteur);
+
+    public AttributionSecteurDetecteurIntrusion getBySecteur(Secteur secteur);
 }
