@@ -163,5 +163,16 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
     public Long count() {
         return this.attributionSecteurCameraSrv.count();
     }
+
+    @Override
+    public AttributionSecteurCamera getById(Long id) {
+        AttributionSecteurCamera attributionSecteurCamera = null;
+        if (id != null) {
+            attributionSecteurCamera = this.attributionSecteurCameraSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionSecteurCamera;
+    }
     
 }

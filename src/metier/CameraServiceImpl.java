@@ -172,5 +172,16 @@ public class CameraServiceImpl implements CameraService{
         return this.cameraSrv.count();
     }
 
+    @Override
+    public Camera getById(Long id) {
+        Camera camera = null;
+        if (id != null) {
+            camera = this.cameraSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return camera;
+    }
+
 
 }

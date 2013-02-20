@@ -163,5 +163,16 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
     public Long count() {
         return this.attributionSecteurDetecteurIntrusionSrv.count();
     }
+
+    @Override
+    public AttributionSecteurDetecteurIntrusion getById(Long id) {
+        AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion = null;
+        if (id != null) {
+            attributionSecteurDetecteurIntrusion = this.attributionSecteurDetecteurIntrusionSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionSecteurDetecteurIntrusion;
+    }
     
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import metier.entitys.Badge;
 
 /**
- * @author
+ * @author damien
  */
 public interface BadgeService {
 

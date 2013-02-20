@@ -6,7 +6,7 @@ import metier.entitys.Badge;
 import metier.entitys.Utilisateur;
 
 /**
- * @author
+ * @author damien
  */
 public interface AttributionUtilisateurBadgeService {
 

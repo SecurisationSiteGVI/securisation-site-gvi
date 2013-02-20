@@ -62,4 +62,15 @@ public class PositionServiceImpl implements PositionService{
     public Long count() {
        return this.positionSrv.count();
     }
+
+    @Override
+    public Position getById(Long id) {
+        Position position = null;
+        if (id != null) {
+            position = this.positionSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return position;
+    }
 }

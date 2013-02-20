@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import metier.entitys.AuthorisationAcces;
 import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
-import physique.data.Connexion;
 import physique.data.PhysiqueDataFactory;
 import physique.data.UtilisateurServiceORM;
 

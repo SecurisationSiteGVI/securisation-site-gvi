@@ -6,7 +6,7 @@ import physique.data.BadgeServiceORM;
 import physique.data.PhysiqueDataFactory;
 
 /**
- * @author 
+ * @author damien
  */
 public class BadgeServiceImpl implements BadgeService {
     private BadgeServiceORM badgeSrv = PhysiqueDataFactory.getBadgeServiceORM();
@@ -62,6 +62,17 @@ public class BadgeServiceImpl implements BadgeService {
     @Override
     public Long count() {
         return this.badgeSrv.count();
+    }
+
+    @Override
+    public Badge getById(Long id) {
+        Badge badge = null;
+        if (id != null) {
+            badge = this.badgeSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return badge;
     }
 
 }

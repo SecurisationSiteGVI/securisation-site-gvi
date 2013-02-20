@@ -64,5 +64,16 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService{
     public Long count() {
         return this.detecteurIntrusionSrv.count();
     }
+
+    @Override
+    public DetecteurIntrusion getById(Long id) {
+        DetecteurIntrusion detecteurIntrusion = null;
+        if (id != null) {
+            detecteurIntrusion = this.detecteurIntrusionSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return detecteurIntrusion;
+    }
     
 }

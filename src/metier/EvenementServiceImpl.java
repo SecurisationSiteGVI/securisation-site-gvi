@@ -101,5 +101,16 @@ public class EvenementServiceImpl implements EvenementService{
     public Long count() {
         return this.evenementSrv.count();
     }
+
+    @Override
+    public Evenement getById(Long id) {
+        Evenement evenement = null;
+        if (id != null) {
+            evenement = this.evenementSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return evenement;
+    }
     
 }

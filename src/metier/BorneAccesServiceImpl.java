@@ -6,7 +6,7 @@ import physique.data.BorneAccesServiceORM;
 import physique.data.PhysiqueDataFactory;
 
 /**
- *
+ * @author damien
  * @author ragotalexis
  */
 
@@ -59,6 +59,17 @@ public class BorneAccesServiceImpl implements BorneAccesService{
     @Override
     public Long count() {
         return this.borneAccesSrv.count();
+    }
+
+    @Override
+    public BorneAcces getById(Long id) {
+        BorneAcces utilisateur = null;
+        if (id != null) {
+            utilisateur = this.borneAccesSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return utilisateur;
     }
 
 }

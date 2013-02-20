@@ -6,7 +6,7 @@ import physique.data.PhysiqueDataFactory;
 import physique.data.SecteurServiceORM;
 
 /**
- * @author 
+ * @author damien
  * @author
  * @author
  */
@@ -62,5 +62,16 @@ public class SecteurServiceImpl implements SecteurService {
     @Override
     public Long count() {
         return this.secteurSrv.count();
+    }
+
+    @Override
+    public Secteur getById(Long id) {
+        Secteur secteur = null;
+        if (id != null) {
+            secteur = this.secteurSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return secteur;
     }
 }

@@ -6,7 +6,7 @@ import metier.entitys.Secteur;
 import metier.entitys.Utilisateur;
 
 /**
- * @author
+ * @author damien
  */
 public interface AuthorisationAccesService {
 

@@ -6,7 +6,6 @@ import metier.entitys.AttributionSecteurBorneAcces;
  * @author ragotalexis
  * @author damien
  * @author blondelleMarvin
- * @author
  */
 public class MetierFactory {
 

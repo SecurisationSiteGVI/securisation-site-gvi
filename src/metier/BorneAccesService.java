@@ -4,7 +4,7 @@ import java.util.List;
 import metier.entitys.BorneAcces;
 
 /**
- *
+ * @author damien
  * @author ragotalexis
  */
 public interface BorneAccesService {

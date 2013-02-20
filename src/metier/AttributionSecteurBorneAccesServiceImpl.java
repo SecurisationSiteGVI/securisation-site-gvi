@@ -9,6 +9,7 @@ import java.util.List;
 import metier.entitys.AttributionSecteurBorneAcces;
 import metier.entitys.BorneAcces;
 import metier.entitys.Secteur;
+import metier.entitys.Utilisateur;
 import physique.data.AttributionSecteurBorneAccesServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -139,5 +140,16 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
     @Override
     public Long count() {
         return this.attributionSecteurBorneAccesSrv.count();
+    }
+
+    @Override
+    public AttributionSecteurBorneAcces getById(Long id) {
+        AttributionSecteurBorneAcces attributionSecteurBorneAcces = null;
+        if (id != null) {
+            attributionSecteurBorneAcces = this.attributionSecteurBorneAccesSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionSecteurBorneAcces;
     }
 }

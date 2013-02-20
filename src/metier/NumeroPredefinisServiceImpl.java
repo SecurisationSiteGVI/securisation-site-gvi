@@ -100,5 +100,16 @@ public class NumeroPredefinisServiceImpl implements NumeroPredefinisService{
     public Long count() {
         return this.numeroPredefinisSrv.count();
     }
+
+    @Override
+    public NumeroPredefinis getById(Long id) {
+        NumeroPredefinis numeroPredefinis = null;
+        if (id != null) {
+            numeroPredefinis = this.numeroPredefinisSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return numeroPredefinis;
+    }
     
 }

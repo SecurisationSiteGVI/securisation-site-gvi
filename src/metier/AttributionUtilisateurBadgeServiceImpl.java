@@ -122,4 +122,15 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     public Long count() {
         return this.attributionUtilisateurBadgeSrv.count();
     }
+
+    @Override
+    public AttributionUtilisateurBadge getById(Long id) {
+        AttributionUtilisateurBadge attributionUtilisateurBadge = null;
+        if (id != null) {
+            attributionUtilisateurBadge = this.attributionUtilisateurBadgeSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionUtilisateurBadge;
+    }
 }

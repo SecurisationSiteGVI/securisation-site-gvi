@@ -4,7 +4,6 @@
  */
 package metier;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,7 +15,7 @@ import physique.data.AuthorisationAccesServiceORM;
 import physique.data.PhysiqueDataFactory;
 
 /**
- * @author 
+ * @author damien
  */
 public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
     
@@ -152,6 +151,17 @@ public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
     @Override
     public Long count() {
         return this.authorisationAccesSrv.count();
+    }
+
+    @Override
+    public AuthorisationAcces getById(Long id) {
+        AuthorisationAcces authorisationAcces = null;
+        if (id != null) {
+            authorisationAcces = this.authorisationAccesSrv.getById(id);
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return authorisationAcces;
     }
     
     

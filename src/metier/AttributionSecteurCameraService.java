@@ -11,7 +11,7 @@ import metier.entitys.Secteur;
 
 /**
  *
- * @author BlondelleMarvin
+ * @author damien
  */
 public interface AttributionSecteurCameraService {
 
