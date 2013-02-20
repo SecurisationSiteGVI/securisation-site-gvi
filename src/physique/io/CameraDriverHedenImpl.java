@@ -1,5 +1,8 @@
 package physique.io;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import metier.entitys.Camera;
 
 /**
@@ -40,5 +43,33 @@ public class CameraDriverHedenImpl implements CameraDriver {
     @Override
     public String piloterCameraBas() throws Exception {
        return this.protocol + this.camera.getIp() + this.piloter + "2";
+    }
+
+    @Override
+    public byte[] prendrePhoto() throws Exception {
+        return null;
+
+//            ByteOutputStream bos = new ByteOutputStream();
+//
+//            //FileOutputStream fos = new FileOutputStream("/home/blondellemarvin/Bureau/photo.jpg");
+//            URL u = new URL("http://"+this.camera.getIp()+"/snapshot.jpg?user=admin&pwd=marvin");
+//            URLConnection connection = (URLConnection) u.openConnection();
+//
+//            InputStream is = connection.getInputStream();
+//            while (is.available() > 0) {
+//                byte b = (byte) is.read();
+//                bos.write(b);
+//              //  fos.write(b);
+//
+//            }
+//            is.close();
+//            //fos.close();
+//            bos.close();
+//            byte[] bytes = bos.getBytes();
+    // return bytes;
+
+
+
+
     }
 }

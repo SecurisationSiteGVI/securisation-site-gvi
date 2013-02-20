@@ -44,5 +44,10 @@ public class CameraDriverSonyImpl implements CameraDriver{
     public String piloterCameraBas() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public byte[] prendrePhoto() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
