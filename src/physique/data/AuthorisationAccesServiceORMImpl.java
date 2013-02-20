@@ -119,4 +119,12 @@ public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServi
         Connexion.disconect();
         return secteursALL;
     }
+
+    @Override
+    public AuthorisationAcces getById(Long id) {
+        Connexion.getPersistance();
+        AuthorisationAcces authorisationAcces = Connexion.em.find(AuthorisationAcces.class, id);
+        Connexion.disconect();
+        return authorisationAcces;
+    }
 }

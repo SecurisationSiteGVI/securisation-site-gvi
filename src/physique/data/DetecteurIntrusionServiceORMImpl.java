@@ -53,5 +53,13 @@ public class DetecteurIntrusionServiceORMImpl implements DetecteurIntrusionServi
         Connexion.disconect();
         return i;
     }
+
+    @Override
+    public DetecteurIntrusion getById(Long id) {
+        Connexion.getPersistance();
+        DetecteurIntrusion detecteurIntrusion = Connexion.em.find(DetecteurIntrusion.class, id);
+        Connexion.disconect();
+        return detecteurIntrusion;
+    }
     
 }

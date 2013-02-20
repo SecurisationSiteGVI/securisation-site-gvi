@@ -53,5 +53,13 @@ public class CameraServiceORMImpl implements CameraServiceORM{
         Connexion.disconect();
         return i;
     }
+
+    @Override
+    public Camera getById(Long id) {
+        Connexion.getPersistance();
+        Camera camera = Connexion.em.find(Camera.class, id);
+        Connexion.disconect();
+        return camera;
+    }
     
 }

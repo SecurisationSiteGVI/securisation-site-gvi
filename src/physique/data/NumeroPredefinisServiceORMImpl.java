@@ -54,5 +54,13 @@ public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceOR
         Connexion.disconect();
         return i;
     }
+
+    @Override
+    public NumeroPredefinis getById(Long id) {
+        Connexion.getPersistance();
+        NumeroPredefinis numeroPredefinis = Connexion.em.find(NumeroPredefinis.class, id);
+        Connexion.disconect();
+        return numeroPredefinis;
+    }
     
 }

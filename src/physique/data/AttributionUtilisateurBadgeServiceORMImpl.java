@@ -167,4 +167,12 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
         Connexion.disconect();
         return badges;
     }
+
+    @Override
+    public AttributionUtilisateurBadge getById(Long id) {
+        Connexion.getPersistance();
+        AttributionUtilisateurBadge attributionUtilisateurBadge = Connexion.em.find(AttributionUtilisateurBadge.class, id);
+        Connexion.disconect();
+        return attributionUtilisateurBadge;
+    }
 }

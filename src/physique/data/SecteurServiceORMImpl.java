@@ -52,4 +52,12 @@ public class SecteurServiceORMImpl implements SecteurServiceORM{
         Connexion.disconect();
         return i;
     }
+
+    @Override
+    public Secteur getById(Long id) {
+        Connexion.getPersistance();
+        Secteur secteur = Connexion.em.find(Secteur.class, id);
+        Connexion.disconect();
+        return secteur;
+    }
 }

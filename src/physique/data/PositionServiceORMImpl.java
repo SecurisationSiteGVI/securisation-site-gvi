@@ -53,5 +53,13 @@ public class PositionServiceORMImpl implements PositionServiceORM{
         Connexion.disconect();
         return i;
     }
+
+    @Override
+    public Position getById(Long id) {
+        Connexion.getPersistance();
+        Position position = Connexion.em.find(Position.class, id);
+        Connexion.disconect();
+        return position;
+    }
     
 }

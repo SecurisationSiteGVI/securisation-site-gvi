@@ -70,4 +70,12 @@ public class AttributionSecteurDetectionIntrusionServiceORMImpl implements Attri
         Connexion.disconect();
         return attributionSecteurDetecteurIntrusions;
     }
+
+    @Override
+    public AttributionSecteurDetecteurIntrusion getById(Long id) {
+        Connexion.getPersistance();
+        AttributionSecteurDetecteurIntrusion attributionSecteurDetecteurIntrusion = Connexion.em.find(AttributionSecteurDetecteurIntrusion.class, id);
+        Connexion.disconect();
+        return attributionSecteurDetecteurIntrusion;
+    }
 }

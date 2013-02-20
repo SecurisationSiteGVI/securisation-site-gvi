@@ -128,4 +128,12 @@ public class EvenementServiceORMImpl implements EvenementServiceORM {
         Connexion.disconect();
         return evenements;
     }
+
+    @Override
+    public Evenement getById(Long id) {
+        Connexion.getPersistance();
+        Evenement evenement = Connexion.em.find(Evenement.class, id);
+        Connexion.disconect();
+        return evenement;
+    }
 }

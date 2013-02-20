@@ -64,4 +64,12 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
         Connexion.disconect();
         return badges;
     }  
+
+    @Override
+    public Badge getById(Long id) {
+        Connexion.getPersistance();
+        Badge authorisationAcces = Connexion.em.find(Badge.class, id);
+        Connexion.disconect();
+        return authorisationAcces;
+    }
 }

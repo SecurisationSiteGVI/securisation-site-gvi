@@ -12,7 +12,7 @@ import metier.entitys.BorneAcces;
  *
  * @author damien
  */
-public class BorneAccesServiceORMImpl implements BorneAccesServiceORM{
+public class BorneAccesServiceORMImpl implements BorneAccesServiceORM {
 
     @Override
     public void add(BorneAcces borneAcces) {
@@ -53,5 +53,12 @@ public class BorneAccesServiceORMImpl implements BorneAccesServiceORM{
         Connexion.disconect();
         return i;
     }
-    
+
+    @Override
+    public BorneAcces getById(Long id) {
+        Connexion.getPersistance();
+        BorneAcces borneAcces = Connexion.em.find(BorneAcces.class, id);
+        Connexion.disconect();
+        return borneAcces;
+    }
 }

@@ -71,5 +71,13 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
         Connexion.disconect();
         return attributionSecteurBorneAcceses;
     }
+
+    @Override
+    public AttributionSecteurBorneAcces getById(Long id) {
+        Connexion.getPersistance();
+        AttributionSecteurBorneAcces attributionSecteurBorneAcces = Connexion.em.find(AttributionSecteurBorneAcces.class, id);
+        Connexion.disconect();
+        return attributionSecteurBorneAcces;
+    }
     
 }

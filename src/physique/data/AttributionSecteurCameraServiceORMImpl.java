@@ -71,4 +71,12 @@ public class AttributionSecteurCameraServiceORMImpl implements AttributionSecteu
         Connexion.disconect();
         return attributionSecteurCameras;
     }
+
+    @Override
+    public AttributionSecteurCamera getById(Long id) {
+        Connexion.getPersistance();
+        AttributionSecteurCamera attributionSecteurCamera = Connexion.em.find(AttributionSecteurCamera.class, id);
+        Connexion.disconect();
+        return attributionSecteurCamera;
+    }
 }
