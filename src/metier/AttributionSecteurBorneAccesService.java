@@ -14,12 +14,22 @@ import metier.entitys.Secteur;
  * @author damien
  */
 public interface AttributionSecteurBorneAccesService {
+
     public void add(AttributionSecteurBorneAcces attributionSecteurBorneAcces);
+
     public void update(AttributionSecteurBorneAcces attributionSecteurBorneAcces);
+
     public void remove(AttributionSecteurBorneAcces attributionSecteurBorneAcces);
+
     public List<AttributionSecteurBorneAcces> getAll();
+
     public void attribuerBorneAcces(Secteur secteur, BorneAcces borneAcces);
+
     public void desattribuerBorneAcces(Secteur secteur, BorneAcces borneAcces);
-     public AttributionSecteurBorneAcces getBySecteur(Secteur secteur);
-     public Long count();
+
+    public AttributionSecteurBorneAcces getBySecteur(Secteur secteur);
+
+    public Long count();
+
+    public AttributionSecteurBorneAcces getById(Long id);
 }
