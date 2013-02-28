@@ -20,6 +20,6 @@ public interface BorneAccesService {
     public Long count();
 
     public BorneAcces getById(Long id);
-    
+     public void startThread();
     public BorneAcces getByNom(String nom);
 }
