@@ -93,7 +93,7 @@ public class InitBDD {
     private void initBadges(){
         for(int i =0 ; i<500 ; i++){
             Badge badge = new Badge();
-            badge.setNumero(54786+i);
+            badge.setNumero("54786"+i);
             try {         
                 MetierFactory.getBadgeService().add(badge);
             } catch (Exception ex) {
