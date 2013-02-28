@@ -61,4 +61,13 @@ public class BorneAccesServiceORMImpl implements BorneAccesServiceORM {
         Connexion.disconect();
         return borneAcces;
     }
+    @Override
+    public BorneAcces getByNom(String nom){
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("BorneAccesGetByNom");
+        query.setParameter("nom", nom);
+        BorneAcces i = (BorneAcces) query.getSingleResult();
+        Connexion.disconect();
+        return i;
+    }
 }
