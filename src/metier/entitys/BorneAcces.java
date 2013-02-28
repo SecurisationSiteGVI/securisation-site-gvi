@@ -23,7 +23,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @NamedQueries({
     @NamedQuery(name="borneAccesCount",query="SELECT COUNT(b) FROM BorneAcces b"),
-    @NamedQuery(name="borneAccesGetAll",query="SELECT b FROM BorneAcces b")
+    @NamedQuery(name="borneAccesGetAll",query="SELECT b FROM BorneAcces b"),
+    @NamedQuery(name="BorneAccesGetByNom",query="SELECT b FROM BorneAcces b WHERE b.nom = :nom")
 })
 @XmlRootElement
 public class BorneAcces implements Serializable {
