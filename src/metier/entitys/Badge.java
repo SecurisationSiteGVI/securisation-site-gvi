@@ -34,7 +34,7 @@ public class Badge implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable=false)
-    private int numero;
+    private String numero;
     
     public Long getId() {
         return id;
@@ -69,11 +69,11 @@ public class Badge implements Serializable {
         return "Badge n°"+numero;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
     
