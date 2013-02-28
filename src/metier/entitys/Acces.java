@@ -43,8 +43,6 @@ public class Acces extends Evenement implements Serializable {
     @OneToOne
     @JoinColumn(nullable=false)
     private BorneAcces borneAcces;
-    
-  
 
     @Override
     public int hashCode() {
@@ -68,7 +66,7 @@ public class Acces extends Evenement implements Serializable {
 
     @Override
     public String toString() {
-        return "passege de l'utilisateur : "+utilisateur;
+        return "passage de l'utilisateur : "+utilisateur;
     }
 
     public Utilisateur getUtilisateur() {
