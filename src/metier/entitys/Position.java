@@ -69,7 +69,7 @@ public class Position implements Serializable {
 
     @Override
     public String toString() {
-        return "longitude : "+longitude +"latitude : "+latitude;
+        return "longitude : "+longitude +" latitude : "+latitude;
     }
 
     public double getLongitude() {
