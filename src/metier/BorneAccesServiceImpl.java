@@ -72,4 +72,19 @@ public class BorneAccesServiceImpl implements BorneAccesService{
         return utilisateur;
     }
 
+    @Override
+    public BorneAcces getByNom(String nom) {
+        BorneAcces b = null;
+        if(nom!=null){
+            if(nom instanceof String){
+               b= borneAccesSrv.getByNom(nom);
+            }else{
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return b;
+    }
+
 }
