@@ -37,7 +37,6 @@ public class Photo extends Evenement implements Serializable {
     private Long id;
     private byte[] image;
     @OneToOne
-    @JoinColumn(nullable=false)
     private Camera camera;
     
 
