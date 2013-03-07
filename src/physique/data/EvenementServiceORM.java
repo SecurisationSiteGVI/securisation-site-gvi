@@ -43,4 +43,5 @@ public interface EvenementServiceORM {
 
     public Long count();
     public List<Evenement> getByMostRecent();
+    public List<Evenement> getByMostRecent(int debut, int nbResut);
 }

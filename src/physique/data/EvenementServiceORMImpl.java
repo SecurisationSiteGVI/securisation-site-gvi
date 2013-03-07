@@ -144,4 +144,15 @@ public class EvenementServiceORMImpl implements EvenementServiceORM {
         Connexion.disconect();
         return evenements;
     }
+
+    @Override
+    public List<Evenement> getByMostRecent(int debut, int nbResut) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("EvenementGetMostRecent");
+        query.setFirstResult(debut);
+        query.setMaxResults(nbResut);
+        List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
 }

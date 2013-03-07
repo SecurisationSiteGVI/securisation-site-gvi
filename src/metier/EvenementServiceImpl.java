@@ -112,5 +112,15 @@ public class EvenementServiceImpl implements EvenementService{
         }
         return evenement;
     }
+
+    @Override
+    public List<Evenement> getByMostRecent() {
+        return this.evenementSrv.getByMostRecent();
+    }
+
+    @Override
+    public List<Evenement> getByMostRecent(int debut, int nbResut) {
+        return this.evenementSrv.getByMostRecent(debut, nbResut);
+    }
     
 }
