@@ -84,6 +84,7 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
                 Badge badge = new Badge();
                 badge.setNumero(new String(num));
                 t2.setBadge(badge);
+                System.out.println("Le numero du badge est : " + badge.getNumero());
                 this.trame = t2;
                 this.setChanged();
                 this.notifyObservers();
