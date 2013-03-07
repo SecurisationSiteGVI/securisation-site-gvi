@@ -133,4 +133,19 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
         }
         return attributionUtilisateurBadge;
     }
+
+    @Override
+    public AttributionUtilisateurBadge getByBadge(Badge badge) {
+        AttributionUtilisateurBadge attributionUtilisateurBadge = null;
+        if(badge!=null){
+            if(badge instanceof Badge){
+                attributionUtilisateurBadge = this.attributionUtilisateurBadgeSrv.getByBadge(badge);
+            }else{
+                System.out.println("L'instance ne corespond pas a l'objet passé en argument");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionUtilisateurBadge;
+    }
 }

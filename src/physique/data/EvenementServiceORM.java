@@ -42,4 +42,5 @@ public interface EvenementServiceORM {
     public Evenement getById(Long id);
 
     public Long count();
+    public List<Evenement> getByMostRecent();
 }
