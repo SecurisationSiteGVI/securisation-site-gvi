@@ -5,6 +5,7 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.Badge;
 
@@ -71,5 +72,20 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
         Badge authorisationAcces = Connexion.em.find(Badge.class, id);
         Connexion.disconect();
         return authorisationAcces;
+    }
+
+    @Override
+    public Badge getByNumero(String numero) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("BadgeGetByNumero");
+        query.setParameter("numero", numero);
+        Badge i = null;
+        try{
+             i = (Badge) query.getSingleResult();
+        }catch(NoResultException e ){
+            System.out.println("Pas de résultat dans la bdd.");
+        }
+        Connexion.disconect();
+        return i;
     }
 }

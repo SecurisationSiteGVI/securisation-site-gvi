@@ -26,4 +26,6 @@ public interface BadgeServiceORM {
     public List<Badge> getAll(int debut, int nbResult);
 
     public Badge getById(Long id);
+    
+    public Badge getByNumero(String numero);
 }
