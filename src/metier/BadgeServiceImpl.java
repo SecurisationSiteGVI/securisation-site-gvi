@@ -75,4 +75,19 @@ public class BadgeServiceImpl implements BadgeService {
         return badge;
     }
 
+    @Override
+    public Badge getByNumero(String numero) {
+        Badge b = null;
+        if(numero!=null){
+            if(numero instanceof String){
+                b = badgeSrv.getByNumero(numero);
+            }else{
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        }else{
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return b;
+    }
+
 }
