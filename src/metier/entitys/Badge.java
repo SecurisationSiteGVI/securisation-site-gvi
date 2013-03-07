@@ -21,7 +21,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @NamedQueries({
     @NamedQuery(name="badgeCount",query="SELECT COUNT(b) FROM Badge b"),
-    @NamedQuery(name="BadgeGetAll",query="SELECT b FROM Badge b")
+    @NamedQuery(name="BadgeGetAll",query="SELECT b FROM Badge b"),
+    @NamedQuery(name = "BadgeGetByNumero", query = "SELECT b FROM Badge b WHERE b.numero = :numero")
 })
 @XmlRootElement
 public class Badge implements Serializable {
