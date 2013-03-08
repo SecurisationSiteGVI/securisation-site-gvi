@@ -18,7 +18,7 @@ public class SecurisationSiteGvi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        InitBDD n = new InitBDD(Boolean.FALSE,Boolean.TRUE,Boolean.TRUE,Boolean.TRUE);
+        InitBDD n = new InitBDD(Boolean.TRUE,Boolean.FALSE,Boolean.FALSE,Boolean.FALSE);
 //       metier.MetierFactory.getUtilisateurService().getAll();
     }
 }

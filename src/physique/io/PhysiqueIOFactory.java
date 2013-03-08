@@ -21,10 +21,10 @@ public class PhysiqueIOFactory {
 
     public static CameraDriver getCameraDrivers(Camera camera) {
         switch (camera.getType()) {
-            case "HEDEN":
+            case HEDEN:
                 cameraDrivers = new CameraDriverHedenImpl(camera);
                 break;
-            case "SONY":
+            case SONY:
                 cameraDrivers = new CameraDriverSonyImpl(camera);
                 break;
         }

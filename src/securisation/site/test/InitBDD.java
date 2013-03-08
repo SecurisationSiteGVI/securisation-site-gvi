@@ -36,6 +36,7 @@ public class InitBDD {
             this.initBorneAcces();
         }
     }
+    
     private void initBorneAcces(){
         Position p = new Position();
         p.setLongitude(48.855334);
@@ -74,7 +75,7 @@ public class InitBDD {
         utilisateurSrv.add(u);
     }
     private void initUtilisateurs(){
-        for (int i = 0; i < 5000; i++) {
+        for (int i = 0; i < 2000; i++) {
             Utilisateur u = new Utilisateur();
             u.setNom("Chesneau"+i);//
             u.setPrenom("Damien"+i);

@@ -3,6 +3,8 @@ package metier.entitys;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +41,8 @@ public class Camera implements Serializable {
     @Column(nullable=false)
     private String ip;
     @Column(nullable=false)
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private TypeCamera type;
     public Long getId() {
         return id;
     }
@@ -96,11 +99,18 @@ public class Camera implements Serializable {
         this.ip = ip;
     }
 
-    public String getType() {
+    /**
+     * @return the type
+     */
+    public TypeCamera getType() {
         return type;
     }
 
-    public void setType(String type) {
+    /**
+     * @param type the type to set
+     */
+    public void setType(TypeCamera type) {
         this.type = type;
     }
+
 }
