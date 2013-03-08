@@ -36,12 +36,10 @@ public class Acces extends Evenement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
     @Column(nullable=false)
     private Boolean passage;
     @OneToOne
-    @JoinColumn(nullable=false)
     private BorneAcces borneAcces;
 
     @Override
