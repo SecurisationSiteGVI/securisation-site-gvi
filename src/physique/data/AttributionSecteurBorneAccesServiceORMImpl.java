@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.AttributionSecteurBorneAcces;
+import metier.entitys.BorneAcces;
 import metier.entitys.Secteur;
 
 /**
@@ -78,6 +79,16 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
         AttributionSecteurBorneAcces attributionSecteurBorneAcces = Connexion.em.find(AttributionSecteurBorneAcces.class, id);
         Connexion.disconect();
         return attributionSecteurBorneAcces;
+    }
+
+    @Override
+    public List<AttributionSecteurBorneAcces> getByBorneAcces(BorneAcces borneAcces) {
+       Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AttributionSecteurBorneAccesGetByBorneAcces");
+        query.setParameter("borne", borneAcces);
+        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = query.getResultList();
+        Connexion.disconect();
+        return attributionSecteurBorneAcceses;
     }
     
 }
