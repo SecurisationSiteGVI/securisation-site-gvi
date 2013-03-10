@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name="AttributionSecteurBorneAccesCount",query="SELECT COUNT(a) FROM AttributionSecteurBorneAcces a"),
     @NamedQuery(name="AttributionSecteurBorneAccesGetAll",query="SELECT a FROM AttributionSecteurBorneAcces a"),
-    @NamedQuery(name="AttributionSecteurBorneAccesGetBySecteur",query="SELECT a FROM AttributionSecteurBorneAcces a WHERE a.secteur.id = :id")
+    @NamedQuery(name="AttributionSecteurBorneAccesGetBySecteur",query="SELECT a FROM AttributionSecteurBorneAcces a WHERE a.secteur.id = :id"),
+    @NamedQuery(name="AttributionSecteurBorneAccesGetByBorneAcces",query="SELECT a FROM AttributionSecteurBorneAcces a JOIN a.borneAccess as b where b = :borne")
 })
 @XmlRootElement
 public class AttributionSecteurBorneAcces implements Serializable {

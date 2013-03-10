@@ -152,4 +152,19 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
         }
         return attributionSecteurBorneAcces;
     }
+
+    @Override
+    public List<AttributionSecteurBorneAcces> getByBorneAcces(BorneAcces borneAcces) {
+        List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = null;
+        if (borneAcces != null) {
+            if (borneAcces instanceof BorneAcces) {
+                attributionSecteurBorneAcceses = this.attributionSecteurBorneAccesSrv.getByBorneAcces(borneAcces);
+            } else {
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return attributionSecteurBorneAcceses;
+    }
 }

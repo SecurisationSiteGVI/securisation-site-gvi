@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.AttributionSecteurBorneAcces;
+import metier.entitys.BorneAcces;
 import metier.entitys.Secteur;
 
 /**
@@ -27,4 +28,6 @@ public interface AttributionSecteurBorneAccesServiceORM {
     public AttributionSecteurBorneAcces getBySecteur(Secteur secteur);
 
     public AttributionSecteurBorneAcces getById(Long id);
+    
+    public List<AttributionSecteurBorneAcces> getByBorneAcces(BorneAcces borneAcces);
 }
