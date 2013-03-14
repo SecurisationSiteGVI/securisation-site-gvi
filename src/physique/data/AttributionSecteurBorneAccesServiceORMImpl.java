@@ -85,7 +85,7 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
     public List<AttributionSecteurBorneAcces> getByBorneAcces(BorneAcces borneAcces) {
        Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionSecteurBorneAccesGetByBorneAcces");
-        query.setParameter("borne", borneAcces);
+        query.setParameter("borne", borneAcces.getId());
         List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = query.getResultList();
         Connexion.disconect();
         return attributionSecteurBorneAcceses;
