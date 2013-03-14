@@ -1,6 +1,10 @@
 package metier;
 
 import java.util.List;
+import metier.entitys.AttributionSecteurBorneAcces;
+import metier.entitys.AttributionSecteurBorneAcces_;
+import metier.entitys.AttributionSecteurCamera;
+import metier.entitys.AttributionSecteurDetecteurIntrusion;
 import metier.entitys.Secteur;
 import physique.data.PhysiqueDataFactory;
 import physique.data.SecteurServiceORM;
@@ -43,9 +47,25 @@ public class SecteurServiceImpl implements SecteurService {
 
     @Override
     public void remove(Secteur secteur) throws Exception {
+        AttributionSecteurBorneAccesService attributionSecteurBorneAccesSrv = MetierFactory.getAttributionSecteurBorneAccesService();
+        AttributionSecteurCameraService attributionSecteurCameraSrv = MetierFactory.getAttributionSecteurCameraService();
+        AttributionSecteurDetecteurIntrusionService attributionSecteurDetecteurIntrusionSrv = MetierFactory.getAttributionSecteurDetecteurIntrusionService();
+
         if(secteur!=null){
             if(secteur instanceof Secteur){
-                secteurSrv.remove(secteur);
+                AttributionSecteurBorneAcces acces = attributionSecteurBorneAccesSrv.getBySecteur(secteur);
+                if(acces!=null){
+                    attributionSecteurBorneAccesSrv.remove(acces);
+                }
+                AttributionSecteurCamera cameraSrv = attributionSecteurCameraSrv.getBySecteur(secteur);
+                if(cameraSrv!=null){
+                    attributionSecteurCameraSrv.remove(cameraSrv);
+                }
+                AttributionSecteurDetecteurIntrusion detecteurIntrusion = attributionSecteurDetecteurIntrusionSrv.getBySecteur(secteur);
+                if(detecteurIntrusion!=null){
+                    attributionSecteurDetecteurIntrusionSrv.remove(detecteurIntrusion);
+                }
+                this.secteurSrv.remove(secteur);
             }else{
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
