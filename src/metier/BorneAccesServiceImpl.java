@@ -5,10 +5,13 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import metier.entitys.AttributionSecteurBorneAcces;
+import metier.entitys.AttributionUtilisateurBadge;
+import metier.entitys.AuthorisationAcces;
 import metier.entitys.Badge;
 import metier.entitys.BorneAcces;
+import metier.entitys.Secteur;
 import physique.data.BorneAccesServiceORM;
-import physique.data.BorneAccesServiceORMImpl;
 import physique.data.PhysiqueDataFactory;
 import physique.io.BorneAccesServiceIOImpl;
 import physique.io.PhysiqueIOFactory;
@@ -28,13 +31,15 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
     public BorneAccesServiceImpl() {
         borneAccesServiceIOImpl.addObserver(this);
     }
-    public void startThread(){
+
+    public void startThread() {
         try {
             this.borneAccesServiceIOImpl.getTrame();
         } catch (Exception ex) {
             Logger.getLogger(BorneAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @Override
     public void add(BorneAcces borneAcces) throws Exception {
         if (borneAcces != null) {
@@ -110,7 +115,33 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
         return b;
     }
 
-    private void traiterTrame() {
+    @Override
+    public void verificationAcces() {
+        Badge badg = PhysiqueDataFactory.getBadgeServiceORM().getByNumero(this.badge.getNumero());
+        AttributionUtilisateurBadge attributionUtilisateurBadge = PhysiqueDataFactory.getAttributionUtilisateurBadgeServiceORM().getByBadge(badg);
+        if (attributionUtilisateurBadge != null) {
+            AuthorisationAcces authorisationAcces = PhysiqueDataFactory.getAuthorisationAccesServiceORM().getByUtilisateur(attributionUtilisateurBadge.getUtilisateur());
+            List<Secteur> secteursUtilisateur = authorisationAcces.getSecteurs();
+
+
+
+            if (!secteursUtilisateur.isEmpty()) {
+                for (int j = 0; j < secteursUtilisateur.size(); j++) {
+                    AttributionSecteurBorneAcces attributionSecteurBorneAcces = PhysiqueDataFactory.getAttributionSecteurBorneAccesServiceORM().getBySecteur(secteursUtilisateur.get(j));
+                    List<BorneAcces> ListBorneAcces = attributionSecteurBorneAcces.getBorneAccess();
+                    for (int k = 0; k < ListBorneAcces.size(); k++) {
+                        if (ListBorneAcces.get(k).getNom().equals(this.borneAcces.getNom())) {
+                            System.out.println("Acces Authorisé !");
+                        }
+                    }
+                }
+            } else {
+                System.out.println("L'utilisateur n'a pas de secteur authorisé");
+            }
+
+        } else {
+            System.out.println("Le badge n'a pas d'utilisateur d'attribuer.");
+        }
     }
 
     @Override
@@ -120,6 +151,7 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
             Trame t = oo.trame;
             this.badge = t.getBadge();
             this.borneAcces = t.getBorneAcces();
+            verificationAcces();
         }
     }
 }
