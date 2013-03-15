@@ -7,6 +7,7 @@ package metier.entitys;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name="AuthorisationAccesCount",query="SELECT COUNT(a) FROM AuthorisationAcces a"),
     @NamedQuery(name="AuthorisationAccesGetAll",query="SELECT a FROM AuthorisationAcces a"),
-    @NamedQuery(name="AuthorisationAccesGetByUtilisateur",query="SELECT a FROM AuthorisationAcces a WHERE a.utilisateur.id = :id")
+    @NamedQuery(name="AuthorisationAccesGetByUtilisateur",query="SELECT a FROM AuthorisationAcces a WHERE a.utilisateur.id = :id"),
 })
 @XmlRootElement
 public class AuthorisationAcces implements Serializable {
@@ -48,7 +49,7 @@ public class AuthorisationAcces implements Serializable {
     @OneToOne
     @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
-    @OneToMany
+    @OneToMany(cascade= CascadeType.REMOVE)
     private List<Secteur> secteurs;
     public Long getId() {
         return id;

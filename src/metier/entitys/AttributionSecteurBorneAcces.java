@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name="AttributionSecteurBorneAccesCount",query="SELECT COUNT(a) FROM AttributionSecteurBorneAcces a"),
     @NamedQuery(name="AttributionSecteurBorneAccesGetAll",query="SELECT a FROM AttributionSecteurBorneAcces a"),
     @NamedQuery(name="AttributionSecteurBorneAccesGetBySecteur",query="SELECT a FROM AttributionSecteurBorneAcces a WHERE a.secteur.id = :id"),
-    @NamedQuery(name="AttributionSecteurBorneAccesGetByBorneAcces",query="SELECT a FROM AttributionSecteurBorneAcces a JOIN a.borneAccess as b where b.id = :borne")
+    @NamedQuery(name="AttributionSecteurBorneAccesGetByBorneAcces",query="SELECT b FROM AttributionSecteurBorneAcces b JOIN b.borneAccess a WHERE a = :a")
 })
 @XmlRootElement
 public class AttributionSecteurBorneAcces implements Serializable {
