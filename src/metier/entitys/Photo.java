@@ -5,6 +5,7 @@
 package metier.entitys;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +37,7 @@ public class Photo extends Evenement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private byte[] image;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     private Camera camera;
     
 
