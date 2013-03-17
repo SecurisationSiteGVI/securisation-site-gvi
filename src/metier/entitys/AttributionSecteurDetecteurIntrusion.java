@@ -6,6 +6,7 @@ package metier.entitys;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,10 +39,10 @@ public class AttributionSecteurDetecteurIntrusion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     @JoinColumn(nullable=false)
     private Secteur secteur;
-    @OneToMany
+    @OneToMany(cascade= CascadeType.ALL)
     private List<DetecteurIntrusion> detecteurIntrusions;
 
     public Long getId() {
