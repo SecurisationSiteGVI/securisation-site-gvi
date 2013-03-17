@@ -5,6 +5,7 @@
 package metier.entitys;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,11 +36,11 @@ public class Acces extends Evenement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     private Utilisateur utilisateur;
     @Column(nullable=false)
     private Boolean passage;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     private BorneAcces borneAcces;
 
     @Override
