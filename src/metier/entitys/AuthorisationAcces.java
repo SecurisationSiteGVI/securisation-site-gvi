@@ -7,6 +7,7 @@ package metier.entitys;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,10 +46,10 @@ public class AuthorisationAcces implements Serializable {
     private Date heureOuverture;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date heureFermeture;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
-    @OneToMany
+    @OneToMany(cascade= CascadeType.ALL)
     private List<Secteur> secteurs;
     public Long getId() {
         return id;
