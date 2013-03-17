@@ -5,6 +5,7 @@
 package metier.entitys;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class DetecteurIntrusion implements Serializable {
     private Long id;
     @Column(nullable=false)
     private String nom;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     @JoinColumn(nullable=false)
     private Position position;
     
