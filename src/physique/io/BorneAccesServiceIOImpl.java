@@ -71,6 +71,7 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
                 // read and append to buffer        
                 String frameLu = this.is.readLine();
                 this.buffer= frameLu.getBytes();
+                //System.out.write(buffer);
                 byte[] name = new byte[4];
                 byte crc = 0;
                 for(int j=0; j<36; j++){
