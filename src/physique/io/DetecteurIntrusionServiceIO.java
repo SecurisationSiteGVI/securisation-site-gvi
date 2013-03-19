@@ -4,7 +4,9 @@
  */
 package physique.io;
 
+import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPortEvent;
+import java.util.Enumeration;
 
 /**
  *
@@ -12,21 +14,13 @@ import gnu.io.SerialPortEvent;
  */
 public interface DetecteurIntrusionServiceIO {
 
-    public void rechercheDePorts() throws Exception;
-
-    public void evenementSerie(SerialPortEvent evt) throws Exception;
-
-    public void connexion() throws Exception;
-
-    public void envoyerGrillage(String grillage) throws Exception;
-
-    public void setConnected(boolean bConnected) throws Exception;
-
-    public void getConnected() throws Exception;
-
+    public void fermerPortActuel() throws Exception;
+    public Enumeration<CommPortIdentifier> getPortSerie() throws Exception;
+    public void cycle() throws Exception;
+    public String getNomPort() throws Exception;
+    public void cyclePort() throws Exception;
+    public void EcrireSurPortSerie(byte key) throws Exception;
     public boolean initIOStream() throws Exception;
-
     public void initListener() throws Exception;
-
-    public void deconnexion() throws Exception;
+    public String lire() throws Exception;
 }
