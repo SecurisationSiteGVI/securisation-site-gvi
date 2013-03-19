@@ -64,7 +64,18 @@ public class Acces extends Evenement implements Serializable {
 
     @Override
     public String toString() {
-        return "passage de l'utilisateur : "+utilisateur;
+        String ret = null;
+        if(utilisateur==null){
+            ret = "Accès refusé, utilisateur inconnu.";
+        }else{
+            if(this.passage){
+                ret = "Passage de l'utilisateur : "+utilisateur;
+            } else {
+                ret = "Accès refusé pour l'utilisateur : "+utilisateur;
+            }
+            
+        }
+        return ret;
     }
 
     public Utilisateur getUtilisateur() {
