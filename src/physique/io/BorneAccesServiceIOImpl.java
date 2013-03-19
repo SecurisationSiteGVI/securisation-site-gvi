@@ -72,6 +72,19 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
                 String frameLu = this.is.readLine();
                 this.buffer= frameLu.getBytes();
                 byte[] name = new byte[4];
+                byte crc = 0;
+                for(int j=0; j<36; j++){
+                    crc += this.buffer[j+1];
+                }
+                if(this.buffer[0] != this.STX){
+                    System.out.println("Erreur STX");
+                }
+                if(this.buffer[38] != this.ETX){
+                    System.out.print("Erreur ETX");
+                }
+                if(this.buffer[37] != crc){
+                    System.out.print("Erreur CRC");
+                }
                 name[0] = this.buffer[13];
                 name[1] = this.buffer[14];
                 name[2] = this.buffer[15];
