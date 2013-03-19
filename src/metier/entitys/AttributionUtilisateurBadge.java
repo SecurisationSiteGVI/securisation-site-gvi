@@ -38,10 +38,10 @@ public class AttributionUtilisateurBadge implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne()
     @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne()
     private Badge badge;
     public Long getId() {
         return id;

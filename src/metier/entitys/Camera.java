@@ -34,7 +34,7 @@ public class Camera implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne()
     @JoinColumn(nullable=false)
     private Position position;
     @Column(nullable=false)

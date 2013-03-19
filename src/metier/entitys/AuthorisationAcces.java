@@ -46,10 +46,10 @@ public class AuthorisationAcces implements Serializable {
     private Date heureOuverture;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date heureFermeture;
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne()
     @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
-    @OneToMany(cascade= CascadeType.REMOVE)
+    @OneToMany()
     private List<Secteur> secteurs;
     public Long getId() {
         return id;

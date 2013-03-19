@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -25,7 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @NamedQueries({
     @NamedQuery(name="AccesCount",query="SELECT COUNT(a) FROM Acces a"),
-    @NamedQuery(name="AccesGetAll",query="SELECT a FROM Acces a")
+    @NamedQuery(name="AccesGetAll",query="SELECT a FROM Acces a"),
+    @NamedQuery(name="AccesGetByUtilisateur",query="SELECT a FROM Acces AS a WHERE a.utilisateur.id = :id")
 })
 @XmlRootElement
 public class Acces extends Evenement implements Serializable {
@@ -37,11 +39,11 @@ public class Acces extends Evenement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne()
     private Utilisateur utilisateur;
     @Column(nullable=false)
     private Boolean passage;
-    @OneToOne(cascade= CascadeType.REMOVE)
+    @OneToOne()
     private BorneAcces borneAcces;
 
     @Override
