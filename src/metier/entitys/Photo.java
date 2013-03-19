@@ -37,7 +37,7 @@ public class Photo extends Evenement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private byte[] image;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.REMOVE)
     private Camera camera;
     
 

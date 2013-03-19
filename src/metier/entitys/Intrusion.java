@@ -29,7 +29,7 @@ public class Intrusion extends Evenement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.REMOVE)
     private DetecteurIntrusion detecteurIntrusion;
     
     @Override

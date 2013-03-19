@@ -39,9 +39,9 @@ public class AttributionSecteurCamera implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @JoinColumn(nullable=false)
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.REMOVE)
     private Secteur secteur;
-    @OneToMany(cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.REMOVE)
     private List<Camera> cameras;
     public Long getId() {
         return id;

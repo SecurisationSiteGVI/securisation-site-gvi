@@ -39,10 +39,10 @@ public class AttributionSecteurDetecteurIntrusion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.REMOVE)
     @JoinColumn(nullable=false)
     private Secteur secteur;
-    @OneToMany(cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.REMOVE)
     private List<DetecteurIntrusion> detecteurIntrusions;
 
     public Long getId() {

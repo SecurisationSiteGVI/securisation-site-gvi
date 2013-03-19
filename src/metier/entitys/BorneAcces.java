@@ -37,7 +37,7 @@ public class BorneAcces implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.REMOVE)
     @JoinColumn(nullable=false)
     private Position position;
     private String nom;

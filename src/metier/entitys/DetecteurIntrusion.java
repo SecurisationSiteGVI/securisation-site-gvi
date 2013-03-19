@@ -38,7 +38,7 @@ public class DetecteurIntrusion implements Serializable {
     private Long id;
     @Column(nullable=false)
     private String nom;
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.REMOVE)
     @JoinColumn(nullable=false)
     private Position position;
     
