@@ -9,12 +9,11 @@ import metier.entitys.Camera;
  * @author BlondelleMarvin
  * @author
  */
-
 public class PhysiqueIOFactory {
-    
+
     private static BorneAccesServiceIO borneAccesSrv = new BorneAccesServiceIOImpl();
     private static CameraDriver cameraDrivers;
-    
+
     public static BorneAccesServiceIO getBorneAccesServiceIO() {
         return borneAccesSrv;
     }
@@ -28,9 +27,6 @@ public class PhysiqueIOFactory {
                 cameraDrivers = new CameraDriverSonyImpl(camera);
                 break;
         }
-        return cameraDrivers ;
+        return cameraDrivers;
     }
-
-
-    
 }

@@ -4,6 +4,7 @@ import metier.entitys.Badge;
 import metier.entitys.BorneAcces;
 
 public class Trame {
+
     private Badge badge;
     private BorneAcces borneAcces;
 
@@ -34,6 +35,4 @@ public class Trame {
     public void setBorneAcces(BorneAcces borneAcces) {
         this.borneAcces = borneAcces;
     }
-
-  
 }

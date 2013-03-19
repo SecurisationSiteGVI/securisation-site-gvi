@@ -37,12 +37,12 @@ public class CameraDriverHedenImpl implements CameraDriver {
 
     @Override
     public String piloterCameraHaut() throws Exception {
-       return this.protocol + this.camera.getIp() + this.piloter + "0";
+        return this.protocol + this.camera.getIp() + this.piloter + "0";
     }
 
     @Override
     public String piloterCameraBas() throws Exception {
-       return this.protocol + this.camera.getIp() + this.piloter + "2";
+        return this.protocol + this.camera.getIp() + this.piloter + "2";
     }
 
     @Override
@@ -66,7 +66,7 @@ public class CameraDriverHedenImpl implements CameraDriver {
 //            //fos.close();
 //            bos.close();
 //            byte[] bytes = bos.getBytes();
-    // return bytes;
+        // return bytes;
 
 
 

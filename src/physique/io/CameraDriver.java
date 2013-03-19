@@ -4,17 +4,19 @@ package physique.io;
  *
  * @author marvin
  */
-
 public interface CameraDriver {
-    
 
     public String getVideo() throws Exception;
+
     public String piloterCameraGauche() throws Exception;
+
     public String piloterCameraDroite() throws Exception;
+
     public String piloterCameraHaut() throws Exception;
+
     public String piloterCameraBas() throws Exception;
 //    public boolean piloterAutomatiquement() throws Exception;
-   
+
 //    public boolean zoom() throws Exception;
 //    public boolean luminositer()throws Exception;
 //    public boolean contraste() throws Exception;
@@ -33,11 +35,4 @@ public interface CameraDriver {
 //    public int connectionCamera() throws Exception;
 //    public void verifierConnectionCamera() throws Exception;
 //    public void enregistrerPhoto() throws Exception;
-
-    
-    
-    
-    
-    
-    
 }
