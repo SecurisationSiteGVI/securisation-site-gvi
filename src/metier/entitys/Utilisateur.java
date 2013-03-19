@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author damien
  */
 @Entity
-@NamedQueries({//
+@NamedQueries({
     @NamedQuery(name = "UtilisateurGetAll", query = "SELECT u FROM Utilisateur u"),
     @NamedQuery(name = "UtilisateurGetByNom", query = "SELECT u FROM Utilisateur u WHERE u.nom = :nom"),
     @NamedQuery(name = "UtilisateurGetByPrenom", query = "SELECT u FROM Utilisateur u WHERE u.prenom = :prenom"),
@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "UtilisateurGetByAdresse", query = "SELECT u FROM Utilisateur u WHERE u.adresse = :adresse"),
     @NamedQuery(name = "UtilisateurGetByCodePostale", query = "SELECT u FROM Utilisateur u WHERE u.codePostale = :codePostale"),
     @NamedQuery(name = "UtilisateurGetByEmail", query = "SELECT u FROM Utilisateur u WHERE u.email = :email"),
-       @NamedQuery(name = "UtilisateurCount", query = "SELECT COUNT(u) FROM Utilisateur u"),
-       @NamedQuery(name="UtilisateurDelete", query="DELETE FROM Utilisateur u WHERE u.id = :id")
+    @NamedQuery(name = "UtilisateurCount", query = "SELECT COUNT(u) FROM Utilisateur u"),
+    @NamedQuery(name = "UtilisateurDelete", query = "DELETE FROM Utilisateur u WHERE u.id = :id")
 })
 @XmlRootElement
 public class Utilisateur implements Serializable {
@@ -51,9 +51,9 @@ public class Utilisateur implements Serializable {
     private String ville;
     private int codePostale;
     private String adresse;
-    @Column(length=15)
+    @Column(length = 15)
     private String telephonePortable;
-    @Column(length=15)
+    @Column(length = 15)
     private String telephoneFixe;
     @Column(nullable = false)
     private boolean homme;
@@ -165,7 +165,7 @@ public class Utilisateur implements Serializable {
         if (dateDeNaissance != null) {
             int yearH = dateDeNaissance.getYear();
             int yearN = new Date().getYear();
-            agen =  yearN-yearH;
+            agen = yearN - yearH;
         }
         return agen;
     }
@@ -185,6 +185,4 @@ public class Utilisateur implements Serializable {
     public void setTelephoneFixe(String telephoneFixe) {
         this.telephoneFixe = telephoneFixe;
     }
-
-    
 }

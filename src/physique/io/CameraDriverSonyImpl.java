@@ -12,9 +12,11 @@ import metier.entitys.Camera;
  */
 public class CameraDriverSonyImpl implements CameraDriver{
 
+        
+
     private String protocol = "http://";
-    private String visu = "/videostream.cgi?user=admin&pwd=marvin&resolution=32";
-    private String piloter = "/decoder_control.cgi?user=admin&pwd=marvin&onestep=1&command=";
+    private String visu = "/mjpeg?speed=50";
+    private String piloter = "";
     private Camera camera;
 
     CameraDriverSonyImpl(Camera camera) {
@@ -22,7 +24,7 @@ public class CameraDriverSonyImpl implements CameraDriver{
     }
     @Override
     public String getVideo() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return this.protocol + this.camera.getIp() + this.visu;
     }
 
     @Override

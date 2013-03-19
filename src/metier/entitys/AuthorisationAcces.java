@@ -46,7 +46,7 @@ public class AuthorisationAcces implements Serializable {
     private Date heureOuverture;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date heureFermeture;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.REMOVE)
     @JoinColumn(nullable=false)
     private Utilisateur utilisateur;
     @OneToMany(cascade= CascadeType.REMOVE)

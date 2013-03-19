@@ -6,6 +6,7 @@ package metier.entitys;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,9 +39,9 @@ public class AttributionSecteurCamera implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @JoinColumn(nullable=false)
-    @OneToOne
+    @OneToOne(cascade= CascadeType.REMOVE)
     private Secteur secteur;
-    @OneToMany
+    @OneToMany(cascade= CascadeType.REMOVE)
     private List<Camera> cameras;
     public Long getId() {
         return id;
