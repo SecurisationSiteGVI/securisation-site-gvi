@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.TooManyListenersException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,7 +35,13 @@ public class DetecteurIntrusionServiceIOImpl implements DetecteurIntrusionServic
     final static int NEW_LINE_ASCII = 8;
     String logText = "";
 
-    public DetecteurIntrusionServiceIOImpl() {
+    public DetecteurIntrusionServiceIOImpl(){
+        try {
+            this.window = window;
+            cycle();
+        } catch (Exception ex) {
+            //window.jTextArea.append(logText + "\n");
+        }
     }
 
     @Override
