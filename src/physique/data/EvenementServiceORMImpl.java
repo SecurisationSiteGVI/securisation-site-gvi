@@ -11,6 +11,7 @@ import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.Photo;
+import metier.entitys.Utilisateur;
 
 /**
  *
@@ -152,6 +153,16 @@ public class EvenementServiceORMImpl implements EvenementServiceORM {
         query.setFirstResult(debut);
         query.setMaxResults(nbResut);
         List<Evenement> evenements = query.getResultList();
+        Connexion.disconect();
+        return evenements;
+    }
+
+    @Override
+    public List<Acces> getAccesByUtilisateur(Utilisateur utilisateur) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("AccesGetByUtilisateur");
+        query.setParameter("id", utilisateur.getId());
+        List<Acces> evenements = query.getResultList();
         Connexion.disconect();
         return evenements;
     }
