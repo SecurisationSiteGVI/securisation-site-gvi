@@ -10,9 +10,7 @@ import metier.entitys.Camera;
  *
  * @author marvin
  */
-public class CameraDriverSonyImpl implements CameraDriver{
-
-        
+public class CameraDriverSonyImpl implements CameraDriver {
 
     private String protocol = "http://";
     private String visu = "/mjpeg?speed=50";
@@ -22,9 +20,10 @@ public class CameraDriverSonyImpl implements CameraDriver{
     CameraDriverSonyImpl(Camera camera) {
         this.camera = camera;
     }
+
     @Override
     public String getVideo() throws Exception {
-       return this.protocol + this.camera.getIp() + this.visu;
+        return this.protocol + this.camera.getIp() + this.visu;
     }
 
     @Override
@@ -51,5 +50,4 @@ public class CameraDriverSonyImpl implements CameraDriver{
     public byte[] prendrePhoto() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
 }

@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name="AuthorisationAccesCount",query="SELECT COUNT(a) FROM AuthorisationAcces a"),
     @NamedQuery(name="AuthorisationAccesGetAll",query="SELECT a FROM AuthorisationAcces a"),
-    @NamedQuery(name="AuthorisationAccesGetByUtilisateur",query="SELECT a FROM AuthorisationAcces a WHERE a.utilisateur.id = :id")
+    @NamedQuery(name="AuthorisationAccesGetByUtilisateur",query="SELECT a FROM AuthorisationAcces a WHERE a.utilisateur.id = :id"),
 })
 @XmlRootElement
 public class AuthorisationAcces implements Serializable {

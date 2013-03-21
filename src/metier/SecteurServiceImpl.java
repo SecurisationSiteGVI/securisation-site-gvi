@@ -5,6 +5,7 @@ import metier.entitys.AttributionSecteurBorneAcces;
 import metier.entitys.AttributionSecteurBorneAcces_;
 import metier.entitys.AttributionSecteurCamera;
 import metier.entitys.AttributionSecteurDetecteurIntrusion;
+import metier.entitys.AuthorisationAcces;
 import metier.entitys.Secteur;
 import physique.data.PhysiqueDataFactory;
 import physique.data.SecteurServiceORM;
@@ -50,7 +51,7 @@ public class SecteurServiceImpl implements SecteurService {
         AttributionSecteurBorneAccesService attributionSecteurBorneAccesSrv = MetierFactory.getAttributionSecteurBorneAccesService();
         AttributionSecteurCameraService attributionSecteurCameraSrv = MetierFactory.getAttributionSecteurCameraService();
         AttributionSecteurDetecteurIntrusionService attributionSecteurDetecteurIntrusionSrv = MetierFactory.getAttributionSecteurDetecteurIntrusionService();
-
+        AuthorisationAccesService authorisationAccesSrv = MetierFactory.getAuthorisationAccesService();
         if(secteur!=null){
             if(secteur instanceof Secteur){
                 AttributionSecteurBorneAcces acces = attributionSecteurBorneAccesSrv.getBySecteur(secteur);
