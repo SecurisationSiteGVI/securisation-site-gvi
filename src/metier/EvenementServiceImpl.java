@@ -6,6 +6,7 @@ import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.Photo;
+import metier.entitys.Utilisateur;
 import physique.data.EvenementServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -121,6 +122,11 @@ public class EvenementServiceImpl implements EvenementService{
     @Override
     public List<Evenement> getByMostRecent(int debut, int nbResut) {
         return this.evenementSrv.getByMostRecent(debut, nbResut);
+    }
+
+    @Override
+    public List<Acces> getAccesByUtilisateur(Utilisateur utilisateur) {
+        return this.evenementSrv.getAccesByUtilisateur(utilisateur);
     }
     
 }
