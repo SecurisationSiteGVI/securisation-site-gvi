@@ -6,7 +6,6 @@ package physique.data;
 
 import java.util.List;
 import javax.persistence.Query;
-import metier.entitys.Administrateur;
 import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
 
