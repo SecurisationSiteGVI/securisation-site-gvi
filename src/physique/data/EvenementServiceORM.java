@@ -10,6 +10,7 @@ import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.Photo;
+import metier.entitys.Utilisateur;
 
 /**
  *
@@ -42,6 +43,10 @@ public interface EvenementServiceORM {
     public Evenement getById(Long id);
 
     public Long count();
+
     public List<Evenement> getByMostRecent();
+
     public List<Evenement> getByMostRecent(int debut, int nbResut);
+    
+    public List<Acces> getAccesByUtilisateur(Utilisateur utilisateur);
 }
