@@ -5,6 +5,7 @@ import metier.entitys.Acces;
 import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.Photo;
+import metier.entitys.Utilisateur;
 
 /**
  * @author damien
@@ -42,4 +43,6 @@ public interface EvenementService {
     public List<Evenement> getByMostRecent();
     
     public List<Evenement> getByMostRecent(int debut, int nbResut);
+    
+    public List<Acces> getAccesByUtilisateur(Utilisateur utilisateur);
 }
