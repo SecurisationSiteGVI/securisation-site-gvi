@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import metier.entitys.Acces;
+import metier.entitys.AttributionUtilisateurBadge;
 import metier.entitys.AuthorisationAcces;
 import metier.entitys.Technicien;
 import metier.entitys.Utilisateur;
@@ -22,6 +24,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     private UtilisateurServiceORM utilisateurSrv = PhysiqueDataFactory.getUtilisateurServiceORM();
     private AuthorisationAccesService authorisationAccesSrv = MetierFactory.getAuthorisationAccesService();
+    private EvenementService evenementSrv = MetierFactory.getEvenementService();
+    private AttributionUtilisateurBadgeService attributionUtilisateurBadgeSrv = MetierFactory.getAttributionUtilisateurBadgeService();
 
     @Override
     public void add(Utilisateur utilisateur) {
@@ -41,13 +45,32 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         if (utilisateur != null) {
             if (utilisateur instanceof Utilisateur) {
                 AuthorisationAcces ret = null;
+                if (!this.evenementSrv.getAccesByUtilisateur(utilisateur).isEmpty()) {
+                    List<Acces> acces = this.evenementSrv.getAccesByUtilisateur(utilisateur);
+                    for (int i = 0; i < acces.size(); i++) {
+                        try {
+                            this.evenementSrv.remove(acces.get(i));
+                        } catch (Exception ex) {
+                            Logger.getLogger(UtilisateurServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+                try {
+                    if (this.attributionUtilisateurBadgeSrv.getByUtilisateur(utilisateur) != null) {
+                        AttributionUtilisateurBadge badge = attributionUtilisateurBadgeSrv.getByUtilisateur(utilisateur);
+                        this.attributionUtilisateurBadgeSrv.remove(badge);
+
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(UtilisateurServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 try {
                     ret = authorisationAccesSrv.getByUtilisateur(utilisateur);
                 } catch (Exception ex) {
                     Logger.getLogger(UtilisateurServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 if (ret == null) {
-                    
+
                     utilisateurSrv.remove(utilisateur);
                 } else {
                     try {
