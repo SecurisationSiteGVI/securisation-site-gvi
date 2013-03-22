@@ -41,6 +41,7 @@ public class DetecteurIntrusionServiceIOImpl implements DetecteurIntrusionServic
             cycle();
         } catch (Exception ex) {
             //window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
         }
     }
 
@@ -157,6 +158,7 @@ public class DetecteurIntrusionServiceIOImpl implements DetecteurIntrusionServic
             logText = "I/O flux impossible a ouvrir. (" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.red);
             //window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
             return successful;
         }
     }
@@ -171,6 +173,7 @@ public class DetecteurIntrusionServiceIOImpl implements DetecteurIntrusionServic
             logText = "trop grand nombre de listeners. (" + e.toString() + ")";
             //window.jTextArea.setForeground(color.red);
             //window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
         }
     }
 
@@ -195,13 +198,16 @@ public class DetecteurIntrusionServiceIOImpl implements DetecteurIntrusionServic
             if(singleData != NEW_LINE_ASCII) {
                 logText = new String(new byte[]{singleData});
                 //window.jTextArea.append(logText);
+                System.out.println(logText);
             } else {
                 //window.jTextArea.append("\n");
+                System.out.println("\n");
             }
         } 
         catch (Exception e) {
             logText = "n'a pas pu lire les données. (" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.red);
+            System.out.println(logText + "\n");
             //window.jTextArea.append(logText + "\n");
         }
     }
