@@ -79,14 +79,17 @@ public class SmsServiceIOImpl implements SmsServiceIO, SerialPortEventListener{
             //logText = selectedPort + " ouverture reussi.";
             //window.jTextArea.setForeground(Color.black);
             //window.jTextArea.append(logText + "\n");
+            System.out.println("Ouverture réussi");
         } catch(PortInUseException e) {
             //logText = selectedPort + "est en cours d'utilisation. (" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.black);
             //window.jTextArea.append(logText + "\n");
+            System.out.println("Port en cours d'utilisation");
         } catch(Exception e) {
             //logText = "echec de l'ouverture " + selectedPort + "(" + e.toString() + ")";
             //window.jTextArea.append(logText + "\n");
             //window.jTextArea.setForeground(Color.red);
+            System.out.println("Echec de l'ouverture du port");
         }
     }
 
@@ -112,6 +115,7 @@ public class SmsServiceIOImpl implements SmsServiceIO, SerialPortEventListener{
             logText = "I/O echec de l'ouverture du flux. (" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.red);
             //window.jTextArea.append(logText + "\n");
+            System.out.println("I/O echec de l'ouverture du flux");
             return successful;
         }
     }
@@ -122,9 +126,10 @@ public class SmsServiceIOImpl implements SmsServiceIO, SerialPortEventListener{
             serialPort.addEventListener(this);
             serialPort.notifyOnDataAvailable(true);           
         } catch(TooManyListenersException e) {
-            logText = "un trop grand nombre de listeners. (" + e.toString() + ")";
+            logText = "Trop grands nombres de listeners. (" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.red);
             //window.jTextArea.append(logText + "\n");
+            System.out.println("Trop grands nombres de listeners");
         }
     }
 
@@ -139,10 +144,12 @@ public class SmsServiceIOImpl implements SmsServiceIO, SerialPortEventListener{
             logText = "Deconnecter.";
             //window.jTextArea.setForeground(Color.red);
             //window.jTextArea.append(logText + "\n");
+            System.out.print("Deconnecter");
         } catch (Exception e) {
             logText = "echec de la fermeture du port " + serialPort.getName() + "(" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.red);
-            //window.jTextArea.append(logText  "\n");
+            //window.jTextArea.append(logText  "\n");*
+            System.out.println("Echec de l'ouverture du port");
         }
     }
 
@@ -157,9 +164,10 @@ public class SmsServiceIOImpl implements SmsServiceIO, SerialPortEventListener{
                 //window.jTextArea.append("\n");
             }
         } catch (Exception e) {
-            logText = "n'a pas pu lire les données. (" + e.toString() + ")";
+            logText = "n'à pas pu lire les données. (" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.red);
             //window.jTextArea.append(logText + "\n");
+            System.out.println("N'à pas pu lire les données");
         }
     }
 }
