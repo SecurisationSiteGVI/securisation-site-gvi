@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Observable;
 import java.util.TooManyListenersException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
  *
  * @author Pierre
  */
-public class DetecteurIntrusionServiceIOImpl implements DetecteurIntrusionServiceIO, SerialPortEventListener {
+public class DetecteurIntrusionServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, SerialPortEventListener, Runnable {
 
     Frame window = null;
     private static DetecteurIntrusionServiceIOImpl _serialPortDriver;
@@ -210,5 +211,10 @@ public class DetecteurIntrusionServiceIOImpl implements DetecteurIntrusionServic
             System.out.println(logText + "\n");
             //window.jTextArea.append(logText + "\n");
         }
+    }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
