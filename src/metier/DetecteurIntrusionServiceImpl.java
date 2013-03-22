@@ -5,15 +5,18 @@
 package metier;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import metier.entitys.DetecteurIntrusion;
 import physique.data.DetecteurIntrusionServiceORM;
 import physique.data.PhysiqueDataFactory;
+import physique.io.DetecteurIntrusionServiceIOImpl;
 
 /**
  *
  * @author damien
  */
-public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService{
+public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService, Observer{
 
     private DetecteurIntrusionServiceORM detecteurIntrusionSrv = PhysiqueDataFactory.getDetecteurIntrusionServiceORM();
     @Override
@@ -74,6 +77,14 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService{
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return detecteurIntrusion;
+    }
+
+    @Override
+    public void update(Observable o, Object o1) {
+        if(o instanceof DetecteurIntrusionServiceIOImpl) {
+            DetecteurIntrusionServiceIOImpl oo = (DetecteurIntrusionServiceIOImpl) o;
+            
+        }
     }
     
 }
