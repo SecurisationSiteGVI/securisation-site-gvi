@@ -8,7 +8,6 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
-import java.awt.Frame;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,7 +26,6 @@ import java.util.logging.Logger;
  */
 public class DetecteurIntrusionServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, SerialPortEventListener, Runnable {
 
-    Frame window = null;
     private static DetecteurIntrusionServiceIOImpl _serialPortDriver;
     private SerialPort _port = null;
     private OutputStream _serialOutput = null;
@@ -36,9 +34,8 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
     final static int NEW_LINE_ASCII = 8;
     String logText = "";
 
-    public DetecteurIntrusionServiceIOImpl(){
+    public DetecteurIntrusionServiceIOImpl() {
         try {
-            this.window = window;
             cycle();
         } catch (Exception ex) {
             //window.jTextArea.append(logText + "\n");
@@ -128,11 +125,6 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
     }
 
     @Override
-    public void cyclePort() throws Exception {
-        cycle();
-    }
-
-    @Override
     public void EcrireSurPortSerie(byte key) throws Exception {
         try {
             if (_serialOutput != null) {
@@ -185,7 +177,7 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
         StringBuffer inputBuffer = new StringBuffer();
         int nb = 0;
         nb = _serialInput.read();
-        for(int i = 0; i < nb; i++) {
+        for (int i = 0; i < nb; i++) {
             inputBuffer.append((char) buff[i]);
             data += (char) buff[i];
         }
@@ -196,7 +188,7 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
     public void serialEvent(SerialPortEvent spe) {
         try {
             byte singleData = (byte) _serialInput.read();
-            if(singleData != NEW_LINE_ASCII) {
+            if (singleData != NEW_LINE_ASCII) {
                 logText = new String(new byte[]{singleData});
                 //window.jTextArea.append(logText);
                 System.out.println(logText);
@@ -204,8 +196,7 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
                 //window.jTextArea.append("\n");
                 System.out.println("\n");
             }
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             logText = "n'a pas pu lire les données. (" + e.toString() + ")";
             //window.jTextArea.setForeground(Color.red);
             System.out.println(logText + "\n");
@@ -215,6 +206,20 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            creationPort();
+            if (_serialPortDriver.initIOStream() == true) {
+                _serialPortDriver.initListener();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DetecteurIntrusionServiceIOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public synchronized void creationPort() throws Exception {
+        _serialPortDriver = null;
+        _serialPortDriver = new DetecteurIntrusionServiceIOImpl();
+        System.out.println(_serialPortDriver.getNomPort());
+
     }
 }
