@@ -18,7 +18,6 @@ public interface DetecteurIntrusionServiceIO {
     public Enumeration<CommPortIdentifier> getPortSerie() throws Exception;
     public void cycle() throws Exception;
     public String getNomPort() throws Exception;
-    public void cyclePort() throws Exception;
     public void EcrireSurPortSerie(byte key) throws Exception;
     public boolean initIOStream() throws Exception;
     public void initListener() throws Exception;
