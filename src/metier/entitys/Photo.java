@@ -63,7 +63,7 @@ public class Photo extends Evenement implements Serializable {
 
     @Override
     public String toString() {
-        return "photo de la camera" +getCamera();
+        return "photo de la camera " +getCamera();
     }
 
     public byte[] getImage() {
