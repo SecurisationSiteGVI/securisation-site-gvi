@@ -7,10 +7,13 @@ package metier;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import metier.entitys.DetecteurIntrusion;
 import physique.data.DetecteurIntrusionServiceORM;
 import physique.data.PhysiqueDataFactory;
 import physique.io.DetecteurIntrusionServiceIOImpl;
+import physique.io.PhysiqueIOFactory;
 
 /**
  *
@@ -19,6 +22,12 @@ import physique.io.DetecteurIntrusionServiceIOImpl;
 public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService, Observer{
 
     private DetecteurIntrusionServiceORM detecteurIntrusionSrv = PhysiqueDataFactory.getDetecteurIntrusionServiceORM();
+    private DetecteurIntrusionServiceIOImpl detecteurIntrusionServiceIOImpl = (DetecteurIntrusionServiceIOImpl) PhysiqueIOFactory.getDetecteurIntrusionServiceIO();
+    
+    public DetecteurIntrusionServiceImpl() {
+        detecteurIntrusionServiceIOImpl.addObserver(this);
+    }
+    
     @Override
     public void add(DetecteurIntrusion detecteurIntrusion) throws Exception {
         if(detecteurIntrusion!=null){
@@ -86,5 +95,13 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
             
         }
     }
-    
+
+    @Override
+    public void startThread() {
+        try {
+            this.detecteurIntrusionServiceIOImpl.creationPort();
+        } catch (Exception ex) {
+            Logger.getLogger(DetecteurIntrusionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
