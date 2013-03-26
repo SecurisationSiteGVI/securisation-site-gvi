@@ -156,6 +156,7 @@ public class SerialPortDriver implements SerialPortEventListener {
             return successful;
         } catch (IOException e) {
             logText = "I/O Streams failed to open. (" + e.toString() + ")";
+            System.out.println(logText + "\n");
             return successful;
         }
     }
@@ -167,6 +168,7 @@ public class SerialPortDriver implements SerialPortEventListener {
             _port.notifyOnDataAvailable(true);
         } catch (TooManyListenersException e) {
             logText = "Too many listeners. (" + e.toString() + ")";
+            System.out.print(logText + "\n");
         }
     }
     
@@ -177,10 +179,13 @@ public class SerialPortDriver implements SerialPortEventListener {
 
             if (singleData != NEW_LINE_ASCII) {
                 logText = new String(new byte[]{singleData});
+                System.out.print(logText);
             } else {
+                System.out.print("\n");
             }
         } catch (Exception e) {
             logText = "Failed to read data. (" + e.toString() + ")";
+            System.out.print(logText + "\n");
         }
     }
    
@@ -197,6 +202,4 @@ public class SerialPortDriver implements SerialPortEventListener {
         }
         return data;
     }
-   
-   
 }
