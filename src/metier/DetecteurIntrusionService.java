@@ -24,4 +24,7 @@ public interface DetecteurIntrusionService {
     public Long count();
 
     public DetecteurIntrusion getById(Long id);
+
+    public void startThread();
 }
+
