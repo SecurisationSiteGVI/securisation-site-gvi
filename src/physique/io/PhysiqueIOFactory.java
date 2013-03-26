@@ -11,15 +11,21 @@ import metier.entitys.Camera;
  */
 public class PhysiqueIOFactory {
 
-    private static BorneAccesServiceIO borneAccesSrv = new BorneAccesServiceIOImpl();
+    private static BorneAccesServiceIO borneAccesSrv;
     private static CameraDriver cameraDrivers;
-    private static DetecteurIntrusionServiceIO detecteurIntrusionSrv = new DetecteurIntrusionServiceIOImpl();
+    private static DetecteurIntrusionServiceIO detecteurIntrusionSrv;
 
     public static BorneAccesServiceIO getBorneAccesServiceIO() {
+        if (borneAccesSrv == null) {
+            borneAccesSrv = new BorneAccesServiceIOImpl();
+        }
         return borneAccesSrv;
     }
-    
+
     public static DetecteurIntrusionServiceIO getDetecteurIntrusionServiceIO() {
+        if (detecteurIntrusionSrv == null) {
+            detecteurIntrusionSrv = new DetecteurIntrusionServiceIOImpl();
+        }
         return detecteurIntrusionSrv;
     }
 
