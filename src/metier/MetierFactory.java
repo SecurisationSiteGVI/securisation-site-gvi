@@ -9,73 +9,116 @@ import metier.entitys.AttributionSecteurBorneAcces;
  */
 public class MetierFactory {
 
-    private static BorneAccesService borneAccesSrv = new BorneAccesServiceImpl();
-    private static AuthorisationAccesService AuthorisationAccesSrv = new AuthorisationAccesServiceImpl();
-    private static EvenementService evenementSrv = new EvenementServiceImpl();
-    private static BadgeService badgeSrv = new BadgeServiceImpl();
-    private static AttributionUtilisateurBadgeService AttributionUtilisateurBadgeSrv = new AttributionUtilisateurBadgeServiceImpl();
-    private static SecteurService SecteurSrv = new SecteurServiceImpl();
-    private static PositionService positionSrv = new PositionServiceImpl();
-    private static CameraService cameraSrv = new CameraServiceImpl();
-    private static UtilisateurService utilisateurSrv = new UtilisateurServiceImpl();
-    private static NumeroPredefinisService numeroPredefinisSrv = new NumeroPredefinisServiceImpl();
-    private static DetecteurIntrusionService detecteurIntrusionSrv = new DetecteurIntrusionServiceImpl();
-    private static AttributionSecteurBorneAccesService attributionSecteurBorneAccesSrv = new AttributionSecteurBorneAccesServiceImpl();
-    private static AttributionSecteurCameraService attributionSecteurCameraSrv = new AttributionSecteurCameraServiceImpl();
-    private static AttributionSecteurDetecteurIntrusionService attributionSecteurDetectionIntrusionSrv = new AttributionSecteurDetecteurIntrusionServiceImpl();
+    private static BorneAccesService borneAccesSrv;
+    private static AuthorisationAccesService authorisationAccesSrv;
+    private static EvenementService evenementSrv;
+    private static BadgeService badgeSrv;
+    private static AttributionUtilisateurBadgeService attributionUtilisateurBadgeSrv;
+    private static SecteurService secteurSrv;
+    private static PositionService positionSrv;
+    private static CameraService cameraSrv;
+    private static UtilisateurService utilisateurSrv;
+    private static NumeroPredefinisService numeroPredefinisSrv;
+    private static DetecteurIntrusionService detecteurIntrusionSrv;
+    private static AttributionSecteurBorneAccesService attributionSecteurBorneAccesSrv;
+    private static AttributionSecteurCameraService attributionSecteurCameraSrv;
+    private static AttributionSecteurDetecteurIntrusionService attributionSecteurDetectionIntrusionSrv;
 
     public static AttributionSecteurCameraService getAttributionSecteurCameraService() {
+        if (attributionSecteurCameraSrv == null) {
+            attributionSecteurCameraSrv = new AttributionSecteurCameraServiceImpl();
+        }
         return attributionSecteurCameraSrv;
     }
 
     public static AttributionSecteurDetecteurIntrusionService getAttributionSecteurDetecteurIntrusionService() {
+        if (attributionSecteurDetectionIntrusionSrv == null) {
+            attributionSecteurDetectionIntrusionSrv = new AttributionSecteurDetecteurIntrusionServiceImpl();
+        }
         return attributionSecteurDetectionIntrusionSrv;
     }
+
     public static CameraService getCameraService() {
+        if (cameraSrv == null) {
+            cameraSrv = new CameraServiceImpl();
+        }
         return cameraSrv;
     }
 
     public static UtilisateurService getUtilisateurService() {
+        if (utilisateurSrv == null) {
+            utilisateurSrv = new UtilisateurServiceImpl();
+        }
         return utilisateurSrv;
     }
 
     public static NumeroPredefinisService getNumeroPredefinisService() {
+        if (numeroPredefinisSrv == null) {
+            numeroPredefinisSrv = new NumeroPredefinisServiceImpl();
+        }
         return numeroPredefinisSrv;
     }
 
     public static DetecteurIntrusionService getDetecteurIntrusionService() {
+        if (detecteurIntrusionSrv == null) {
+            detecteurIntrusionSrv = new DetecteurIntrusionServiceImpl();
+        }
         return detecteurIntrusionSrv;
     }
 
     public static AttributionSecteurBorneAccesService getAttributionSecteurBorneAccesService() {
+        if (attributionSecteurBorneAccesSrv == null) {
+            attributionSecteurBorneAccesSrv = new AttributionSecteurBorneAccesServiceImpl();
+        }
         return attributionSecteurBorneAccesSrv;
     }
 
     public static BorneAccesService getBorneAccesService() {
+        if (borneAccesSrv == null) {
+            borneAccesSrv = new BorneAccesServiceImpl();
+        }
         return borneAccesSrv;
     }
 
     public static AuthorisationAccesService getAuthorisationAccesService() {
-        return AuthorisationAccesSrv;
+        if (authorisationAccesSrv == null) {
+            authorisationAccesSrv = new AuthorisationAccesServiceImpl();
+        }
+        return authorisationAccesSrv;
     }
 
     public static EvenementService getEvenementService() {
+        if (evenementSrv == null) {
+            evenementSrv = new EvenementServiceImpl();
+        }
         return evenementSrv;
     }
 
     public static BadgeService getBadgeService() {
+        if (badgeSrv == null) {
+            badgeSrv = new BadgeServiceImpl();
+        }
         return badgeSrv;
     }
 
     public static AttributionUtilisateurBadgeService getAttributionUtilisateurBadgeService() {
-        return AttributionUtilisateurBadgeSrv;
+        if (attributionUtilisateurBadgeSrv == null) {
+            attributionUtilisateurBadgeSrv = new AttributionUtilisateurBadgeServiceImpl();
+        }
+        return attributionUtilisateurBadgeSrv;
     }
 
     public static SecteurService getSecteurService() {
-        return SecteurSrv;
+        if (secteurSrv == null) {
+            secteurSrv = new SecteurServiceImpl();
+        }
+        return secteurSrv;
     }
 
     public static PositionService getPositionService() {
+        if (positionSrv == null) {
+            positionSrv = new PositionServiceImpl();
+        }
         return positionSrv;
     }
 }
