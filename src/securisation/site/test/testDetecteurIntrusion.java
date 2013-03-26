@@ -11,6 +11,6 @@ package securisation.site.test;
 public class testDetecteurIntrusion {
     
      public static void main(String[] args) {
-         
+         metier.MetierFactory.getDetecteurIntrusionService().startThread();
      }
 }
