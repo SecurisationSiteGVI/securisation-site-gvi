@@ -4,11 +4,9 @@
  */
 package physique.io;
 
-import physique.io.DetecteurIntrusionServiceIO;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import physique.io.BorneAccesServiceIO;
 
 /**
  *
@@ -16,13 +14,13 @@ import physique.io.BorneAccesServiceIO;
  */
 public class DetecteurIntrusionServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, Runnable {
 
-    SerialPortDriver _portDriver = null;
+    SerialPortDriverRadio _portDriver = null;
 
     public DetecteurIntrusionServiceIOImpl() {
     }
 
     public void creationPort() throws Exception {
-        _portDriver = new SerialPortDriver(this);
+        _portDriver = new SerialPortDriverRadio(this);
         System.out.println(_portDriver.getPortName());
         Thread t = new Thread(this);
         t.start();
