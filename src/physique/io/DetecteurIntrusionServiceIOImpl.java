@@ -23,6 +23,7 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
 
     public void creationPort() throws Exception {
         _portDriver = new SerialPortDriver(this);
+        System.out.println(_portDriver.getPortName());
         Thread t = new Thread(this);
         t.start();
     }
