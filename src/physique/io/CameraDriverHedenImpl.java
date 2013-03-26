@@ -1,9 +1,11 @@
 package physique.io;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import metier.entitys.Camera;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  *
@@ -15,6 +17,7 @@ public class CameraDriverHedenImpl implements CameraDriver {
     private String visu = "/videostream.cgi?user=admin&pwd=marvin&resolution=32";
     private String piloter = "/decoder_control.cgi?user=admin&pwd=marvin&onestep=1&command=";
     private Camera camera;
+    private String ip;
 
     CameraDriverHedenImpl(Camera camera) {
         this.camera = camera;
@@ -47,29 +50,34 @@ public class CameraDriverHedenImpl implements CameraDriver {
 
     @Override
     public byte[] prendrePhoto() throws Exception {
-        return null;
 
-//            ByteOutputStream bos = new ByteOutputStream();
-//
-//            //FileOutputStream fos = new FileOutputStream("/home/blondellemarvin/Bureau/photo.jpg");
-//            URL u = new URL("http://"+this.camera.getIp()+"/snapshot.jpg?user=admin&pwd=marvin");
-//            URLConnection connection = (URLConnection) u.openConnection();
-//
-//            InputStream is = connection.getInputStream();
-//            while (is.available() > 0) {
-//                byte b = (byte) is.read();
-//                bos.write(b);
-//              //  fos.write(b);
-//
-//            }
-//            is.close();
-//            //fos.close();
-//            bos.close();
-//            byte[] bytes = bos.getBytes();
-        // return bytes;
+        this.ip = this.camera.getIp();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        //fos = new FileOutputStream("/home/blondellemarvin/Bureau/photo.jpg");
+        DefaultHttpClient client2 = new DefaultHttpClient();
+        HttpGet request2 = new HttpGet("http://" + this.ip + "/snapshot.jpg?user=admin&pwd=marvin");
+        HttpResponse response2 = client2.execute(request2);
+        BufferedInputStream is = new BufferedInputStream(response2.getEntity().getContent());
 
+        byte[] buff = new byte[10240];
+        int n;
+        int total = 0;
+        while ((n = is.read(buff)) != -1) {
+            if (n >= buff.length) {
+                n = buff.length - 1;
+            }
 
+            bos.write(buff, 0, n);
+            //fos.write(buff, 0, n);
 
+            total += n;
 
+        }
+        System.out.println("IMG : " + total);
+        //fos.close();
+        bos.close();
+        is.close();
+        
+        return bos.toByteArray();
     }
 }
