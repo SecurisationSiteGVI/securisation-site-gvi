@@ -4,10 +4,6 @@
  */
 package securisation.site.test;
 
-import java.util.List;
-import metier.entitys.Technicien;
-import physique.data.PhysiqueDataFactory;
-
 /**
  *
  * @author damien
