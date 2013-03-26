@@ -7,16 +7,10 @@ package physique.io;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
-import gnu.io.SerialPortEventListener;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Enumeration;
-import java.util.List;
 import java.util.Observable;
-import java.util.TooManyListenersException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Pierre
  */
-public class DetecteurIntrusionServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, SerialPortEventListener, Runnable {
+public class DetecteurIntrusionServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, Runnable {
 
     private static DetecteurIntrusionServiceIOImpl _serialPortDriver;
     private SerialPort _port = null;
@@ -36,91 +30,9 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
 
     public DetecteurIntrusionServiceIOImpl() {
         try {
-            cycle();
         } catch (Exception ex) {
             //window.jTextArea.append(logText + "\n");
             System.out.println(logText + "\n");
-        }
-    }
-
-    @Override
-    public void fermerPortActuel() throws Exception {
-        if (_port != null) {
-            try {
-                _port.close();
-            } catch (Exception e) {
-                System.out.println("Erreur: impossible de fermer le port serie");
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-            }
-        }
-        _port = null;
-        _serialOutput = null;
-        _portName = null;
-    }
-
-    @Override
-    public Enumeration<CommPortIdentifier> getPortSerie() throws Exception {
-        List<CommPortIdentifier> list = new ArrayList<CommPortIdentifier>();
-        Enumeration ports = CommPortIdentifier.getPortIdentifiers();
-        while (ports.hasMoreElements()) {
-            CommPortIdentifier port = (CommPortIdentifier) ports.nextElement();
-            if (port.getPortType() == CommPortIdentifier.PORT_SERIAL && !port.isCurrentlyOwned()) {
-                list.add(port);
-            }
-        }
-        return Collections.enumeration(list);
-    }
-
-    @Override
-    public void cycle() throws Exception {
-        try {
-            String oldPortName = _portName;
-            fermerPortActuel();
-            Enumeration<CommPortIdentifier> ports = getPortSerie();
-            while (ports.hasMoreElements()) {
-                CommPortIdentifier port = ports.nextElement();
-                if (port.getName().equals(oldPortName)) {
-                    break;
-                }
-            }
-            if (!ports.hasMoreElements()) {
-                ports = getPortSerie();
-            }
-            while (ports.hasMoreElements()) {
-                CommPortIdentifier port = ports.nextElement();
-                try {
-                    _port = (SerialPort) port.open("Port Serie", 5000);
-                } catch (Exception e) {
-                    System.out.println("Erreur: impossible d'ouvrir le port " + port.getName() + ". essayez la prochaine fois");
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
-                    fermerPortActuel();
-                    continue;
-                }
-                _port.setSerialPortParams(9600, 8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-                _portName = port.getName();
-                _serialOutput = _port.getOutputStream();
-                break;
-            }
-            if (_port == null) {
-                System.out.println("Erreur: impossible d'ouvrir n'importe quel port série");
-            }
-        } catch (Exception e) {
-            System.out.println("Erreur: incapable de recycler le port");
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            fermerPortActuel();
-        }
-
-    }
-
-    @Override
-    public String getNomPort() throws Exception {
-        if (_portName != null) {
-            return _portName;
-        } else {
-            return "aucun";
         }
     }
 
@@ -135,38 +47,6 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
             System.out.println("Erreur: incapable d'écrire sur le port");
             System.out.println(e.getMessage());
             e.printStackTrace();
-            cycle();
-        }
-    }
-
-    @Override
-    public boolean initIOStream() throws Exception {
-        boolean successful = false;
-        try {
-            _serialInput = _port.getInputStream();
-            _serialOutput = _port.getOutputStream();
-            successful = true;
-            return successful;
-        } catch (IOException e) {
-            logText = "I/O flux impossible a ouvrir. (" + e.toString() + ")";
-            //window.jTextArea.setForeground(Color.red);
-            //window.jTextArea.append(logText + "\n");
-            System.out.println(logText + "\n");
-            return successful;
-        }
-    }
-
-    @Override
-    public void initListener() throws Exception {
-        try {
-            _port.setRTS(false); // a rajouter pour communication radio
-            _port.addEventListener(this);
-            _port.notifyOnDataAvailable(true);
-        } catch (TooManyListenersException e) {
-            logText = "trop grand nombre de listeners. (" + e.toString() + ")";
-            //window.jTextArea.setForeground(color.red);
-            //window.jTextArea.append(logText + "\n");
-            System.out.println(logText + "\n");
         }
     }
 
@@ -184,7 +64,6 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
         return data;
     }
 
-    @Override
     public void serialEvent(SerialPortEvent spe) {
         try {
             byte singleData = (byte) _serialInput.read();
@@ -208,9 +87,6 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
     public void run() {
         try {
             creationPort();
-            if (_serialPortDriver.initIOStream() == true) {
-                _serialPortDriver.initListener();
-            }
         } catch (Exception ex) {
             Logger.getLogger(DetecteurIntrusionServiceIOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -219,7 +95,7 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
     public synchronized void creationPort() throws Exception {
         _serialPortDriver = null;
         _serialPortDriver = new DetecteurIntrusionServiceIOImpl();
-        System.out.println(_serialPortDriver.getNomPort());
 
     }
+
 }
