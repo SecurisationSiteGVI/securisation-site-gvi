@@ -14,6 +14,7 @@ public class PhysiqueIOFactory {
     private static BorneAccesServiceIO borneAccesSrv;
     private static CameraDriver cameraDrivers;
     private static DetecteurIntrusionServiceIO detecteurIntrusionSrv;
+    private static SmsServiceIO smsSrv;
 
     public static BorneAccesServiceIO getBorneAccesServiceIO() {
         if (borneAccesSrv == null) {
@@ -39,5 +40,12 @@ public class PhysiqueIOFactory {
                 break;
         }
         return cameraDrivers;
+    }
+    
+    public static SmsServiceIO getSmsServiceIO() {
+        if(smsSrv == null) {
+//            smsSrv = new SmsServiceIOImpl();
+        }
+        return smsSrv;
     }
 }

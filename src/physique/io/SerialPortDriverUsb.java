@@ -4,6 +4,7 @@
  */
 package physique.io;
 
+import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
@@ -61,14 +62,13 @@ public class SerialPortDriverUsb  implements SerialPortEventListener {
 
             if (singleData != NEW_LINE_ASCII) {
                 logText = new String(new byte[]{singleData});
-//                window.jTextArea.append(logText);
+                System.out.println(logText + "\n");
             } else {
-//                window.jTextArea.append("\n");
+                System.out.println("\n");
             }
         } catch (Exception e) {
             logText = "Failed to read data. (" + e.toString() + ")";
-//            window.jTextArea.setForeground(Color.red);
-//            window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
         }
     }
     public void envoyerGrillage(String grillage) throws IOException {
@@ -81,28 +81,25 @@ public class SerialPortDriverUsb  implements SerialPortEventListener {
 //        String selectedPort = (String) window.jComboBox.getSelectedItem();
 //        selectedPortIdentifier = (CommPortIdentifier) portMap.get(selectedPort);
 
-//        CommPort commPort = null;
+        CommPort commPort = null;
 
-//        try {
-//            commPort = selectedPortIdentifier.open("TigerControlPanel", TIMEOUT);
-//            serialPort = (SerialPort) commPort;
+        try {
+            commPort = selectedPortIdentifier.open("TigerControlPanel", TIMEOUT);
+            serialPort = (SerialPort) commPort;
 
             setConnected(true);
 
 //            logText = selectedPort + " opened successfully.";
-//            window.jTextArea.setForeground(Color.black);
-//            window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
 
-//        } catch (PortInUseException e) {
+        } catch (PortInUseException e) {
 //            logText = selectedPort + " is in use. (" + e.toString() + ")";
 
-//            window.jTextArea.setForeground(Color.RED);
-//            window.jTextArea.append(logText + "\n");
-//        } catch (Exception e) {
+            System.out.println(logText + "\n");
+        } catch (Exception e) {
 //            logText = "Failed to open " + selectedPort + "(" + e.toString() + ")";
-//            window.jTextArea.append(logText + "\n");
-//            window.jTextArea.setForeground(Color.RED);
-//        }
+            System.out.println(logText + "\n");
+        }
     }
 
     public void setConnected(boolean bConnected) {
@@ -124,8 +121,7 @@ public class SerialPortDriverUsb  implements SerialPortEventListener {
             return successful;
         } catch (IOException e) {
             logText = "I/O Streams failed to open. (" + e.toString() + ")";
-//            window.jTextArea.setForeground(Color.red);
-//            window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
             return successful;
         }
     }
@@ -136,8 +132,7 @@ public class SerialPortDriverUsb  implements SerialPortEventListener {
             serialPort.notifyOnDataAvailable(true);
         } catch (TooManyListenersException e) {
             logText = "Too many listeners. (" + e.toString() + ")";
-//            window.jTextArea.setForeground(Color.red);
-//            window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
         }
     }
 
@@ -150,12 +145,10 @@ public class SerialPortDriverUsb  implements SerialPortEventListener {
             setConnected(false);
 
             logText = "Disconnected.";
-//            window.jTextArea.setForeground(Color.red);
-//            window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
         } catch (Exception e) {
             logText = "Failed to close " + serialPort.getName() + "(" + e.toString() + ")";
-//            window.jTextArea.setForeground(Color.red);
-//            window.jTextArea.append(logText + "\n");
+            System.out.println(logText + "\n");
         }
     }
 }
