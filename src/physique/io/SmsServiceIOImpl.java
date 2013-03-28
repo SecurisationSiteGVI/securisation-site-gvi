@@ -31,13 +31,11 @@ public class SmsServiceIOImpl extends Observable implements DetecteurIntrusionSe
     SerialPortDriverUsb _portDriver = null;
     
     public SmsServiceIOImpl() {
-        _portDriver = new SerialPortDriverUsb(this);
-//        System.out.println(_portDriver.getPortName());
     }
 
     @Override
     public void creationPort() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        _portDriver = new SerialPortDriverUsb(this);
     }
 
     @Override
