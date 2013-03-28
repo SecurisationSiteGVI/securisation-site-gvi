@@ -32,12 +32,13 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
     @Override
     public Trame getTrame() throws Exception {
         try {
+            NoClassDefFoundError e;
             this.is = new SerialComImpl();
            this.is.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             Thread t = new Thread(this);
             t.start();
             return trame;
-        } catch (Exception ex) {
+        } catch (Throwable ex) {
             System.out.println("Lecteur RFID non connecté sur le port \"/dev/ttyACM0\"");
             return null;
         }

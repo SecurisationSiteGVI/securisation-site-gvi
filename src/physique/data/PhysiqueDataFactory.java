@@ -23,6 +23,7 @@ public class PhysiqueDataFactory {
     private static AttributionSecteurBorneAccesServiceORM attributionSecteurBorneAccesSrv = new AttributionSecteurBorneAccesServiceORMImpl();
     private static AttributionSecteurCameraServiceORM attributionSecteurCameraSrv = new AttributionSecteurCameraServiceORMImpl();
     private static AttributionSecteurDetectionIntrusionServiceORM attributionSecteurDetectionIntrusionSrv = new AttributionSecteurDetectionIntrusionServiceORMImpl();
+    private static SmsServiceORM smsSrv = new SmsServiceORMImpl();
     private static SecteurServiceORM secteurSrv = new SecteurServiceORMImpl();
     
     public static AttributionSecteurCameraServiceORM getAttributionSecteurCameraServiceORM() {
@@ -78,5 +79,9 @@ public class PhysiqueDataFactory {
 
     public static EvenementServiceORM getEvenementServiceORM() {
         return evenementSrv;
+    }
+    
+    public static SmsServiceORM getSmsServiceORM() {
+        return smsSrv;
     }
 }
