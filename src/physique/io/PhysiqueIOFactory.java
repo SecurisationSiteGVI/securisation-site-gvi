@@ -41,10 +41,10 @@ public class PhysiqueIOFactory {
         }
         return cameraDrivers;
     }
-
+    
     public static SmsServiceIO getSmsServiceIO() {
-        if (smsSrv == null) {
-//            smsSrv = new SmsServiceIOImpl();
+        if(smsSrv == null) {
+            smsSrv = new SmsServiceIOImpl();
         }
         return smsSrv;
     }
