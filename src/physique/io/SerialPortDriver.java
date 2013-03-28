@@ -24,7 +24,6 @@ public class SerialPortDriver implements SerialPortEventListener {
     final static int NEW_LINE_ASCII = 8;
     String logText = "";
 
-
     public SerialPortDriver(DetecteurIntrusionServiceIOImpl detecteurIntrusionServiceIOImpl) {
         this.detecteurIntrusionServiceIOImpl = detecteurIntrusionServiceIOImpl;
         cycle();
@@ -34,8 +33,7 @@ public class SerialPortDriver implements SerialPortEventListener {
         if (_port != null) {
             try {
                 _port.close();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("ERROR: Unable to close the serial port.");
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -89,9 +87,7 @@ public class SerialPortDriver implements SerialPortEventListener {
                 CommPortIdentifier port = ports.nextElement();
                 try {
                     _port = (SerialPort) port.open("Serial port", 5000);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     System.out.println("ERROR: Unable to open port " + port.getName() + ". Trying the next one.");
                     System.out.println(e.getMessage());
                     e.printStackTrace();
@@ -108,8 +104,7 @@ public class SerialPortDriver implements SerialPortEventListener {
             if (_port == null) {
                 System.out.println("ERROR: Unable to open any serial port.");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("ERROR: Unable to recycle port.");
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -120,8 +115,7 @@ public class SerialPortDriver implements SerialPortEventListener {
     public String getPortName() {
         if (_portName != null) {
             return _portName;
-        }
-        else {
+        } else {
             return "NONE";
         }
     }
@@ -136,15 +130,14 @@ public class SerialPortDriver implements SerialPortEventListener {
                 _serialOutput.write(key);
                 _serialOutput.flush();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("ERROR: Unable to write to port.");
             System.out.println(e.getMessage());
             e.printStackTrace();
             cycle();
         }
     }
-    
+
     public boolean initIOStream() {
         boolean successful = false;
 
@@ -160,7 +153,7 @@ public class SerialPortDriver implements SerialPortEventListener {
             return successful;
         }
     }
-    
+
     public void initListener() {
         try {
             _port.setRTS(false); // a rajouter pour radio
@@ -171,8 +164,8 @@ public class SerialPortDriver implements SerialPortEventListener {
             System.out.print(logText + "\n");
         }
     }
-    
-   @Override
+
+    @Override
     public void serialEvent(SerialPortEvent evt) {
         try {
             byte singleData = (byte) _serialInput.read();
@@ -188,8 +181,8 @@ public class SerialPortDriver implements SerialPortEventListener {
             System.out.print(logText + "\n");
         }
     }
-   
-   public String read() throws IOException {
+
+    public String read() throws IOException {
         String data = null;
         byte[] buff = new byte[500];
         StringBuffer inputBuffer = new StringBuffer();

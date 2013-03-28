@@ -12,7 +12,7 @@ import metier.entitys.DetecteurIntrusion;
  *
  * @author damien
  */
-public class DetecteurIntrusionServiceORMImpl implements DetecteurIntrusionServiceORM{
+public class DetecteurIntrusionServiceORMImpl implements DetecteurIntrusionServiceORM {
 
     @Override
     public void add(DetecteurIntrusion detecteurIntrusion) {
@@ -61,5 +61,4 @@ public class DetecteurIntrusionServiceORMImpl implements DetecteurIntrusionServi
         Connexion.disconect();
         return detecteurIntrusion;
     }
-    
 }

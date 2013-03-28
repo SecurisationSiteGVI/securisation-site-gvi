@@ -27,9 +27,9 @@ import java.util.logging.Logger;
  * @author Pierre
  */
 public class SmsServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, Runnable {
- 
+
     SerialPortDriverUsb _portDriver = null;
-    
+
     public SmsServiceIOImpl() {
     }
 
@@ -42,5 +42,4 @@ public class SmsServiceIOImpl extends Observable implements DetecteurIntrusionSe
     public void run() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
 }

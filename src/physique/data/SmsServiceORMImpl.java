@@ -12,9 +12,9 @@ import metier.entitys.Secteur;
  *
  * @author saturne
  */
-public class SmsServiceORMImpl implements SmsServiceORM{
+public class SmsServiceORMImpl implements SmsServiceORM {
 
-        @Override
+    @Override
     public void add(Secteur secteur) {
         Connexion.getPersistance();
         Connexion.em.persist(secteur);
@@ -38,7 +38,7 @@ public class SmsServiceORMImpl implements SmsServiceORM{
     @Override
     public List<Secteur> getAll() {
         Connexion.getPersistance();
-        Query query =Connexion.em.createNamedQuery("SmsGetAll");
+        Query query = Connexion.em.createNamedQuery("SmsGetAll");
         List<Secteur> secteurs = query.getResultList();
         Connexion.disconect();
         return secteurs;
@@ -61,5 +61,4 @@ public class SmsServiceORMImpl implements SmsServiceORM{
         Connexion.disconect();
         return secteur;
     }
-    
 }

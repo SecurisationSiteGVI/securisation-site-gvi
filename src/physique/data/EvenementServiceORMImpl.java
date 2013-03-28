@@ -137,6 +137,7 @@ public class EvenementServiceORMImpl implements EvenementServiceORM {
         Connexion.disconect();
         return evenement;
     }
+
     @Override
     public List<Evenement> getByMostRecent() {
         Connexion.getPersistance();

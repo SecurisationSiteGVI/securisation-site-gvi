@@ -44,7 +44,7 @@ public interface AttributionUtilisateurBadgeServiceORM {
     public List<Badge> getBadgesNotAssignByNumero(String numero);
 
     public AttributionUtilisateurBadge getById(Long id);
-    
+
     public AttributionUtilisateurBadge getByBadge(Badge badge);
 
     public List<Badge> getBadgesNotAssignByNumero(String numero, int debut, int nbResult);

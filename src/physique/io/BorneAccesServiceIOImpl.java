@@ -25,6 +25,7 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
     private boolean running = true;
     private SerialCom is;
     public boolean connection = false;
+    public boolean thread = false;
 
     public BorneAccesServiceIOImpl() {
     }
@@ -44,6 +45,10 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
     public Trame getTrame() throws Exception {
         if (!this.connection) {
             this.connection();
+        }
+        if (!this.thread) {
+                Thread t = new Thread(this);
+                t.start();
         }
         return trame;
     }
@@ -68,6 +73,7 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
 
     @Override
     public void run() {
+        this.thread = true;
         Trame t2 = new Trame();
         while (this.running) {
             try {

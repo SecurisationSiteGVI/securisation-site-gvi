@@ -36,7 +36,7 @@ public class Connexion {
             em.close();
             emf.close();
         } catch (Exception ex) {
-            System.out.println("Probleme de déconnexion à la base de donnee "+ex.getMessage());
+            System.out.println("Probleme de déconnexion à la base de donnee " + ex.getMessage());
         }
     }
 }

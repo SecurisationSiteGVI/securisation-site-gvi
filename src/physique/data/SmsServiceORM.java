@@ -12,7 +12,7 @@ import metier.entitys.Secteur;
  * @author saturne
  */
 public interface SmsServiceORM {
-    
+
     public void add(Secteur secteur);
 
     public void remove(Secteur secteur);

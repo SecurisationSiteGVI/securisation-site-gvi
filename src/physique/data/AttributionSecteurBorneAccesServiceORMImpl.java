@@ -15,11 +15,11 @@ import metier.entitys.Secteur;
  *
  * @author damien
  */
-public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSecteurBorneAccesServiceORM{
+public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSecteurBorneAccesServiceORM {
 
     @Override
     public void add(AttributionSecteurBorneAcces attributionSecteurBorneAcces) {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Connexion.em.persist(attributionSecteurBorneAcces);
         Connexion.disconect();
     }
@@ -33,7 +33,7 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
 
     @Override
     public void update(AttributionSecteurBorneAcces attributionSecteurBorneAcces) {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Connexion.em.merge(attributionSecteurBorneAcces);
         Connexion.disconect();
     }
@@ -63,12 +63,12 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
         Query query = Connexion.em.createNamedQuery("AttributionSecteurBorneAccesGetBySecteur");
         query.setParameter("id", secteur.getId());
         AttributionSecteurBorneAcces attributionSecteurBorneAcceses = null;
-        try{
-             attributionSecteurBorneAcceses = (AttributionSecteurBorneAcces) query.getSingleResult();
-        }catch(NoResultException e){
+        try {
+            attributionSecteurBorneAcceses = (AttributionSecteurBorneAcces) query.getSingleResult();
+        } catch (NoResultException e) {
             System.out.println("Pas de résultat dans la base");
         }
-       
+
         Connexion.disconect();
         return attributionSecteurBorneAcceses;
     }
@@ -83,12 +83,11 @@ public class AttributionSecteurBorneAccesServiceORMImpl implements AttributionSe
 
     @Override
     public List<AttributionSecteurBorneAcces> getByBorneAcces(BorneAcces borneAcces) {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionSecteurBorneAccesGetByBorneAcces");
         query.setParameter("a", borneAcces);
         List<AttributionSecteurBorneAcces> attributionSecteurBorneAcceses = query.getResultList();
         Connexion.disconect();
         return attributionSecteurBorneAcceses;
     }
-    
 }

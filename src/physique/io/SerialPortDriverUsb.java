@@ -21,8 +21,8 @@ import java.util.TooManyListenersException;
  *
  * @author saturne
  */
-public class SerialPortDriverUsb  implements SerialPortEventListener {
-    
+public class SerialPortDriverUsb implements SerialPortEventListener {
+
     SmsServiceIOImpl smsServiceIOImpl = null;
     private Enumeration ports = null;
     private HashMap portMap = new HashMap();
@@ -71,12 +71,13 @@ public class SerialPortDriverUsb  implements SerialPortEventListener {
             System.out.println(logText + "\n");
         }
     }
+
     public void envoyerGrillage(String grillage) throws IOException {
-        
+
         int i = Integer.parseInt(grillage);
         output.write(i);
     }
-    
+
     public void connect() {
 //        String selectedPort = (String) window.jComboBox.getSelectedItem();
 //        selectedPortIdentifier = (CommPortIdentifier) portMap.get(selectedPort);

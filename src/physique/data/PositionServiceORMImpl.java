@@ -12,7 +12,7 @@ import metier.entitys.Position;
  *
  * @author damien
  */
-public class PositionServiceORMImpl implements PositionServiceORM{
+public class PositionServiceORMImpl implements PositionServiceORM {
 
     @Override
     public void add(Position position) {
@@ -46,7 +46,7 @@ public class PositionServiceORMImpl implements PositionServiceORM{
 
     @Override
     public Long count() {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("PositionCount");
         Long i = (Long) query.getSingleResult();
         System.out.println(i);
@@ -61,5 +61,4 @@ public class PositionServiceORMImpl implements PositionServiceORM{
         Connexion.disconect();
         return position;
     }
-    
 }

@@ -12,7 +12,7 @@ import metier.entitys.Camera;
  *
  * @author damien
  */
-public class CameraServiceORMImpl implements CameraServiceORM{
+public class CameraServiceORMImpl implements CameraServiceORM {
 
     @Override
     public void add(Camera camera) {
@@ -61,5 +61,4 @@ public class CameraServiceORMImpl implements CameraServiceORM{
         Connexion.disconect();
         return camera;
     }
-    
 }

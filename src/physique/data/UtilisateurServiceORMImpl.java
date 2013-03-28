@@ -57,7 +57,7 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
     }
 
     @Override
-    public List<Utilisateur> getAllByRange(int debut,int nbResult) {
+    public List<Utilisateur> getAllByRange(int debut, int nbResult) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("UtilisateurGetAll");
         query.setFirstResult(debut);
@@ -132,7 +132,7 @@ public class UtilisateurServiceORMImpl implements UtilisateurServiceORM {
 
     @Override
     public List<Utilisateur> getByVille(String ville, int debut, int nbResult) {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("UtilisateurGetByVille");
         query.setParameter("ville", ville);
         query.setFirstResult(debut);

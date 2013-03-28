@@ -12,7 +12,8 @@ import metier.entitys.Secteur;
  *
  * @author damien
  */
-public class SecteurServiceORMImpl implements SecteurServiceORM{
+public class SecteurServiceORMImpl implements SecteurServiceORM {
+
     @Override
     public void add(Secteur secteur) {
         Connexion.getPersistance();
@@ -37,7 +38,7 @@ public class SecteurServiceORMImpl implements SecteurServiceORM{
     @Override
     public List<Secteur> getAll() {
         Connexion.getPersistance();
-        Query query =Connexion.em.createNamedQuery("SecteurGetAll");
+        Query query = Connexion.em.createNamedQuery("SecteurGetAll");
         List<Secteur> secteurs = query.getResultList();
         Connexion.disconect();
         return secteurs;

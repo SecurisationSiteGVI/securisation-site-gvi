@@ -89,11 +89,11 @@ public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServi
     @Override
     public List<Secteur> getSecteurNotAssignByUtilisateur(Utilisateur utilisateur) {
         List<Secteur> secteursALL = PhysiqueDataFactory.getSecteurServiceORM().getAll();
-        List<Secteur> secteurs =null;
-        if(secteursALL!=null){
+        List<Secteur> secteurs = null;
+        if (secteursALL != null) {
             secteurs = secteursALL;
         }
-        
+
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AuthorisationAccesGetByUtilisateur");
         query.setParameter("id", utilisateur.getId());
@@ -105,14 +105,14 @@ public class AuthorisationAccesServiceORMImpl implements AuthorisationAccesServi
         int sizeTotal = secteursALL.size();
         if (!secteursUtilisateur.isEmpty()) {
             for (int i = 0; i < secteursUtilisateur.size(); i++) {
-                if (secteursUtilisateur.get(i)!=null) {
+                if (secteursUtilisateur.get(i) != null) {
                     Long idSecteur = secteursUtilisateur.get(i).getId();
                     for (int j = 0; j < secteursALL.size(); j++) {
-                        if(secteursALL.get(j).getId().equals(idSecteur)){
+                        if (secteursALL.get(j).getId().equals(idSecteur)) {
                             secteurs.remove(secteursALL.get(j));
                         }
                     }
-                  
+
                 }
             }
         }

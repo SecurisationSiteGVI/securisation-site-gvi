@@ -13,7 +13,7 @@ import metier.entitys.NumeroPredefinis;
  *
  * @author damien
  */
-public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceORM{
+public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceORM {
 
     @Override
     public void add(NumeroPredefinis numeroPredefinis) {
@@ -39,7 +39,7 @@ public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceOR
     @Override
     public List<NumeroPredefinis> getAll() {
         Connexion.getPersistance();
-        Query query =Connexion.em.createNamedQuery("NumeroPredefinisGetAll");
+        Query query = Connexion.em.createNamedQuery("NumeroPredefinisGetAll");
         List<NumeroPredefinis> numeroPredefinis = query.getResultList();
         Connexion.disconect();
         return numeroPredefinis;
@@ -47,7 +47,7 @@ public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceOR
 
     @Override
     public Long count() {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("NumeroPredefinisCount");
         Long i = (Long) query.getSingleResult();
         System.out.println(i);
@@ -62,5 +62,4 @@ public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceOR
         Connexion.disconect();
         return numeroPredefinis;
     }
-    
 }

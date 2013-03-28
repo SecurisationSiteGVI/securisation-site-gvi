@@ -183,7 +183,7 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetByBadge");
         query.setParameter("badge", badge);
         List<AttributionUtilisateurBadge> badges = query.getResultList();
-        if(!badges.isEmpty()){
+        if (!badges.isEmpty()) {
             attributionUtilisateurBadge = badges.get(0);
         }
         Connexion.disconect();

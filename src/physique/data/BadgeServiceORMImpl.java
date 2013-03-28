@@ -13,7 +13,7 @@ import metier.entitys.Badge;
  *
  * @author damien
  */
-public class BadgeServiceORMImpl implements BadgeServiceORM{
+public class BadgeServiceORMImpl implements BadgeServiceORM {
 
     @Override
     public void add(Badge badge) {
@@ -38,7 +38,7 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
 
     @Override
     public List<Badge> getAll() {
-       Connexion.getPersistance();
+        Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("BadgeGetAll");
         List<Badge> badges = query.getResultList();
         Connexion.disconect();
@@ -64,7 +64,7 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
         List<Badge> badges = query.getResultList();
         Connexion.disconect();
         return badges;
-    }  
+    }
 
     @Override
     public Badge getById(Long id) {
@@ -80,9 +80,9 @@ public class BadgeServiceORMImpl implements BadgeServiceORM{
         Query query = Connexion.em.createNamedQuery("BadgeGetByNumero");
         query.setParameter("numero", numero);
         Badge i = null;
-        try{
-             i = (Badge) query.getSingleResult();
-        }catch(NoResultException e ){
+        try {
+            i = (Badge) query.getSingleResult();
+        } catch (NoResultException e) {
             System.out.println("Pas de résultat dans la bdd.");
         }
         Connexion.disconect();
