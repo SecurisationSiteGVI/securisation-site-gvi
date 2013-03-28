@@ -38,6 +38,11 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
 
     public void startThread() {
         try {
+            Thread t = new Thread(this.borneAccesServiceIOImpl);
+            if(!t.isAlive()){
+                t.start();
+            }
+            
             this.borneAccesServiceIOImpl.getTrame();
         } catch (Exception ex) {
             Logger.getLogger(BorneAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);

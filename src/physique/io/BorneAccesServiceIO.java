@@ -22,4 +22,6 @@ public interface BorneAccesServiceIO {
     public void run() throws Exception;
 
     public void stop() throws Exception;
+    
+    public void connection() throws Exception;
 }
