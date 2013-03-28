@@ -4,42 +4,36 @@
  */
 package physique.io;
 
-import gnu.io.CommPort;
-import gnu.io.CommPortIdentifier;
-import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
-import gnu.io.SerialPortEventListener;
-import java.awt.Color;
-import java.awt.Frame;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.TooManyListenersException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Pierre
  */
-public class SmsServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, Runnable {
+public class SmsServiceIOImpl implements SmsServiceIO {
 
-    SerialPortDriverUsb _portDriver = null;
+    SerialPortDriverUsb _portDriver = new SerialPortDriverUsb();
 
     public SmsServiceIOImpl() {
     }
 
     @Override
     public void creationPort() throws Exception {
-        _portDriver = new SerialPortDriverUsb(this);
+        try {
+            _portDriver.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+
+        } catch (Exception e) {
+            System.out.println("Carte d'envoie sms non connecté");
+        }
     }
 
     @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void envoieNumero(String numero) throws Exception {
+        _portDriver.write(numero);
+        System.out.println("Envoit du message au numéro " + numero);
+        while (true) {
+            _portDriver.read();
+        }
+
     }
 }
