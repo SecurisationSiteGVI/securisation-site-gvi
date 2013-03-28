@@ -4,152 +4,169 @@
  */
 package physique.io;
 
-import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
-import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
-import gnu.io.SerialPortEventListener;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.TooManyListenersException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import lml.tsiris.serialcomm.SerialComImpl;
 
 /**
  *
  * @author saturne
  */
-public class SerialPortDriverUsb implements SerialPortEventListener {
+public class SerialPortDriverUsb {
 
-    SmsServiceIOImpl smsServiceIOImpl = null;
-    private Enumeration ports = null;
-    private HashMap portMap = new HashMap();
-    private CommPortIdentifier selectedPortIdentifier = null;
-    private SerialPort serialPort = null;
-    private InputStream input = null;
-    private OutputStream output = null;
-    private boolean bConnected = false;
-    final static int TIMEOUT = 2000;
-    final static int SPACE_ASCII = 32;
-    final static int DASH_ASCII = 45;
-    final static int NEW_LINE_ASCII = 10;
-    String logText = "";
+    private boolean serialOpen;
+    private CommPortIdentifier portId; //identifiant du port
+    private SerialPort sPort; //le port serie
+    private OutputStream os;
+    private InputStream is;
+    private BufferedReader br;
+    private InputStreamReader isr;
+    private final int tailleBloc = 8;
 
-    public SerialPortDriverUsb(SmsServiceIOImpl smsServiceIOImpl) {
-        this.smsServiceIOImpl = smsServiceIOImpl;
+    public SerialPortDriverUsb() {
     }
 
-    public void searchForPorts() {
-        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
-        ports = CommPortIdentifier.getPortIdentifiers();
-
-        while (ports.hasMoreElements()) {
-            CommPortIdentifier curPort = (CommPortIdentifier) ports.nextElement();
-
-            if (curPort.getPortType() == CommPortIdentifier.PORT_SERIAL) {
-//                window.jComboBox.addItem(curPort.getName());
-                portMap.put(curPort.getName(), curPort);
-            }
-        }
-    }
-
-    @Override
-    public void serialEvent(SerialPortEvent evt) {
+    /**
+     * Permet le lecture mot à mot sur la communication série
+     * @return String : réprésentant la chaine de caractére lu.
+     * @throws IOException
+     */
+    public void read() throws IOException {
         try {
-            byte singleData = (byte) input.read();
+            byte singleData = (byte) is.read();
 
-            if (singleData != NEW_LINE_ASCII) {
-                logText = new String(new byte[]{singleData});
-                System.out.println(logText + "\n");
+            if (singleData != 10) {
+                System.out.print(new String(new byte[]{singleData}));
             } else {
-                System.out.println("\n");
+                System.out.print("\n");
             }
         } catch (Exception e) {
-            logText = "Failed to read data. (" + e.toString() + ")";
-            System.out.println(logText + "\n");
+            System.out.print("Failed to read data. (" + e.toString() + ")");
         }
     }
 
-    public void envoyerGrillage(String grillage) throws IOException {
-
-        int i = Integer.parseInt(grillage);
-        output.write(i);
+    /**
+     *
+     * Permet la lecture ligne par ligne
+     * @return chaine de caratcére représentant ligne par ligne
+     * @throws IOException
+     */
+    public String readLine() throws IOException {
+        return this.br.readLine();
     }
 
-    public void connect() {
-//        String selectedPort = (String) window.jComboBox.getSelectedItem();
-//        selectedPortIdentifier = (CommPortIdentifier) portMap.get(selectedPort);
-
-        CommPort commPort = null;
-
+    /**
+     *
+     * @param data
+     * @throws java.io.IOException
+     */
+    public void write(String data) throws IOException {
         try {
-            commPort = selectedPortIdentifier.open("TigerControlPanel", TIMEOUT);
-            serialPort = (SerialPort) commPort;
+            this.delay();
+            String buf;
+            int start = 0;
+            int trameSize = data.length();
+            int nbMorceau = trameSize / this.tailleBloc;
+            for (int i = 0; i < nbMorceau; i++) {
+                buf = data.substring(start, start + this.tailleBloc);
+                start += this.tailleBloc;
+                os.write(buf.getBytes());
+                this.delay();
+            }
 
-            setConnected(true);
+            if (start < data.length()) {
+                buf = data.substring(start, data.length());
+                os.write(buf.getBytes());
+                this.delay();
+            }
 
-//            logText = selectedPort + " opened successfully.";
-            System.out.println(logText + "\n");
-
-        } catch (PortInUseException e) {
-//            logText = selectedPort + " is in use. (" + e.toString() + ")";
-
-            System.out.println(logText + "\n");
-        } catch (Exception e) {
-//            logText = "Failed to open " + selectedPort + "(" + e.toString() + ")";
-            System.out.println(logText + "\n");
+            os.write(10);
+            this.delay();
+            os.write(13);
+            this.delay();
+        } catch (Exception ex) {
+            System.out.println("BOOM ! " + ex.getMessage());
         }
     }
 
-    public void setConnected(boolean bConnected) {
-        this.bConnected = bConnected;
-    }
-
-    final public boolean getConnected() {
-        return bConnected;
-    }
-
-    public boolean initIOStream() {
-        boolean successful = false;
-
+    private void delay() {
         try {
-            input = serialPort.getInputStream();
-            output = serialPort.getOutputStream();
+            Thread.sleep(20);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(SerialComImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-            successful = true;
-            return successful;
+    /**
+     * Methode de fermeture des flux et port.
+     */
+    public void close() {
+        System.out.println("Close");
+        try {
+            if (is != null) {
+                this.is.close();
+            }
+            if (os != null) {
+                this.os.close();
+            }
+
         } catch (IOException e) {
-            logText = "I/O Streams failed to open. (" + e.toString() + ")";
-            System.out.println(logText + "\n");
-            return successful;
+            System.err.println("error on close");
+        }
+        if (sPort != null) {
+            sPort.close();
         }
     }
 
-    public void initListener() {
-        try {
-            serialPort.addEventListener(this);
-            serialPort.notifyOnDataAvailable(true);
-        } catch (TooManyListenersException e) {
-            logText = "Too many listeners. (" + e.toString() + ")";
-            System.out.println(logText + "\n");
-        }
+    /**
+     * Permet l'ouverture de la communication physique
+     * @param port Chemin de la communication physique
+     * @param speed Vitesse de lecture de la communication physique
+     * @param dataBits Nombre de bits de donnée
+     * @param stopBits Bits de stop
+     * @param parity Parité de la communication
+     * @return True(vrai) si la communication à bien été ouverte ou False(faux) si elle à échouée
+     */
+    public boolean open(String port, int speed, int dataBits, int stopBits, int parity) throws Exception {
+        this.serialOpen = false;
+
+        // recuperation de l'identifiant du port
+        sPort = (SerialPort) CommPortIdentifier.getPortIdentifier(port).open("serie", 9600);
+        sPort.setSerialPortParams(speed, dataBits, stopBits, parity);
+        //sPort.setRTS(false); // modif
+
+        //recuperation du flux de lecture et ecriture du port
+        this.os = getsPort().getOutputStream();
+        this.is = getsPort().getInputStream();
+        this.isr = new InputStreamReader(is);
+        this.br = new BufferedReader(isr);
+        // tout est ok !
+        this.serialOpen = true;
+        System.out.println("SerialCom.open " + getsPort().getName() + " OK !");
+
+        return this.serialOpen;
     }
 
-    public void disconnect() {
-        try {
-            serialPort.removeEventListener();
-            serialPort.close();
-            input.close();
-            output.close();
-            setConnected(false);
+    /**
+     * Permet de savoir si la communication est toujours ouverte
+     * @return Vrai(true) si la communication est ouverte False(faux) si ce n'est plus le cas
+     * 
+     */
+    public boolean isOpen() {
+        return this.serialOpen;
+    }
 
-            logText = "Disconnected.";
-            System.out.println(logText + "\n");
-        } catch (Exception e) {
-            logText = "Failed to close " + serialPort.getName() + "(" + e.toString() + ")";
-            System.out.println(logText + "\n");
-        }
+    /**
+     * @return the sPort
+     */
+    public SerialPort getsPort() {
+        return sPort;
     }
 }
