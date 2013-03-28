@@ -9,6 +9,6 @@ package physique.io;
  * @author Pierre
  */
 public interface SmsServiceIO {
-
     public void creationPort() throws Exception;
+    public void envoieNumero(String numero) throws Exception;
 }
