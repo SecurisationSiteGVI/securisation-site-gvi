@@ -77,7 +77,7 @@ public class CameraDriverHedenImpl implements CameraDriver {
         //fos.close();
         bos.close();
         is.close();
-        
+
         return bos.toByteArray();
     }
 }
