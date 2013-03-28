@@ -24,11 +24,11 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
     private List<Trame> frames;
     private boolean running = true;
     private SerialCom is;
-    private boolean connection = false;
+    public boolean connection = false;
 
     public BorneAccesServiceIOImpl() {
     }
-    
+
     public void connection() {
         try {
             NoClassDefFoundError e;
@@ -42,7 +42,7 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
 
     @Override
     public Trame getTrame() throws Exception {
-        if(!this.connection){
+        if (!this.connection) {
             this.connection();
         }
         return trame;
