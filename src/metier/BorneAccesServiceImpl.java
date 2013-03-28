@@ -38,11 +38,10 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
 
     public void startThread() {
         try {
-            Thread t = new Thread(this.borneAccesServiceIOImpl);
-            if(!t.isAlive()){
+            if (!this.borneAccesServiceIOImpl.connection) {
+                Thread t = new Thread(this.borneAccesServiceIOImpl);
                 t.start();
             }
-            
             this.borneAccesServiceIOImpl.getTrame();
         } catch (Exception ex) {
             Logger.getLogger(BorneAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,12 +142,12 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
                     for (int k = 0; k < listBorneAcces.size(); k++) {
                         if (listBorneAcces.get(k).getNom().equals(this.borneAcces.getNom())) {
                             System.out.println("Acces Authorisé !");
-                            authorisationPassage = true; 
-                            borne =listBorneAcces.get(k);
+                            authorisationPassage = true;
+                            borne = listBorneAcces.get(k);
                         }
                     }
                 }
-                
+
             } else {
                 System.out.println("L'utilisateur n'a pas de secteur authorisé");
             }
@@ -156,7 +155,7 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
         } else {
             System.out.println("Le badge n'a pas d'utilisateur d'attribuer.");
         }
-        
+
         Acces acces = new Acces();
         acces.setBorneAcces(borne);
         acces.setPassage(authorisationPassage);
