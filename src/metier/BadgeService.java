@@ -21,6 +21,6 @@ public interface BadgeService {
     public Long count();
 
     public Badge getById(Long id);
-    
+
     public Badge getByNumero(String numero);
 }

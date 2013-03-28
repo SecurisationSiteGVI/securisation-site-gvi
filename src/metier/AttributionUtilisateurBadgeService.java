@@ -41,6 +41,6 @@ public interface AttributionUtilisateurBadgeService {
     public Long count();
 
     public AttributionUtilisateurBadge getByBadge(Badge badge);
-    
+
     public AttributionUtilisateurBadge getById(Long id);
 }

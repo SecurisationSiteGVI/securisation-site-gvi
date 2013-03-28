@@ -27,4 +27,3 @@ public interface DetecteurIntrusionService {
 
     public void startThread();
 }
-

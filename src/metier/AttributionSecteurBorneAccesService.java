@@ -32,6 +32,6 @@ public interface AttributionSecteurBorneAccesService {
     public Long count();
 
     public AttributionSecteurBorneAcces getById(Long id);
-    
-     public List<AttributionSecteurBorneAcces> getByBorneAcces(BorneAcces borneAcces);
+
+    public List<AttributionSecteurBorneAcces> getByBorneAcces(BorneAcces borneAcces);
 }

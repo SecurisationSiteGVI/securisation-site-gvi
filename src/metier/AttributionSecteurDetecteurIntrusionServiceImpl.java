@@ -84,7 +84,7 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
 
     @Override
     public void attribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion) {
-          List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions = null;
+        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions = null;
         try {
             attributionSecteurDetecteurIntrusions = this.getAll();
         } catch (Exception ex) {
@@ -107,8 +107,8 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
                         secteurTrouve = true;
                         start = false;
                     }
-                }else{
-                    start=false;
+                } else {
+                    start = false;
                 }
             } else {
                 start = false;
@@ -132,7 +132,7 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
 
     @Override
     public void desattribuerDetecteurIntrusion(Secteur secteur, DetecteurIntrusion detecteurIntrusion) {
-        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions=null;
+        List<AttributionSecteurDetecteurIntrusion> attributionSecteurDetecteurIntrusions = null;
         try {
             attributionSecteurDetecteurIntrusions = this.getAll();
         } catch (Exception ex) {
@@ -174,5 +174,4 @@ public class AttributionSecteurDetecteurIntrusionServiceImpl implements Attribut
         }
         return attributionSecteurDetecteurIntrusion;
     }
-    
 }

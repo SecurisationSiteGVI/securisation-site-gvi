@@ -20,10 +20,10 @@ public interface BorneAccesService {
     public Long count();
 
     public BorneAcces getById(Long id);
-    
+
     public void startThread();
-    
+
     public void verificationAcces() throws Exception;
-    
+
     public BorneAcces getByNom(String nom);
 }

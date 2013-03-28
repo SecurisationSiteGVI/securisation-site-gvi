@@ -36,12 +36,8 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
         borneAccesServiceIOImpl.addObserver(this);
     }
 
-    public void startThread() {
+    public void startThread() {            
         try {
-            if (!this.borneAccesServiceIOImpl.connection) {
-                Thread t = new Thread(this.borneAccesServiceIOImpl);
-                t.start();
-            }
             this.borneAccesServiceIOImpl.getTrame();
         } catch (Exception ex) {
             Logger.getLogger(BorneAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,6 +137,10 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
                     authorisationPassage = false;
                     for (int k = 0; k < listBorneAcces.size(); k++) {
                         if (listBorneAcces.get(k).getNom().equals(this.borneAcces.getNom())) {
+                            Date date = new Date();
+                            if((authorisationAcces.getHeureOuverture().getHours() < date.getHours()) && (authorisationAcces.getHeureFermeture().getHours() > date.getHours())){
+                               System.out.println("youyou"); 
+                            }
                             System.out.println("Acces Authorisé !");
                             authorisationPassage = true;
                             borne = listBorneAcces.get(k);

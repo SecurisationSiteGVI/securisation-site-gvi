@@ -8,54 +8,52 @@ import physique.data.CameraServiceORM;
 import physique.data.EvenementServiceORM;
 import physique.data.PhysiqueDataFactory;
 
-
-
 /**
  *
  * @author damien
  * @author BlondelleMarvin
- * 
+ *
  */
-public class CameraServiceImpl implements CameraService{
+public class CameraServiceImpl implements CameraService {
 
     private CameraServiceORM cameraSrv = PhysiqueDataFactory.getCameraServiceORM();
-    private EvenementService evenementSrv= MetierFactory.getEvenementService();
-    
+    private EvenementService evenementSrv = MetierFactory.getEvenementService();
+
     @Override
     public void add(Camera camera) throws Exception {
-        if(camera!=null){
-            if(camera instanceof Camera){
+        if (camera != null) {
+            if (camera instanceof Camera) {
                 cameraSrv.add(camera);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(Camera camera) throws Exception {
-        if(camera!=null){
-            if(camera instanceof Camera){
+        if (camera != null) {
+            if (camera instanceof Camera) {
                 cameraSrv.update(camera);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(Camera camera) throws Exception {
-        if(camera!=null){
-            if(camera instanceof Camera){
+        if (camera != null) {
+            if (camera instanceof Camera) {
                 cameraSrv.remove(camera);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -109,8 +107,6 @@ public class CameraServiceImpl implements CameraService{
     public boolean resolution() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-
 
     @Override
     public boolean detectionMouvement() throws Exception {
@@ -182,6 +178,4 @@ public class CameraServiceImpl implements CameraService{
         }
         return camera;
     }
-
-
 }

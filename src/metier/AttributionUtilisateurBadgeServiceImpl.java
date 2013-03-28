@@ -12,43 +12,44 @@ import physique.data.PhysiqueDataFactory;
  * @author damien
  */
 public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilisateurBadgeService {
+
     private AttributionUtilisateurBadgeServiceORM attributionUtilisateurBadgeSrv = PhysiqueDataFactory.getAttributionUtilisateurBadgeServiceORM();
-    
+
     @Override
     public void add(AttributionUtilisateurBadge attributionUtilisateurBadge) throws Exception {
-        if(attributionUtilisateurBadge!=null){
-            if(attributionUtilisateurBadge instanceof AttributionUtilisateurBadge){
+        if (attributionUtilisateurBadge != null) {
+            if (attributionUtilisateurBadge instanceof AttributionUtilisateurBadge) {
                 attributionUtilisateurBadgeSrv.add(attributionUtilisateurBadge);
-            }else{
+            } else {
                 throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(AttributionUtilisateurBadge attributionUtilisateurBadge) throws Exception {
-        if(attributionUtilisateurBadge!=null){
-            if(attributionUtilisateurBadge instanceof AttributionUtilisateurBadge){
+        if (attributionUtilisateurBadge != null) {
+            if (attributionUtilisateurBadge instanceof AttributionUtilisateurBadge) {
                 attributionUtilisateurBadgeSrv.update(attributionUtilisateurBadge);
-            }else{
+            } else {
                 throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(AttributionUtilisateurBadge attributionUtilisateurBadge) throws Exception {
-       if(attributionUtilisateurBadge!=null){
-            if(attributionUtilisateurBadge instanceof AttributionUtilisateurBadge){
+        if (attributionUtilisateurBadge != null) {
+            if (attributionUtilisateurBadge instanceof AttributionUtilisateurBadge) {
                 attributionUtilisateurBadgeSrv.remove(attributionUtilisateurBadge);
-            }else{
+            } else {
                 throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -56,7 +57,7 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     @Override
     public List<AttributionUtilisateurBadge> getAll() throws Exception {
         return this.attributionUtilisateurBadgeSrv.getAll();
-    } 
+    }
 
     @Override
     public List<AttributionUtilisateurBadge> getAll(int debut, int nbResult) {
@@ -96,13 +97,13 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     @Override
     public AttributionUtilisateurBadge getByUtilisateur(Utilisateur utilisateur) {
         AttributionUtilisateurBadge attributionUtilisateurBadge = null;
-        if(utilisateur!=null){
-            if(utilisateur instanceof Utilisateur){
-               attributionUtilisateurBadge =  attributionUtilisateurBadgeSrv.getByUtilisateur(utilisateur);
-            }else{
-               System.out.append("L'instance ne corespond pas a l'objet passé en argument");
+        if (utilisateur != null) {
+            if (utilisateur instanceof Utilisateur) {
+                attributionUtilisateurBadge = attributionUtilisateurBadgeSrv.getByUtilisateur(utilisateur);
+            } else {
+                System.out.append("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return attributionUtilisateurBadge;
@@ -137,13 +138,13 @@ public class AttributionUtilisateurBadgeServiceImpl implements AttributionUtilis
     @Override
     public AttributionUtilisateurBadge getByBadge(Badge badge) {
         AttributionUtilisateurBadge attributionUtilisateurBadge = null;
-        if(badge!=null){
-            if(badge instanceof Badge){
+        if (badge != null) {
+            if (badge instanceof Badge) {
                 attributionUtilisateurBadge = this.attributionUtilisateurBadgeSrv.getByBadge(badge);
-            }else{
+            } else {
                 System.out.println("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return attributionUtilisateurBadge;

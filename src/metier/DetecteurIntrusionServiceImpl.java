@@ -19,50 +19,50 @@ import physique.io.PhysiqueIOFactory;
  *
  * @author damien
  */
-public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService, Observer{
+public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService, Observer {
 
     private DetecteurIntrusionServiceORM detecteurIntrusionSrv = PhysiqueDataFactory.getDetecteurIntrusionServiceORM();
     private DetecteurIntrusionServiceIOImpl detecteurIntrusionServiceIOImpl = (DetecteurIntrusionServiceIOImpl) PhysiqueIOFactory.getDetecteurIntrusionServiceIO();
-    
+
     public DetecteurIntrusionServiceImpl() {
         detecteurIntrusionServiceIOImpl.addObserver(this);
     }
-    
+
     @Override
     public void add(DetecteurIntrusion detecteurIntrusion) throws Exception {
-        if(detecteurIntrusion!=null){
-            if(detecteurIntrusion instanceof DetecteurIntrusion){
+        if (detecteurIntrusion != null) {
+            if (detecteurIntrusion instanceof DetecteurIntrusion) {
                 detecteurIntrusionSrv.add(detecteurIntrusion);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(DetecteurIntrusion detecteurIntrusion) throws Exception {
-       if(detecteurIntrusion!=null){
-            if(detecteurIntrusion instanceof DetecteurIntrusion){
+        if (detecteurIntrusion != null) {
+            if (detecteurIntrusion instanceof DetecteurIntrusion) {
                 detecteurIntrusionSrv.update(detecteurIntrusion);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(DetecteurIntrusion detecteurIntrusion) throws Exception {
-        if(detecteurIntrusion!=null){
-            if(detecteurIntrusion instanceof DetecteurIntrusion){
+        if (detecteurIntrusion != null) {
+            if (detecteurIntrusion instanceof DetecteurIntrusion) {
                 detecteurIntrusionSrv.remove(detecteurIntrusion);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -90,9 +90,9 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
 
     @Override
     public void update(Observable o, Object o1) {
-        if(o instanceof DetecteurIntrusionServiceIOImpl) {
+        if (o instanceof DetecteurIntrusionServiceIOImpl) {
             DetecteurIntrusionServiceIOImpl oo = (DetecteurIntrusionServiceIOImpl) o;
-            
+
         }
     }
 

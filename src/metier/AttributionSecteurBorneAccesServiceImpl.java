@@ -64,7 +64,7 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
     public List<AttributionSecteurBorneAcces> getAll() {
         return this.attributionSecteurBorneAccesSrv.getAll();
     }
-    
+
     @Override
     public AttributionSecteurBorneAcces getBySecteur(Secteur secteur) {
         AttributionSecteurBorneAcces attributionSecteurBorneAcceses = null;
@@ -96,8 +96,8 @@ public class AttributionSecteurBorneAccesServiceImpl implements AttributionSecte
                         secteurTrouve = true;
                         start = false;
                     }
-                }else{
-                    start=false;
+                } else {
+                    start = false;
                 }
             } else {
                 start = false;

@@ -20,63 +20,64 @@ import physique.data.PhysiqueDataFactory;
  *
  * @author damien
  */
-public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCameraService{
+public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCameraService {
 
     private AttributionSecteurCameraServiceORM attributionSecteurCameraSrv = PhysiqueDataFactory.getAttributionSecteurCameraServiceORM();
+
     @Override
     public void add(AttributionSecteurCamera attributionSecteurCamera) throws Exception {
-       if(attributionSecteurCamera!=null){
-            if(attributionSecteurCamera instanceof AttributionSecteurCamera){
+        if (attributionSecteurCamera != null) {
+            if (attributionSecteurCamera instanceof AttributionSecteurCamera) {
                 attributionSecteurCameraSrv.add(attributionSecteurCamera);
-            }else{
+            } else {
                 throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(AttributionSecteurCamera attributionSecteurCamera) throws Exception {
-       if(attributionSecteurCamera!=null){
-            if(attributionSecteurCamera instanceof AttributionSecteurCamera){
+        if (attributionSecteurCamera != null) {
+            if (attributionSecteurCamera instanceof AttributionSecteurCamera) {
                 attributionSecteurCameraSrv.update(attributionSecteurCamera);
-            }else{
+            } else {
                 throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(AttributionSecteurCamera attributionSecteurCamera) throws Exception {
-        if(attributionSecteurCamera!=null){
-            if(attributionSecteurCamera instanceof AttributionSecteurCamera){
+        if (attributionSecteurCamera != null) {
+            if (attributionSecteurCamera instanceof AttributionSecteurCamera) {
                 attributionSecteurCameraSrv.remove(attributionSecteurCamera);
-            }else{
+            } else {
                 throw new InstanceNotFoundException("L'instance ne corespond pas a l'objet passé en argument");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public List<AttributionSecteurCamera> getAll() throws Exception {
-       return this.attributionSecteurCameraSrv.getAll();
+        return this.attributionSecteurCameraSrv.getAll();
     }
 
     @Override
     public AttributionSecteurCamera getBySecteur(Secteur secteur) {
-         AttributionSecteurCamera attributionSecteurCameras =null;
-        if(secteur!=null){
-            if(secteur instanceof Secteur){
-                attributionSecteurCameras=this.attributionSecteurCameraSrv.getBySecteur(secteur);
-            }else{
+        AttributionSecteurCamera attributionSecteurCameras = null;
+        if (secteur != null) {
+            if (secteur instanceof Secteur) {
+                attributionSecteurCameras = this.attributionSecteurCameraSrv.getBySecteur(secteur);
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return attributionSecteurCameras;
@@ -84,7 +85,7 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
 
     @Override
     public void attribuerCamera(Secteur secteur, Camera camera) {
-         List<AttributionSecteurCamera> attributionSecteurCamera = null;
+        List<AttributionSecteurCamera> attributionSecteurCamera = null;
         try {
             attributionSecteurCamera = this.getAll();
         } catch (Exception ex) {
@@ -107,8 +108,8 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
                         secteurTrouve = true;
                         start = false;
                     }
-                }else{
-                    start=false;
+                } else {
+                    start = false;
                 }
             } else {
                 start = false;
@@ -132,7 +133,7 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
 
     @Override
     public void desattribuerCamera(Secteur secteur, Camera camera) {
-        List<AttributionSecteurCamera> attributionSecteurCamera=null;
+        List<AttributionSecteurCamera> attributionSecteurCamera = null;
         try {
             attributionSecteurCamera = this.getAll();
         } catch (Exception ex) {
@@ -174,5 +175,4 @@ public class AttributionSecteurCameraServiceImpl implements AttributionSecteurCa
         }
         return attributionSecteurCamera;
     }
-    
 }

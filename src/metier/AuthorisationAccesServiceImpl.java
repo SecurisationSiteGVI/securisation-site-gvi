@@ -17,44 +17,45 @@ import physique.data.PhysiqueDataFactory;
 /**
  * @author damien
  */
-public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
-    
+public class AuthorisationAccesServiceImpl implements AuthorisationAccesService {
+
     private AuthorisationAccesServiceORM authorisationAccesSrv = PhysiqueDataFactory.getAuthorisationAccesServiceORM();
+
     @Override
     public void add(AuthorisationAcces authorisationAcces) throws Exception {
-        if(authorisationAcces!=null){
-            if(authorisationAcces instanceof AuthorisationAcces){
+        if (authorisationAcces != null) {
+            if (authorisationAcces instanceof AuthorisationAcces) {
                 authorisationAccesSrv.add(authorisationAcces);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(AuthorisationAcces authorisationAcces) throws Exception {
-        if(authorisationAcces!=null){
-            if(authorisationAcces instanceof AuthorisationAcces){
+        if (authorisationAcces != null) {
+            if (authorisationAcces instanceof AuthorisationAcces) {
                 authorisationAccesSrv.update(authorisationAcces);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(AuthorisationAcces authorisationAcces) throws Exception {
-        if(authorisationAcces!=null){
-            if(authorisationAcces instanceof AuthorisationAcces){
+        if (authorisationAcces != null) {
+            if (authorisationAcces instanceof AuthorisationAcces) {
                 authorisationAccesSrv.remove(authorisationAcces);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -66,86 +67,91 @@ public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
 
     @Override
     public AuthorisationAcces getByUtilisateur(Utilisateur utilisateur) throws Exception {
-        AuthorisationAcces authorisationAcces =null;
-        if(utilisateur!=null){
+        AuthorisationAcces authorisationAcces = null;
+        if (utilisateur != null) {
             authorisationAcces = this.authorisationAccesSrv.getByUtilisateur(utilisateur);
-        }else{
+        } else {
             throw new NullPointerException("L'objet passé en parametre est null.");
-        }return authorisationAcces;
+        }
+        return authorisationAcces;
     }
 
     @Override
     public void detacherSecteurFromUtilisateur(Secteur secteur, Utilisateur utilisateur) {
-        if(secteur!=null){
-            if(utilisateur!=null){
-                AuthorisationAcces a=null;
+        if (secteur != null) {
+            if (utilisateur != null) {
+                AuthorisationAcces a = null;
                 try {
                     a = this.getByUtilisateur(utilisateur);
                 } catch (Exception ex) {
                     Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                for(int i= 0; i<a.getSecteurs().size() ; i++){
-                    if(secteur.getId().equals(a.getSecteurs().get(i).getId())){
+                for (int i = 0; i < a.getSecteurs().size(); i++) {
+                    if (secteur.getId().equals(a.getSecteurs().get(i).getId())) {
                         a.getSecteurs().remove(i);
                     }
-                }try {
+                }
+                try {
                     this.update(a);
                 } catch (Exception ex) {
                     Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
+            } else {
                 throw new NullPointerException("L'objet passé en parametre est null.");
             }
-            
-        }else{
+
+        } else {
             throw new NullPointerException("L'objet passé en parametre est null.");
         }
     }
 
     @Override
     public void atacherSecteurFromUtilisateur(Secteur secteur, Utilisateur utilisateur) {
-         if(secteur!=null){
-            if(utilisateur!=null){
-                AuthorisationAcces a=null;
+        if (secteur != null) {
+            if (utilisateur != null) {
+                AuthorisationAcces a = null;
                 try {
                     a = this.getByUtilisateur(utilisateur);
                 } catch (Exception ex) {
                     Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-                }if(a==null){
+                }
+                if (a == null) {
                     a = new AuthorisationAcces();
                 }
-                if(a.getSecteurs()==null){
+                if (a.getSecteurs() == null) {
                     List<Secteur> secteurs = new ArrayList<Secteur>();
                     secteurs.add(secteur);
                     a.setSecteurs(secteurs);
-                }else{
+                } else {
                     List<Secteur> secteurs = new ArrayList<Secteur>();
                     secteurs.addAll(a.getSecteurs());
                     secteurs.add(secteur);
                     a.setSecteurs(secteurs);
-                }a.setUtilisateur(utilisateur);
-               try {
+                }
+                a.setUtilisateur(utilisateur);
+                try {
                     this.update(a);
                 } catch (Exception ex) {
                     Logger.getLogger(AuthorisationAccesServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
+            } else {
                 throw new NullPointerException("L'objet passé en parametre est null.");
             }
-            
-        }else{
+
+        } else {
             throw new NullPointerException("L'objet passé en parametre est null.");
         }
     }
 
     @Override
     public List<Secteur> getSecteurNotAssignByUtilisateur(Utilisateur utilisateur) {
-        List<Secteur> secteur =null;
-        if(utilisateur!=null){
+        List<Secteur> secteur = null;
+        if (utilisateur != null) {
             secteur = this.authorisationAccesSrv.getSecteurNotAssignByUtilisateur(utilisateur);
-        }else{
+        } else {
             throw new NullPointerException("L'objet passé en parametre est null.");
-        }return secteur;
+        }
+        return secteur;
     }
 
     @Override
@@ -163,6 +169,4 @@ public class AuthorisationAccesServiceImpl implements AuthorisationAccesService{
         }
         return authorisationAcces;
     }
-    
-    
 }

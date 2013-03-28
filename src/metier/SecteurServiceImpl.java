@@ -15,33 +15,32 @@ import physique.data.SecteurServiceORM;
  * @author
  * @author
  */
+public class SecteurServiceImpl implements SecteurService {
 
-public class SecteurServiceImpl implements SecteurService {    
-    
     private SecteurServiceORM secteurSrv = PhysiqueDataFactory.getSecteurServiceORM();
-    
+
     @Override
     public void add(Secteur secteur) throws Exception {
-        if(secteur!=null){
-            if(secteur instanceof Secteur){
+        if (secteur != null) {
+            if (secteur instanceof Secteur) {
                 secteurSrv.add(secteur);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(Secteur secteur) throws Exception {
-        if(secteur!=null){
-            if(secteur instanceof Secteur){
+        if (secteur != null) {
+            if (secteur instanceof Secteur) {
                 secteurSrv.update(secteur);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -52,25 +51,25 @@ public class SecteurServiceImpl implements SecteurService {
         AttributionSecteurCameraService attributionSecteurCameraSrv = MetierFactory.getAttributionSecteurCameraService();
         AttributionSecteurDetecteurIntrusionService attributionSecteurDetecteurIntrusionSrv = MetierFactory.getAttributionSecteurDetecteurIntrusionService();
         AuthorisationAccesService authorisationAccesSrv = MetierFactory.getAuthorisationAccesService();
-        if(secteur!=null){
-            if(secteur instanceof Secteur){
+        if (secteur != null) {
+            if (secteur instanceof Secteur) {
                 AttributionSecteurBorneAcces acces = attributionSecteurBorneAccesSrv.getBySecteur(secteur);
-                if(acces!=null){
+                if (acces != null) {
                     attributionSecteurBorneAccesSrv.remove(acces);
                 }
                 AttributionSecteurCamera cameraSrv = attributionSecteurCameraSrv.getBySecteur(secteur);
-                if(cameraSrv!=null){
+                if (cameraSrv != null) {
                     attributionSecteurCameraSrv.remove(cameraSrv);
                 }
                 AttributionSecteurDetecteurIntrusion detecteurIntrusion = attributionSecteurDetecteurIntrusionSrv.getBySecteur(secteur);
-                if(detecteurIntrusion!=null){
+                if (detecteurIntrusion != null) {
                     attributionSecteurDetecteurIntrusionSrv.remove(detecteurIntrusion);
                 }
                 this.secteurSrv.remove(secteur);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }

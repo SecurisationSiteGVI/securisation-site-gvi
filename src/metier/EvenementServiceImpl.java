@@ -12,48 +12,48 @@ import physique.data.PhysiqueDataFactory;
 
 /**
  * @author damien
- * @author 
- * @author 
+ * @author
+ * @author
  */
-
-public class EvenementServiceImpl implements EvenementService{
+public class EvenementServiceImpl implements EvenementService {
 
     private EvenementServiceORM evenementSrv = PhysiqueDataFactory.getEvenementServiceORM();
+
     @Override
     public void add(Evenement evenement) throws Exception {
-        if(evenement!=null){
-            if(evenement instanceof Evenement){
+        if (evenement != null) {
+            if (evenement instanceof Evenement) {
                 evenementSrv.add(evenement);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(Evenement evenement) throws Exception {
-        if(evenement!=null){
-            if(evenement instanceof Evenement){
+        if (evenement != null) {
+            if (evenement instanceof Evenement) {
                 evenementSrv.update(evenement);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(Evenement evenement) throws Exception {
-        if(evenement!=null){
-            if(evenement instanceof Evenement){
+        if (evenement != null) {
+            if (evenement instanceof Evenement) {
                 evenementSrv.remove(evenement);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -128,5 +128,4 @@ public class EvenementServiceImpl implements EvenementService{
     public List<Acces> getAccesByUtilisateur(Utilisateur utilisateur) {
         return this.evenementSrv.getAccesByUtilisateur(utilisateur);
     }
-    
 }

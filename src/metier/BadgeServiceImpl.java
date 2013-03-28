@@ -9,42 +9,44 @@ import physique.data.PhysiqueDataFactory;
  * @author damien
  */
 public class BadgeServiceImpl implements BadgeService {
+
     private BadgeServiceORM badgeSrv = PhysiqueDataFactory.getBadgeServiceORM();
+
     @Override
     public void add(Badge badge) throws Exception {
-      if(badge!=null){
-            if(badge instanceof Badge){
+        if (badge != null) {
+            if (badge instanceof Badge) {
                 badgeSrv.add(badge);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void update(Badge badge) throws Exception {
-        if(badge!=null){
-            if(badge instanceof Badge){
+        if (badge != null) {
+            if (badge instanceof Badge) {
                 badgeSrv.update(badge);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
 
     @Override
     public void remove(Badge badge) throws Exception {
-        if(badge!=null){
-            if(badge instanceof Badge){
+        if (badge != null) {
+            if (badge instanceof Badge) {
                 badgeSrv.remove(badge);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
     }
@@ -53,7 +55,7 @@ public class BadgeServiceImpl implements BadgeService {
     public List<Badge> getAll() throws Exception {
         return this.badgeSrv.getAll();
     }
-    
+
     @Override
     public List<Badge> getAll(int debut, int nbResult) throws Exception {
         return this.badgeSrv.getAll(debut, nbResult);
@@ -78,16 +80,15 @@ public class BadgeServiceImpl implements BadgeService {
     @Override
     public Badge getByNumero(String numero) {
         Badge b = null;
-        if(numero!=null){
-            if(numero instanceof String){
+        if (numero != null) {
+            if (numero instanceof String) {
                 b = badgeSrv.getByNumero(numero);
-            }else{
+            } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }
-        }else{
+        } else {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return b;
     }
-
 }

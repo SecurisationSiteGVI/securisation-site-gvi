@@ -39,10 +39,10 @@ public interface EvenementService {
     public Long count();
 
     public Evenement getById(Long id);
-    
+
     public List<Evenement> getByMostRecent();
-    
+
     public List<Evenement> getByMostRecent(int debut, int nbResut);
-    
+
     public List<Acces> getAccesByUtilisateur(Utilisateur utilisateur);
 }
