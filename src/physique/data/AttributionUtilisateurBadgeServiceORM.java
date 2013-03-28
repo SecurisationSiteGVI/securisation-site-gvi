@@ -41,11 +41,11 @@ public interface AttributionUtilisateurBadgeServiceORM {
 
     public List<Utilisateur> getUtilisateurNotAssignByNom(String nom, int debut, int nbResult);
 
-    public List<Badge> getBadgesNotAssignByNumero(int numero);
+    public List<Badge> getBadgesNotAssignByNumero(String numero);
 
     public AttributionUtilisateurBadge getById(Long id);
     
     public AttributionUtilisateurBadge getByBadge(Badge badge);
 
-    public List<Badge> getBadgesNotAssignByNumero(int numero, int debut, int nbResult);
+    public List<Badge> getBadgesNotAssignByNumero(String numero, int debut, int nbResult);
 }

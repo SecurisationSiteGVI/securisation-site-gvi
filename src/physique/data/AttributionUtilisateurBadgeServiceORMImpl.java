@@ -147,7 +147,7 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
     }
 
     @Override
-    public List<Badge> getBadgesNotAssignByNumero(int numero) {
+    public List<Badge> getBadgesNotAssignByNumero(String numero) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetBadgesNotAssignByNumero");
         query.setParameter("numero", numero);
@@ -157,7 +157,7 @@ public class AttributionUtilisateurBadgeServiceORMImpl implements AttributionUti
     }
 
     @Override
-    public List<Badge> getBadgesNotAssignByNumero(int numero, int debut, int nbResult) {
+    public List<Badge> getBadgesNotAssignByNumero(String numero, int debut, int nbResult) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("AttributionUtilisateurBadgeGetBadgesNotAssignByNumero");
         query.setParameter("numero", numero);

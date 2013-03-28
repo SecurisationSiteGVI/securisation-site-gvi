@@ -5,6 +5,7 @@
 package physique.data;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.BorneAcces;
 
@@ -61,12 +62,18 @@ public class BorneAccesServiceORMImpl implements BorneAccesServiceORM {
         Connexion.disconect();
         return borneAcces;
     }
+
     @Override
-    public BorneAcces getByNom(String nom){
+    public BorneAcces getByNom(String nom) {
         Connexion.getPersistance();
         Query query = Connexion.em.createNamedQuery("BorneAccesGetByNom");
         query.setParameter("nom", nom);
-        BorneAcces i = (BorneAcces) query.getSingleResult();
+        BorneAcces i = null;
+        try {
+            i = (BorneAcces) query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("Il n'y a pas de lecteur avec le nom : " + nom + " dans la base.");
+        }
         Connexion.disconect();
         return i;
     }
