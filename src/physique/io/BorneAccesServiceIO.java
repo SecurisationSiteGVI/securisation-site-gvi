@@ -23,5 +23,5 @@ public interface BorneAccesServiceIO {
 
     public void stop() throws Exception;
 
-    public void connection() throws Exception;
+    public boolean connection() throws Exception;
 }

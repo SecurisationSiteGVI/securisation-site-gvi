@@ -30,25 +30,27 @@ public class BorneAccesServiceIOImpl extends Observable implements BorneAccesSer
     public BorneAccesServiceIOImpl() {
     }
 
-    public void connection() {
+    @Override
+    public boolean connection() {
+        boolean ret=false;
         try {
             NoClassDefFoundError e;
             this.is = new SerialComImpl();
             this.is.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             this.connection = true;
+            ret=true;
         } catch (Throwable ex) {
             System.out.println("Lecteur RFID non connecté sur le port \"/dev/ttyACM0\"");
-        }
+        }return ret;
     }
 
     @Override
     public Trame getTrame() throws Exception {
         if (!this.connection) {
-            this.connection();
-        }
-        if (!this.thread) {
+            if(this.connection()){
                 Thread t = new Thread(this);
                 t.start();
+            }
         }
         return trame;
     }
