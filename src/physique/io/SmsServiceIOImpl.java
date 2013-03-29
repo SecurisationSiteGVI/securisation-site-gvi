@@ -7,6 +7,8 @@ package physique.io;
 import gnu.io.SerialPort;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lml.tsiris.serialcomm.SerialCom;
+import lml.tsiris.serialcomm.SerialComImpl;
 
 /**
  *
@@ -16,6 +18,7 @@ public class SmsServiceIOImpl implements SmsServiceIO{
 
     SerialPortDriverUsb _portDriver = null;
     private boolean messageEnvoyer = false;
+//    private SerialCom is;
 
     public SmsServiceIOImpl() {
     }
@@ -31,7 +34,9 @@ public class SmsServiceIOImpl implements SmsServiceIO{
     @Override
     public void creationPort() throws Exception {
         try {
-            _portDriver = new SerialPortDriverUsb(this);
+//            _portDriver = new SerialPortDriverUsb(this);
+//            this.is = new SerialComImpl();
+            _portDriver.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             Thread.sleep(2000);
         } catch (Exception e) {
             System.out.println("Carte d'envoie sms non connecté");
@@ -42,8 +47,10 @@ public class SmsServiceIOImpl implements SmsServiceIO{
     public void envoie(String s) throws Exception {
         
         _portDriver.writeToSerial(s);
-        System.out.println("Envoit du message: " + s);
-        _portDriver.closeCurrentPort();
+//        this.is.write(s);
+//        System.out.println("Envoit du message: " + s);
+//        _portDriver.closeCurrentPort();
+        _portDriver.close();
         setMessageEnvoyer(true);
     }
 }
