@@ -12,7 +12,7 @@ import gnu.io.*;
 import java.io.*;
 import java.util.*;
 
-public class SerialPortDriverRadio implements SerialPortEventListener {
+public class SerialPortDriverRadio extends Observable implements SerialPortEventListener {
 
     DetecteurIntrusionServiceIOImpl detecteurIntrusionServiceIOImpl = null;
     private static SerialPortDriverRadio _serialPortDriver;
@@ -25,7 +25,7 @@ public class SerialPortDriverRadio implements SerialPortEventListener {
 
     public SerialPortDriverRadio(DetecteurIntrusionServiceIOImpl detecteurIntrusionServiceIOImpl) {
         this.detecteurIntrusionServiceIOImpl = detecteurIntrusionServiceIOImpl;
-        cycle();
+//        cycle();
     }
 
     public void closeCurrentPort() {
@@ -60,7 +60,7 @@ public class SerialPortDriverRadio implements SerialPortEventListener {
             /* Close the old port.
              */
             String oldPortName = _portName;
-            closeCurrentPort();
+//            closeCurrentPort();
 
             /* Loop through the list of serial ports until getting to the one currently
              * in use.
@@ -94,7 +94,7 @@ public class SerialPortDriverRadio implements SerialPortEventListener {
                     continue;
                 }
 
-                _port.setSerialPortParams(9600, 8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+//                _port.setSerialPortParams(9600, 8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
                 _portName = port.getName();
                 _serialOutput = _port.getOutputStream();
                 break;
@@ -167,18 +167,16 @@ public class SerialPortDriverRadio implements SerialPortEventListener {
     @Override
     public void serialEvent(SerialPortEvent evt) {
         try {
-            switch (evt.getEventType()) {
-                case SerialPortEvent.DATA_AVAILABLE:
-                    byte singleData = (byte) _serialInput.read();
-                    if (singleData != NEW_LINE_ASCII) {
-                        logText = new String(new byte[]{singleData});
-                        System.out.print(logText);
-//                        PhysiqueIOFactory.getSmsServiceIO().creationPort();
-//                        PhysiqueIOFactory.getSmsServiceIO().envoie(logText);
-                    } else {
-//                        PhysiqueIOFactory.getSmsServiceIO().setMessageEnvoyer(false);
-                        System.out.print("\n");
-                    }
+            byte singleData = (byte) _serialInput.read();
+
+            if (singleData != NEW_LINE_ASCII) {
+                logText = new String(new byte[]{singleData});
+                System.out.print(logText);
+                PhysiqueIOFactory.getSmsServiceIO().creationPort();
+                PhysiqueIOFactory.getSmsServiceIO().envoie(logText);
+            } else {
+                PhysiqueIOFactory.getSmsServiceIO().setMessageEnvoyer(false);
+                System.out.print("\n");
             }
         } catch (Exception e) {
             logText = "Failed to read data. (" + e.toString() + ")";
