@@ -43,7 +43,7 @@ public class SerialPortDriverUsb implements SerialPortEventListener{
         cycle();
     }
 
-    private void closeCurrentPort() {
+    public void closeCurrentPort() {
         if (_port != null) {
             try {
                 _port.close();
@@ -143,8 +143,8 @@ public class SerialPortDriverUsb implements SerialPortEventListener{
         cycle();
     }
 
-    public void writeToSerial(String numero) {
-        int i = Integer.parseInt(numero);
+    public void writeToSerial(String s) {
+        int i = Integer.parseInt(s);
         try {
             _serialOutput.write(i);
         } catch (IOException ex) {
