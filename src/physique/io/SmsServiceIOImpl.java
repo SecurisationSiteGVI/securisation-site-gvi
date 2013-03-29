@@ -12,11 +12,20 @@ import java.util.logging.Logger;
  *
  * @author Pierre
  */
-public class SmsServiceIOImpl implements SmsServiceIO, Runnable {
+public class SmsServiceIOImpl implements SmsServiceIO{
 
     SerialPortDriverUsb _portDriver = null;
+    private boolean messageEnvoyer = false;
 
     public SmsServiceIOImpl() {
+    }
+
+    public boolean isMessageEnvoyer() {
+        return messageEnvoyer;
+    }
+
+    public void setMessageEnvoyer(boolean messageEnvoyer) {
+        this.messageEnvoyer = messageEnvoyer;
     }
 
     @Override
@@ -30,20 +39,11 @@ public class SmsServiceIOImpl implements SmsServiceIO, Runnable {
     }
 
     @Override
-    public void envoieNumero(String numero) throws Exception {
+    public void envoie(String s) throws Exception {
         
-        _portDriver.writeToSerial(numero);
-        System.out.println("Envoit du message au numéro " + numero);
-        run();
-    }
-    
-    public void run() {
-        try {
-            if (_portDriver.initIOStream() == true) {
-                _portDriver.initListener();
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(DetecteurIntrusionServiceIOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        _portDriver.writeToSerial(s);
+        System.out.println("Envoit du message: " + s);
+        _portDriver.closeCurrentPort();
+        setMessageEnvoyer(true);
     }
 }
