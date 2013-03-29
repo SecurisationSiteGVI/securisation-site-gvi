@@ -4,6 +4,7 @@
  */
 package physique.io;
 
+import java.awt.Event;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
 public class DetecteurIntrusionServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, Runnable {
 
     SerialPortDriverRadio _portDriver = null;
-
+    //public int i;
     public DetecteurIntrusionServiceIOImpl() {
     }
 
