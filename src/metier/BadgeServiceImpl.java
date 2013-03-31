@@ -1,7 +1,9 @@
 package metier;
 
 import java.util.List;
+import metier.entitys.AttributionUtilisateurBadge;
 import metier.entitys.Badge;
+import physique.data.AttributionUtilisateurBadgeServiceORM;
 import physique.data.BadgeServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -11,7 +13,7 @@ import physique.data.PhysiqueDataFactory;
 public class BadgeServiceImpl implements BadgeService {
 
     private BadgeServiceORM badgeSrv = PhysiqueDataFactory.getBadgeServiceORM();
-
+    private AttributionUtilisateurBadgeServiceORM attributionUtilisateurBadgeSrv = PhysiqueDataFactory.getAttributionUtilisateurBadgeServiceORM();
     @Override
     public void add(Badge badge) throws Exception {
         if (badge != null) {
@@ -42,6 +44,10 @@ public class BadgeServiceImpl implements BadgeService {
     public void remove(Badge badge) throws Exception {
         if (badge != null) {
             if (badge instanceof Badge) {
+                if(this.attributionUtilisateurBadgeSrv.getByBadge(badge)!=null){
+                    AttributionUtilisateurBadge badged = this.attributionUtilisateurBadgeSrv.getByBadge(badge);
+                    this.attributionUtilisateurBadgeSrv.remove(badged);
+                }
                 badgeSrv.remove(badge);
             } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
