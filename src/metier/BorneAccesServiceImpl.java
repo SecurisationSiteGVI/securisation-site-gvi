@@ -1,12 +1,12 @@
 package metier;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.text.StyledEditorKit;
 import metier.entitys.Acces;
 import metier.entitys.AttributionSecteurBorneAcces;
 import metier.entitys.AttributionUtilisateurBadge;
@@ -36,7 +36,8 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
         borneAccesServiceIOImpl.addObserver(this);
     }
 
-    public void startThread() {            
+    @Override
+    public void startThread() {
         try {
             this.borneAccesServiceIOImpl.getTrame();
         } catch (Exception ex) {
@@ -126,6 +127,7 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
         BorneAcces borne = PhysiqueDataFactory.getBorneAccesServiceORM().getByNom(this.borneAcces.getNom());
         Utilisateur utilisateur = null;
         boolean authorisationPassage = false;
+        
         if (attributionUtilisateurBadge != null) {
             utilisateur = attributionUtilisateurBadge.getUtilisateur();
             AuthorisationAcces authorisationAcces = PhysiqueDataFactory.getAuthorisationAccesServiceORM().getByUtilisateur(utilisateur);
@@ -137,12 +139,7 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
                     authorisationPassage = false;
                     for (int k = 0; k < listBorneAcces.size(); k++) {
                         if (listBorneAcces.get(k).getNom().equals(this.borneAcces.getNom())) {
-                            Date date = new Date();
-                            if((authorisationAcces.getHeureOuverture().getHours() < date.getHours()) && (authorisationAcces.getHeureFermeture().getHours() > date.getHours())){
-                               System.out.println("youyou"); 
-                            }
-                            System.out.println("Acces Authorisé !");
-                            authorisationPassage = true;
+                            authorisationPassage = verificationHoraire(authorisationAcces);
                             borne = listBorneAcces.get(k);
                         }
                     }
@@ -151,11 +148,52 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
             } else {
                 System.out.println("L'utilisateur n'a pas de secteur authorisé");
             }
-
         } else {
             System.out.println("Le badge n'a pas d'utilisateur d'attribuer.");
         }
-
+        creationEvennement(borne, authorisationPassage, utilisateur);  
+    }
+    
+    public boolean verificationHoraire(AuthorisationAcces authorisationAcces) {
+        boolean ret = false;
+        Date date = new Date();
+        SimpleDateFormat sdfHeure = new SimpleDateFormat("H");
+        SimpleDateFormat sdfMinute = new SimpleDateFormat("m");
+        int heureOuverture = Integer.valueOf(sdfHeure.format(authorisationAcces.getHeureOuverture()));
+        int heureFermeture = Integer.valueOf(sdfHeure.format(authorisationAcces.getHeureFermeture()));
+        int heureActuelle = Integer.valueOf(sdfHeure.format(date));
+        int minuteOuverture = Integer.valueOf(sdfMinute.format(authorisationAcces.getHeureOuverture()));
+        int minuteFermeture = Integer.valueOf(sdfMinute.format(authorisationAcces.getHeureFermeture()));
+        int minuteActuelle = Integer.valueOf(sdfMinute.format(date));
+        if((heureActuelle == heureOuverture) && (heureActuelle == heureFermeture)){
+            if((minuteActuelle >= minuteOuverture) && (minuteActuelle <= minuteOuverture)){
+                ret = true;
+                System.out.println("Acces authorisé !!");
+            }
+        }
+        else if (heureActuelle == heureOuverture) {
+            if (minuteActuelle >= minuteOuverture) {
+                ret = true;
+                System.out.println("Acces authorisé !!");
+            }
+        }
+        else if (heureActuelle == heureFermeture) {
+            if (minuteActuelle <= minuteFermeture) {
+                ret = true;
+                System.out.println("Acces authorisé !!");
+            }
+        }
+        if ((heureActuelle > heureOuverture) && (heureActuelle < heureFermeture)) {
+            ret = true;
+            System.out.println("Acces authorisé !!");
+        }
+        if (!ret) {
+            System.out.println("L'utilisateur ne respect pas les horaires d'ouverture");
+        }
+        return ret;  
+    }
+    
+    public void creationEvennement(BorneAcces borne, boolean authorisationPassage, Utilisateur utilisateur){
         Acces acces = new Acces();
         acces.setBorneAcces(borne);
         acces.setPassage(authorisationPassage);
