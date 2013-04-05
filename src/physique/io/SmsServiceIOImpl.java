@@ -37,7 +37,7 @@ public class SmsServiceIOImpl implements SmsServiceIO{
             _portDriver = new SerialPortDriverUsb();
 //            this.is = new SerialComImpl();
             _portDriver.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-//            Thread.sleep(2000);
+            Thread.sleep(2000);
 //            this.is = new SerialComImpl();
 //            this.is.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
         } catch (Exception e) {
