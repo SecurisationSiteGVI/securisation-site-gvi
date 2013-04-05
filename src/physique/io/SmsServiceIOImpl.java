@@ -14,7 +14,7 @@ import lml.tsiris.serialcomm.SerialComImpl;
  *
  * @author Pierre
  */
-public class SmsServiceIOImpl implements SmsServiceIO{
+public class SmsServiceIOImpl implements SmsServiceIO {
 
     SerialPortDriverUsb _portDriver = null;
     private boolean messageEnvoyer = false;
@@ -47,9 +47,10 @@ public class SmsServiceIOImpl implements SmsServiceIO{
 
     @Override
     public void envoie(String s) throws Exception {
-        
+
 //        _portDriver.writeToSerial(s);
 //        this.is.write(s);
+        creationPort();
         _portDriver.writeToSerial(s);
         System.out.println("Envoit du message: " + s);
         _portDriver.close();
