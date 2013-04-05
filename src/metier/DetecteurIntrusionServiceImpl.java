@@ -4,16 +4,22 @@
  */
 package metier;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import metier.entitys.DetecteurIntrusion;
+import metier.entitys.Evenement;
+import metier.entitys.Intrusion;
+import metier.entitys.NumeroPredefinis;
 import physique.data.DetecteurIntrusionServiceORM;
+import physique.data.NumeroPredefinisServiceORM;
 import physique.data.PhysiqueDataFactory;
 import physique.io.DetecteurIntrusionServiceIOImpl;
 import physique.io.PhysiqueIOFactory;
+import physique.io.SmsServiceIO;
 
 /**
  *
@@ -23,6 +29,9 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
 
     private DetecteurIntrusionServiceORM detecteurIntrusionSrv = PhysiqueDataFactory.getDetecteurIntrusionServiceORM();
     private DetecteurIntrusionServiceIOImpl detecteurIntrusionServiceIOImpl = (DetecteurIntrusionServiceIOImpl) PhysiqueIOFactory.getDetecteurIntrusionServiceIO();
+    private EvenementService evenementSrv = MetierFactory.getEvenementService();
+    private SmsServiceIO smsSrv = PhysiqueIOFactory.getSmsServiceIO();
+    private NumeroPredefinisServiceORM numeroPredefinisSrv = PhysiqueDataFactory.getNumeroPredefinisServiceORM();
 
     public DetecteurIntrusionServiceImpl() {
         detecteurIntrusionServiceIOImpl.addObserver(this);
@@ -91,8 +100,30 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
     @Override
     public void update(Observable o, Object o1) {
         if (o instanceof DetecteurIntrusionServiceIOImpl) {
-            DetecteurIntrusionServiceIOImpl oo = (DetecteurIntrusionServiceIOImpl) o;
+            try {
+                DetecteurIntrusionServiceIOImpl oo = (DetecteurIntrusionServiceIOImpl) o;
+                this.traitementEvenement();
+                this.traitementSms();
+            } catch (Exception ex) {
+                Logger.getLogger(DetecteurIntrusionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
+    public void traitementEvenement() throws Exception {
+        Intrusion e = new Intrusion();
+        e.setDateEvt(new Date());
+        
+        //e.setDetecteurIntrusion());
+        this.evenementSrv.add(e);
+    }
+
+    public void traitementSms() throws Exception {
+        NumeroPredefinis numeroPredefinis = this.numeroPredefinisSrv.getAll().get(0);
+        List<String> numeros = numeroPredefinis.getNumeros();
+        for (int i = 0; i < numeros.size(); i++) {
+            this.smsSrv.envoie(numeros.get(i));
+            Thread.sleep(500);
         }
     }
 
