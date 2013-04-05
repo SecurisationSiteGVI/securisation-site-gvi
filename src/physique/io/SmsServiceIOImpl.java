@@ -23,14 +23,6 @@ public class SmsServiceIOImpl implements SmsServiceIO {
     public SmsServiceIOImpl() {
     }
 
-    public boolean isMessageEnvoyer() {
-        return messageEnvoyer;
-    }
-
-    public void setMessageEnvoyer(boolean messageEnvoyer) {
-        this.messageEnvoyer = messageEnvoyer;
-    }
-
     @Override
     public void creationPort() throws Exception {
         try {
@@ -55,6 +47,5 @@ public class SmsServiceIOImpl implements SmsServiceIO {
         System.out.println("Envoit du message: " + s);
         _portDriver.close();
 //        this.is.close();
-        setMessageEnvoyer(true);
     }
 }
