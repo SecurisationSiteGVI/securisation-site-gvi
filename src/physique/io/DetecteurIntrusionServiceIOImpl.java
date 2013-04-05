@@ -22,17 +22,24 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
     }
 
     public void creationPort() throws Exception {
+        try {
         _portDriver = new SerialPortDriverRadio();
-        _portDriver.open("/dev/ttyUSB0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_2, SerialPort.PARITY_EVEN);
+        _portDriver.open("/dev/ttyUSB0", 9600, 8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
         System.out.println(_portDriver.getsPort());
         Thread t = new Thread(this);
         t.start();
+        } catch(Exception e) {
+            System.out.println("Carte detecteur grillage non connecté");
+        }
     }
 
     @Override
     public void run() {
         try {
             String s = _portDriver.readLine();
+            System.out.println("Information reçu " + s);
+            PhysiqueIOFactory.getSmsServiceIO().creationPort();
+            PhysiqueIOFactory.getSmsServiceIO().envoie(s);
         } catch (Exception ex) {
             Logger.getLogger(DetecteurIntrusionServiceIOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
