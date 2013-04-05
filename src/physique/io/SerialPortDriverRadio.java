@@ -27,7 +27,6 @@ public class SerialPortDriverRadio extends Observable{
     private final int tailleBloc = 8;
 
     public SerialPortDriverRadio() {
-//        cycle();
     }
 
     public void writeToSerial(String s) {
