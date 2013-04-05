@@ -17,8 +17,16 @@ import java.util.logging.Logger;
 public class DetecteurIntrusionServiceIOImpl extends Observable implements DetecteurIntrusionServiceIO, Runnable {
 
     SerialPortDriverRadio _portDriver = null;
-    //public int i;
+    private String numeroGrillage = null;
     public DetecteurIntrusionServiceIOImpl() {
+    }
+
+    public String getNumeroGrillage() {
+        return numeroGrillage;
+    }
+
+    public void setNumeroGrillage(String numeroGrillage) {
+        this.numeroGrillage = numeroGrillage;
     }
 
     public void creationPort() throws Exception {
@@ -36,10 +44,11 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
     @Override
     public void run() {
         try {
-            String s = _portDriver.readLine();
-            System.out.println("Information reçu " + s);
-            PhysiqueIOFactory.getSmsServiceIO().creationPort();
-            PhysiqueIOFactory.getSmsServiceIO().envoie(s);
+            numeroGrillage = _portDriver.readLine();
+            this.setChanged();
+            this.notifyObservers();
+            System.out.println("Information reçu " + numeroGrillage);
+            PhysiqueIOFactory.getSmsServiceIO().envoie(numeroGrillage);
         } catch (Exception ex) {
             Logger.getLogger(DetecteurIntrusionServiceIOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
