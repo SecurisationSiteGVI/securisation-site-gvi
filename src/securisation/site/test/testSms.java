@@ -13,7 +13,6 @@ import physique.io.PhysiqueIOFactory;
 public class testSms {
     
      public static void main(String[] args) throws Exception {
-         PhysiqueIOFactory.getSmsServiceIO().creationPort();
-         PhysiqueIOFactory.getSmsServiceIO().envoie("0");
+         PhysiqueIOFactory.getSmsServiceIO().envoie("0646709709");
      }
 }
