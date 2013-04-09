@@ -21,16 +21,21 @@ public class PhysiqueDataFactory {
     private static BadgeServiceORM badgeSrv = new BadgeServiceORMImpl();
     private static AttributionUtilisateurBadgeServiceORM attributionUtilisateurBadgeSrv = new AttributionUtilisateurBadgeServiceORMImpl();
     private static AttributionSecteurBorneAccesServiceORM attributionSecteurBorneAccesSrv = new AttributionSecteurBorneAccesServiceORMImpl();
-    private static AttributionSecteurCameraServiceORM attributionSecteurCameraSrv = new AttributionSecteurCameraServiceORMImpl();
+    private static AttributionSecteurCameraServiceORM attributionSecteurCameraSrv;
     private static AttributionSecteurDetectionIntrusionServiceORM attributionSecteurDetectionIntrusionSrv = new AttributionSecteurDetectionIntrusionServiceORMImpl();
-    private static SmsServiceORM smsSrv = new SmsServiceORMImpl();
     private static SecteurServiceORM secteurSrv = new SecteurServiceORMImpl();
 
     public static AttributionSecteurCameraServiceORM getAttributionSecteurCameraServiceORM() {
+        if(attributionSecteurCameraSrv==null){
+            attributionSecteurCameraSrv= new AttributionSecteurCameraServiceORMImpl();
+        }
         return attributionSecteurCameraSrv;
     }
 
     public static AttributionSecteurDetectionIntrusionServiceORM getAttributionSecteurDetectionIntrusionServiceORM() {
+        if(attributionSecteurCameraSrv==null){
+            attributionSecteurCameraSrv= new AttributionSecteurCameraServiceORMImpl();
+        }
         return attributionSecteurDetectionIntrusionSrv;
     }
 
@@ -80,9 +85,5 @@ public class PhysiqueDataFactory {
 
     public static EvenementServiceORM getEvenementServiceORM() {
         return evenementSrv;
-    }
-
-    public static SmsServiceORM getSmsServiceORM() {
-        return smsSrv;
     }
 }
