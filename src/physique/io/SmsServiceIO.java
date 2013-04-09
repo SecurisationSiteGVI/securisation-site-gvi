@@ -11,6 +11,4 @@ package physique.io;
 public interface SmsServiceIO {
     public void creationPort() throws Exception;
     public void envoie(String s) throws Exception;
-    public boolean isMessageEnvoyer();
-    public void setMessageEnvoyer(boolean messageEnvoyer);
 }

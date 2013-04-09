@@ -14,7 +14,7 @@ import lml.tsiris.serialcomm.SerialComImpl;
  *
  * @author Pierre
  */
-public class SmsServiceIOImpl implements SmsServiceIO{
+public class SmsServiceIOImpl implements SmsServiceIO {
 
     SerialPortDriverUsb _portDriver = null;
     private boolean messageEnvoyer = false;
@@ -23,21 +23,13 @@ public class SmsServiceIOImpl implements SmsServiceIO{
     public SmsServiceIOImpl() {
     }
 
-    public boolean isMessageEnvoyer() {
-        return messageEnvoyer;
-    }
-
-    public void setMessageEnvoyer(boolean messageEnvoyer) {
-        this.messageEnvoyer = messageEnvoyer;
-    }
-
     @Override
     public void creationPort() throws Exception {
         try {
             _portDriver = new SerialPortDriverUsb();
 //            this.is = new SerialComImpl();
             _portDriver.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-//            Thread.sleep(2000);
+            Thread.sleep(2000);
 //            this.is = new SerialComImpl();
 //            this.is.open("/dev/ttyACM0", 9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
         } catch (Exception e) {
@@ -47,13 +39,13 @@ public class SmsServiceIOImpl implements SmsServiceIO{
 
     @Override
     public void envoie(String s) throws Exception {
-        
+
 //        _portDriver.writeToSerial(s);
 //        this.is.write(s);
+        creationPort();
         _portDriver.writeToSerial(s);
         System.out.println("Envoit du message: " + s);
         _portDriver.close();
 //        this.is.close();
-        setMessageEnvoyer(true);
     }
 }
