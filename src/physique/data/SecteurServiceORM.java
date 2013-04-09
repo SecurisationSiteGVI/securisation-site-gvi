@@ -21,6 +21,8 @@ public interface SecteurServiceORM {
 
     public List<Secteur> getAll();
 
+    public List<Secteur> getAll(int index, int nbResult);
+    
     public Long count();
 
     public Secteur getById(Long id);

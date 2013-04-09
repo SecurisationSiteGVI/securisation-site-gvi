@@ -61,4 +61,15 @@ public class SecteurServiceORMImpl implements SecteurServiceORM {
         Connexion.disconect();
         return secteur;
     }
+
+    @Override
+    public List<Secteur> getAll(int index, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("SecteurGetAll");
+        query.setFirstResult(index);
+        query.setMaxResults(nbResult);
+        List<Secteur> secteurs = query.getResultList();
+        Connexion.disconect();
+        return secteurs;
+    }
 }
