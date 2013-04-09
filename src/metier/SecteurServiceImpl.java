@@ -94,4 +94,9 @@ public class SecteurServiceImpl implements SecteurService {
         }
         return secteur;
     }
+
+    @Override
+    public List<Secteur> getAll(int index, int nbResult) {
+        return this.secteurSrv.getAll(index, nbResult);
+    }
 }
