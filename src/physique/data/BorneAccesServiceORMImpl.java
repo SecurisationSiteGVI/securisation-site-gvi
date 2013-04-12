@@ -44,7 +44,17 @@ public class BorneAccesServiceORMImpl implements BorneAccesServiceORM {
         Connexion.disconect();
         return borneAcceses;
     }
-
+@Override
+    public List<BorneAcces> getAll(int index, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("borneAccesGetAll");
+        query.setFirstResult(index);
+        query.setMaxResults(nbResult);
+        List<BorneAcces> borneAcceses = query.getResultList();
+        
+        Connexion.disconect();
+        return borneAcceses;
+    }
     @Override
     public Long count() {
         Connexion.getPersistance();

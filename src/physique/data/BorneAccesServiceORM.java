@@ -26,4 +26,6 @@ public interface BorneAccesServiceORM {
     public BorneAcces getById(Long id);
 
     public BorneAcces getByNom(String nom);
+    
+     public List<BorneAcces> getAll(int index, int nbResult);
 }
