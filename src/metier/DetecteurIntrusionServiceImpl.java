@@ -135,4 +135,9 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
             Logger.getLogger(DetecteurIntrusionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public List<DetecteurIntrusion> getAll(int index, int nbResult) {
+        return this.detecteurIntrusionSrv.getAll(index, nbResult);
+    }
 }

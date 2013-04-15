@@ -23,6 +23,8 @@ public interface DetecteurIntrusionService {
 
     public Long count();
 
+    public List<DetecteurIntrusion> getAll(int index, int nbResult);
+    
     public DetecteurIntrusion getById(Long id);
 
     public void startThread();
