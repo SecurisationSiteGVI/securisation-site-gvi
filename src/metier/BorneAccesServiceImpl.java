@@ -217,4 +217,9 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
             verificationAcces();
         }
     }
+
+    @Override
+    public List<BorneAcces> getAll(int index, int nbResult) {
+        return this.borneAccesSrv.getAll(index, nbResult);
+    }
 }
