@@ -61,4 +61,15 @@ public class CameraServiceORMImpl implements CameraServiceORM {
         Connexion.disconect();
         return camera;
     }
+
+    @Override
+    public List<Camera> getAll(int index, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("cameraGetAll");
+        query.setFirstResult(index);
+        query.setMaxResults(nbResult);
+        List<Camera> cameras = query.getResultList();
+        Connexion.disconect();
+        return cameras;
+    }
 }

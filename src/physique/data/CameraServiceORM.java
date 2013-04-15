@@ -20,7 +20,7 @@ public interface CameraServiceORM {
     public void update(Camera camera);
 
     public List<Camera> getAll();
-
+    public List<Camera> getAll(int index,int nbResult);
     public Long count();
 
     public Camera getById(Long id);
