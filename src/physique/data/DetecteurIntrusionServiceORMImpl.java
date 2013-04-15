@@ -43,6 +43,17 @@ public class DetecteurIntrusionServiceORMImpl implements DetecteurIntrusionServi
         Connexion.disconect();
         return detecteurIntrusions;
     }
+    
+    @Override
+    public List<DetecteurIntrusion> getAll(int i, int nb) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("DetecteurIntrusionGetAll");
+        query.setFirstResult(i);
+        query.setMaxResults(nb);
+        List<DetecteurIntrusion> detecteurIntrusions = query.getResultList();
+        Connexion.disconect();
+        return detecteurIntrusions;
+    }
 
     @Override
     public Long count() {

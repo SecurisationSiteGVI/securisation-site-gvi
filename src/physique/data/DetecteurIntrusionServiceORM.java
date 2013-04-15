@@ -23,5 +23,7 @@ public interface DetecteurIntrusionServiceORM {
 
     public List<DetecteurIntrusion> getAll();
 
+    public List<DetecteurIntrusion> getAll(int i, int nb);
+    
     public DetecteurIntrusion getById(Long id);
 }
