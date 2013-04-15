@@ -1,11 +1,8 @@
 package metier;
 
-import java.util.Date;
 import java.util.List;
 import metier.entitys.Camera;
-import metier.entitys.Photo;
 import physique.data.CameraServiceORM;
-import physique.data.EvenementServiceORM;
 import physique.data.PhysiqueDataFactory;
 
 /**
@@ -177,5 +174,10 @@ public class CameraServiceImpl implements CameraService {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return camera;
+    }
+
+    @Override
+    public List<Camera> getAll(int index, int nbResult) {
+        return this.cameraSrv.getAll(index, nbResult);
     }
 }
