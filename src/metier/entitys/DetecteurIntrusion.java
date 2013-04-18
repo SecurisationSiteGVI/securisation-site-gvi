@@ -5,13 +5,11 @@
 package metier.entitys;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -24,6 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @NamedQueries({
     @NamedQuery(name="DetecteurIntrusionCount",query="SELECT COUNT(d) FROM DetecteurIntrusion d"),
+    @NamedQuery(name="DetecteurIntrusionGetbyPosition",query="SELECT d FROM DetecteurIntrusion d WHERE d.position.id = :id"),
     @NamedQuery(name="DetecteurIntrusionGetAll",query="SELECT d FROM DetecteurIntrusion d")
 })
 @XmlRootElement
@@ -39,7 +38,6 @@ public class DetecteurIntrusion implements Serializable {
     @Column(nullable=false)
     private String nom;
     @OneToOne()
-    @JoinColumn(nullable=false)
     private Position position;
     
     public Long getId() {

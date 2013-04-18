@@ -23,12 +23,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="borneAccesCount",query="SELECT COUNT(b) FROM BorneAcces b"),
-    @NamedQuery(name="borneAccesGetAll",query="SELECT b FROM BorneAcces b"),
-    @NamedQuery(name="BorneAccesGetByNom",query="SELECT b FROM BorneAcces b WHERE b.nom = :nom")
+    @NamedQuery(name = "borneAccesCount", query = "SELECT COUNT(b) FROM BorneAcces b"),
+    @NamedQuery(name = "borneAccesGetAll", query = "SELECT b FROM BorneAcces b"),
+    @NamedQuery(name = "BorneAccesGetByNom", query = "SELECT b FROM BorneAcces b WHERE b.nom = :nom"),
+    @NamedQuery(name = "BorneAccesByPosition", query = "SELECT b FROM BorneAcces b WHERE b.position.id = :id")
 })
 @XmlRootElement
 public class BorneAcces implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -38,12 +40,11 @@ public class BorneAcces implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne()
-    @JoinColumn(nullable=false)
     private Position position;
     private String nom;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private Boolean entrer;
-    
+
     public Long getId() {
         return id;
     }
@@ -74,12 +75,12 @@ public class BorneAcces implements Serializable {
 
     @Override
     public String toString() {
-        
-        String entr= "sorie";
-        if(this.entrer){
+
+        String entr = "sorie";
+        if (this.entrer) {
             entr = "entré";
         }
-        return nom+" "+entr;
+        return nom + " " + entr;
     }
 
     public Position getPosition() {
@@ -105,5 +106,4 @@ public class BorneAcces implements Serializable {
     public void setEntrer(Boolean entrer) {
         this.entrer = entrer;
     }
-    
 }
