@@ -2,6 +2,7 @@ package metier;
 
 import java.util.List;
 import metier.entitys.BorneAcces;
+import metier.entitys.Position;
 
 /**
  * @author damien
@@ -25,6 +26,8 @@ public interface BorneAccesService {
 
     public void verificationAcces() throws Exception;
 
+    
+    public List<BorneAcces> getByPosition(Position position);
     public BorneAcces getByNom(String nom);
      public List<BorneAcces> getAll(int index, int nbResult);
      

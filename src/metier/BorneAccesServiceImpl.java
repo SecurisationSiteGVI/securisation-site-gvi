@@ -13,6 +13,7 @@ import metier.entitys.AttributionUtilisateurBadge;
 import metier.entitys.AuthorisationAcces;
 import metier.entitys.Badge;
 import metier.entitys.BorneAcces;
+import metier.entitys.Position;
 import metier.entitys.Secteur;
 import metier.entitys.Utilisateur;
 import physique.data.BorneAccesServiceORM;
@@ -221,5 +222,20 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
     @Override
     public List<BorneAcces> getAll(int index, int nbResult) {
         return this.borneAccesSrv.getAll(index, nbResult);
+    }
+
+    @Override
+    public List<BorneAcces> getByPosition(Position position) {
+        List<BorneAcces> b = null;
+        if (position != null) {
+            if (position instanceof Position) {
+                b = borneAccesSrv.getByPosition(position);
+            } else {
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return b;
     }
 }
