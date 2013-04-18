@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.Camera;
+import metier.entitys.Position;
 
 /**
  *
@@ -23,5 +24,6 @@ public interface CameraServiceORM {
     public List<Camera> getAll(int index,int nbResult);
     public Long count();
 
+    public List<Camera> getByPosition(Position position);
     public Camera getById(Long id);
 }

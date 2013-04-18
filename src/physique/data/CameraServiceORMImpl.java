@@ -7,6 +7,7 @@ package physique.data;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.Camera;
+import metier.entitys.Position;
 
 /**
  *
@@ -68,6 +69,16 @@ public class CameraServiceORMImpl implements CameraServiceORM {
         Query query = Connexion.em.createNamedQuery("cameraGetAll");
         query.setFirstResult(index);
         query.setMaxResults(nbResult);
+        List<Camera> cameras = query.getResultList();
+        Connexion.disconect();
+        return cameras;
+    }
+
+    @Override
+    public List<Camera> getByPosition(Position position) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("CameraByPosition");
+        query.setParameter("id", position.getId());
         List<Camera> cameras = query.getResultList();
         Connexion.disconect();
         return cameras;
