@@ -7,6 +7,7 @@ package physique.data;
 import java.util.List;
 import javax.persistence.Query;
 import metier.entitys.DetecteurIntrusion;
+import metier.entitys.Position;
 
 /**
  *
@@ -71,5 +72,15 @@ public class DetecteurIntrusionServiceORMImpl implements DetecteurIntrusionServi
         DetecteurIntrusion detecteurIntrusion = Connexion.em.find(DetecteurIntrusion.class, id);
         Connexion.disconect();
         return detecteurIntrusion;
+    }
+
+    @Override
+    public List<DetecteurIntrusion> getByPosition(Position position) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("DetecteurIntrusionGetbyPosition");
+        query.setParameter("id", position.getId());
+        List<DetecteurIntrusion> detecteurIntrusions = query.getResultList();
+        Connexion.disconect();
+        return detecteurIntrusions;
     }
 }

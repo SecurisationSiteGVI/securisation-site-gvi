@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.DetecteurIntrusion;
+import metier.entitys.Position;
 
 /**
  *
@@ -26,4 +27,5 @@ public interface DetecteurIntrusionServiceORM {
     public List<DetecteurIntrusion> getAll(int i, int nb);
     
     public DetecteurIntrusion getById(Long id);
+    public List<DetecteurIntrusion> getByPosition(Position position);
 }
