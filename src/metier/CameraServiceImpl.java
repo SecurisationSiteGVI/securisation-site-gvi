@@ -2,6 +2,7 @@ package metier;
 
 import java.util.List;
 import metier.entitys.Camera;
+import metier.entitys.Position;
 import physique.data.CameraServiceORM;
 import physique.data.PhysiqueDataFactory;
 
@@ -179,5 +180,19 @@ public class CameraServiceImpl implements CameraService {
     @Override
     public List<Camera> getAll(int index, int nbResult) {
         return this.cameraSrv.getAll(index, nbResult);
+    }
+
+    @Override
+    public List<Camera> getByPosition(Position position) {
+        List<Camera> cameras=null;
+        if (position != null) {
+            if (position instanceof Position) {
+               cameras= cameraSrv.getByPosition(position);
+            } else {
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }return cameras;
     }
 }

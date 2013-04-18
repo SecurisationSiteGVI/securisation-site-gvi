@@ -2,6 +2,7 @@ package metier;
 
 import java.util.List;
 import metier.entitys.Camera;
+import metier.entitys.Position;
 
 /**
  *
@@ -61,6 +62,7 @@ public interface CameraService {
 
     public Long count();
 
+    public List<Camera> getByPosition(Position position);
     public List<Camera> getAll(int index, int nbResult);
     public Camera getById(Long id);
 }
