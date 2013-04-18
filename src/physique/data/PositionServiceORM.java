@@ -21,7 +21,11 @@ public interface PositionServiceORM {
 
     public List<Position> getAll();
 
+    public List<Position> getAll(int index, int nbResult);
+    
     public Long count();
+    
 
+    
     public Position getById(Long id);
 }

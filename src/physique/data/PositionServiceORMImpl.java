@@ -61,4 +61,17 @@ public class PositionServiceORMImpl implements PositionServiceORM {
         Connexion.disconect();
         return position;
     }
+
+    @Override
+    public List<Position> getAll(int index, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("PositionGetAll");
+        query.setFirstResult(index);
+        query.setMaxResults(nbResult);
+        List<Position> positions = query.getResultList();
+        Connexion.disconect();
+        return positions;
+    }
+
+  
 }
