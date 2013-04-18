@@ -16,6 +16,7 @@ public interface PositionService {
 
     public List<Position> getAll() throws Exception;
 
+    public List<Position> getAll(int index, int nbResult);
     public Long count();
 
     public Position getById(Long id);
