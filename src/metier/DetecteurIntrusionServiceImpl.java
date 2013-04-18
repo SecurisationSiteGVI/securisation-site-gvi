@@ -14,6 +14,7 @@ import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.NumeroPredefinis;
+import metier.entitys.Position;
 import physique.data.DetecteurIntrusionServiceORM;
 import physique.data.NumeroPredefinisServiceORM;
 import physique.data.PhysiqueDataFactory;
@@ -139,5 +140,20 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
     @Override
     public List<DetecteurIntrusion> getAll(int index, int nbResult) {
         return this.detecteurIntrusionSrv.getAll(index, nbResult);
+    }
+
+    @Override
+    public List<DetecteurIntrusion> getByPosition(Position position) {
+        List<DetecteurIntrusion> detecteurIntrusions=null;
+        if (position != null) {
+            if (position instanceof Position) {
+              detecteurIntrusions=  detecteurIntrusionSrv.getByPosition(position);
+            } else {
+                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
+            }
+        } else {
+            throw new NullPointerException("Objet passé en parametre égale à null");
+        }
+        return detecteurIntrusions;
     }
 }

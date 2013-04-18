@@ -5,7 +5,9 @@
 package metier;
 
 import java.util.List;
+import metier.entitys.Camera;
 import metier.entitys.DetecteurIntrusion;
+import metier.entitys.Position;
 
 /**
  *
@@ -27,5 +29,7 @@ public interface DetecteurIntrusionService {
     
     public DetecteurIntrusion getById(Long id);
 
+    public List<DetecteurIntrusion> getByPosition(Position position);
+    
     public void startThread();
 }
