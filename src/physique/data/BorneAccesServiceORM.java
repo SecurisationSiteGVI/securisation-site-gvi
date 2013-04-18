@@ -6,6 +6,7 @@ package physique.data;
 
 import java.util.List;
 import metier.entitys.BorneAcces;
+import metier.entitys.Position;
 
 /**
  *
@@ -27,5 +28,6 @@ public interface BorneAccesServiceORM {
 
     public BorneAcces getByNom(String nom);
     
+        public List<BorneAcces> getByPosition(Position position);
      public List<BorneAcces> getAll(int index, int nbResult);
 }

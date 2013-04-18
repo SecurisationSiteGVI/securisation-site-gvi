@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import metier.entitys.BorneAcces;
+import metier.entitys.Position;
 
 /**
  *
@@ -86,5 +87,14 @@ public class BorneAccesServiceORMImpl implements BorneAccesServiceORM {
         }
         Connexion.disconect();
         return i;
+    }
+      @Override
+    public List<BorneAcces> getByPosition(Position position) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("BorneAccesByPosition");
+        query.setParameter("id", position.getId());
+        List<BorneAcces> borneAcceses = query.getResultList();
+        Connexion.disconect();
+        return borneAcceses;
     }
 }
