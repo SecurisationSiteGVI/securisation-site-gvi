@@ -21,12 +21,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="DetecteurIntrusionCount",query="SELECT COUNT(d) FROM DetecteurIntrusion d"),
-    @NamedQuery(name="DetecteurIntrusionGetbyPosition",query="SELECT d FROM DetecteurIntrusion d WHERE d.position.id = :id"),
-    @NamedQuery(name="DetecteurIntrusionGetAll",query="SELECT d FROM DetecteurIntrusion d")
+    @NamedQuery(name = "DetecteurIntrusionCount", query = "SELECT COUNT(d) FROM DetecteurIntrusion d"),
+    @NamedQuery(name = "DetecteurIntrusionGetbyPosition", query = "SELECT d FROM DetecteurIntrusion d WHERE d.position.id = :id"),
+    @NamedQuery(name = "DetecteurIntrusionGetAll", query = "SELECT d FROM DetecteurIntrusion d")
 })
 @XmlRootElement
 public class DetecteurIntrusion implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -35,11 +36,11 @@ public class DetecteurIntrusion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String nom;
     @OneToOne()
     private Position position;
-    
+
     public Long getId() {
         return id;
     }
@@ -88,5 +89,4 @@ public class DetecteurIntrusion implements Serializable {
     public void setPosition(Position position) {
         this.position = position;
     }
-    
 }

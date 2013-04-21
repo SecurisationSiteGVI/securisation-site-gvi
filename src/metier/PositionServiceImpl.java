@@ -58,7 +58,7 @@ public class PositionServiceImpl implements PositionService {
                         borneAccesSrv.update(byPosition.get(i));
                     }
                 }
-                
+
                 CameraServiceORM cameraSrv = PhysiqueDataFactory.getCameraServiceORM();
                 List<Camera> byPositionc = cameraSrv.getByPosition(position);
                 if (!byPositionc.isEmpty()) {
@@ -67,7 +67,7 @@ public class PositionServiceImpl implements PositionService {
                         cameraSrv.update(byPositionc.get(i));
                     }
                 }
-                
+
                 DetecteurIntrusionServiceORM detecteurIntrusionSrv = PhysiqueDataFactory.getDetecteurIntrusionServiceORM();
                 List<DetecteurIntrusion> byPositiond = detecteurIntrusionSrv.getByPosition(position);
                 if (!byPositiond.isEmpty()) {
@@ -76,7 +76,7 @@ public class PositionServiceImpl implements PositionService {
                         detecteurIntrusionSrv.update(byPositiond.get(i));
                     }
                 }
-                
+
                 positionSrv.remove(position);
             } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");

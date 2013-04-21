@@ -63,6 +63,8 @@ public interface CameraService {
     public Long count();
 
     public List<Camera> getByPosition(Position position);
+
     public List<Camera> getAll(int index, int nbResult);
+
     public Camera getById(Long id);
 }

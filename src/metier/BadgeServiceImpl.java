@@ -14,6 +14,7 @@ public class BadgeServiceImpl implements BadgeService {
 
     private BadgeServiceORM badgeSrv = PhysiqueDataFactory.getBadgeServiceORM();
     private AttributionUtilisateurBadgeServiceORM attributionUtilisateurBadgeSrv = PhysiqueDataFactory.getAttributionUtilisateurBadgeServiceORM();
+
     @Override
     public void add(Badge badge) throws Exception {
         if (badge != null) {
@@ -44,7 +45,7 @@ public class BadgeServiceImpl implements BadgeService {
     public void remove(Badge badge) throws Exception {
         if (badge != null) {
             if (badge instanceof Badge) {
-                if(this.attributionUtilisateurBadgeSrv.getByBadge(badge)!=null){
+                if (this.attributionUtilisateurBadgeSrv.getByBadge(badge) != null) {
                     AttributionUtilisateurBadge badged = this.attributionUtilisateurBadgeSrv.getByBadge(badge);
                     this.attributionUtilisateurBadgeSrv.remove(badged);
                 }

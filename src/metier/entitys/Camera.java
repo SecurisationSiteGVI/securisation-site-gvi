@@ -19,12 +19,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="CameraCount",query="SELECT COUNT(c) FROM Camera c"),
-    @NamedQuery(name="CameraByPosition",query="SELECT c FROM Camera c  WHERE c.position.id = :id" ),
-    @NamedQuery(name="cameraGetAll",query="SELECT c FROM Camera c")
+    @NamedQuery(name = "CameraCount", query = "SELECT COUNT(c) FROM Camera c"),
+    @NamedQuery(name = "CameraByPosition", query = "SELECT c FROM Camera c  WHERE c.position.id = :id"),
+    @NamedQuery(name = "cameraGetAll", query = "SELECT c FROM Camera c")
 })
 @XmlRootElement
 public class Camera implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -35,13 +36,14 @@ public class Camera implements Serializable {
     private Long id;
     @OneToOne()
     private Position position;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String nom;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String ip;
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TypeCamera type;
+
     public Long getId() {
         return id;
     }
@@ -90,7 +92,8 @@ public class Camera implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-     public String getIp() {
+
+    public String getIp() {
         return ip;
     }
 
@@ -111,5 +114,4 @@ public class Camera implements Serializable {
     public void setType(TypeCamera type) {
         this.type = type;
     }
-
 }

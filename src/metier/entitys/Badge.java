@@ -20,12 +20,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="badgeCount",query="SELECT COUNT(b) FROM Badge b"),
-    @NamedQuery(name="BadgeGetAll",query="SELECT b FROM Badge b"),
+    @NamedQuery(name = "badgeCount", query = "SELECT COUNT(b) FROM Badge b"),
+    @NamedQuery(name = "BadgeGetAll", query = "SELECT b FROM Badge b"),
     @NamedQuery(name = "BadgeGetByNumero", query = "SELECT b FROM Badge b WHERE b.numero = :numero")
 })
 @XmlRootElement
 public class Badge implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -34,9 +35,9 @@ public class Badge implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String numero;
-    
+
     public Long getId() {
         return id;
     }
@@ -67,7 +68,7 @@ public class Badge implements Serializable {
 
     @Override
     public String toString() {
-        return "Badge n°"+numero;
+        return "Badge n°" + numero;
     }
 
     public String getNumero() {
@@ -77,5 +78,4 @@ public class Badge implements Serializable {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    
 }

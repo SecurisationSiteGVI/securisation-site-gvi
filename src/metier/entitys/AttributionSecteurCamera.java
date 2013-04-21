@@ -23,24 +23,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="AttributionSecteurCameraCount",query="SELECT COUNT(a) FROM AttributionSecteurCamera a"),
-    @NamedQuery(name="AttributionSecteurCameraGetAll",query="SELECT a FROM AttributionSecteurCamera a"),
-    @NamedQuery(name="AttributionSecteurCameraGetBySecteur",query="SELECT a FROM AttributionSecteurCamera a WHERE a.secteur.id = :id")
+    @NamedQuery(name = "AttributionSecteurCameraCount", query = "SELECT COUNT(a) FROM AttributionSecteurCamera a"),
+    @NamedQuery(name = "AttributionSecteurCameraGetAll", query = "SELECT a FROM AttributionSecteurCamera a"),
+    @NamedQuery(name = "AttributionSecteurCameraGetBySecteur", query = "SELECT a FROM AttributionSecteurCamera a WHERE a.secteur.id = :id")
 })
 @XmlRootElement
 public class AttributionSecteurCamera implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @JoinColumn(nullable=false)
+    @JoinColumn(nullable = false)
     @OneToOne()
     private Secteur secteur;
     @OneToMany()
     private List<Camera> cameras;
+
     public Long getId() {
         return id;
     }
@@ -71,7 +74,7 @@ public class AttributionSecteurCamera implements Serializable {
 
     @Override
     public String toString() {
-        return "AttributionSecteur sur secteur :"+getSecteur();
+        return "AttributionSecteur sur secteur :" + getSecteur();
     }
 
     public Secteur getSecteur() {
@@ -89,5 +92,4 @@ public class AttributionSecteurCamera implements Serializable {
     public void setCameras(List<Camera> cameras) {
         this.cameras = cameras;
     }
-    
 }

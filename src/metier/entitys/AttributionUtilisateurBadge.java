@@ -23,26 +23,28 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="AttributionUtilisateurBadgeCount",query="SELECT COUNT(a) FROM AttributionUtilisateurBadge a"),
-    @NamedQuery(name="AttributionUtilisateurBadgeGetAll",query="SELECT a FROM AttributionUtilisateurBadge a"),
-    @NamedQuery(name="AttributionUtilisateurBadgeGetBadgesNotAssign",query="SELECT b FROM Badge b WHERE b.id NOT in (SELECT a.badge.id FROM AttributionUtilisateurBadge a )"),
-    @NamedQuery(name="AttributionUtilisateurBadgeGetUtilisateurNotAssign",query="SELECT u FROM Utilisateur u WHERE u.id NOT in (SELECT a.utilisateur.id FROM AttributionUtilisateurBadge a )"),
-    @NamedQuery(name="AttributionUtilisateurBadgeGetUtilisateurNotAssignByNom",query="SELECT u FROM Utilisateur u WHERE u.nom = :nom  AND u.id NOT in (SELECT a.utilisateur.id FROM AttributionUtilisateurBadge a )"),
-    @NamedQuery(name="AttributionUtilisateurBadgegetByUtilisateur",query="SELECT a FROM AttributionUtilisateurBadge a WHERE a.utilisateur.id = :id"),
-    @NamedQuery(name="AttributionUtilisateurBadgeGetBadgesNotAssignByNumero",query="SELECT b FROM Badge b WHERE b.id NOT in (SELECT a.badge.id FROM AttributionUtilisateurBadge a ) AND b.numero = :numero"),
-    @NamedQuery(name = "AttributionUtilisateurBadgeGetByBadge",query = "SELECT a FROM AttributionUtilisateurBadge a WHERE a.badge = :badge")
+    @NamedQuery(name = "AttributionUtilisateurBadgeCount", query = "SELECT COUNT(a) FROM AttributionUtilisateurBadge a"),
+    @NamedQuery(name = "AttributionUtilisateurBadgeGetAll", query = "SELECT a FROM AttributionUtilisateurBadge a"),
+    @NamedQuery(name = "AttributionUtilisateurBadgeGetBadgesNotAssign", query = "SELECT b FROM Badge b WHERE b.id NOT in (SELECT a.badge.id FROM AttributionUtilisateurBadge a )"),
+    @NamedQuery(name = "AttributionUtilisateurBadgeGetUtilisateurNotAssign", query = "SELECT u FROM Utilisateur u WHERE u.id NOT in (SELECT a.utilisateur.id FROM AttributionUtilisateurBadge a )"),
+    @NamedQuery(name = "AttributionUtilisateurBadgeGetUtilisateurNotAssignByNom", query = "SELECT u FROM Utilisateur u WHERE u.nom = :nom  AND u.id NOT in (SELECT a.utilisateur.id FROM AttributionUtilisateurBadge a )"),
+    @NamedQuery(name = "AttributionUtilisateurBadgegetByUtilisateur", query = "SELECT a FROM AttributionUtilisateurBadge a WHERE a.utilisateur.id = :id"),
+    @NamedQuery(name = "AttributionUtilisateurBadgeGetBadgesNotAssignByNumero", query = "SELECT b FROM Badge b WHERE b.id NOT in (SELECT a.badge.id FROM AttributionUtilisateurBadge a ) AND b.numero = :numero"),
+    @NamedQuery(name = "AttributionUtilisateurBadgeGetByBadge", query = "SELECT a FROM AttributionUtilisateurBadge a WHERE a.badge = :badge")
 })
 @XmlRootElement
 public class AttributionUtilisateurBadge implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne()
-    @JoinColumn(nullable=false)
+    @JoinColumn(nullable = false)
     private Utilisateur utilisateur;
     @OneToOne()
     private Badge badge;
+
     public Long getId() {
         return id;
     }
@@ -73,7 +75,7 @@ public class AttributionUtilisateurBadge implements Serializable {
 
     @Override
     public String toString() {
-        return getUtilisateur() +" "+getBadge();
+        return getUtilisateur() + " " + getBadge();
     }
 
     public Utilisateur getUtilisateur() {
@@ -91,5 +93,4 @@ public class AttributionUtilisateurBadge implements Serializable {
     public void setBadge(Badge badge) {
         this.badge = badge;
     }
-    
 }

@@ -20,12 +20,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="SecteurCount",query="SELECT COUNT(s) FROM Secteur s"),
-    @NamedQuery(name="SecteurGetAll",query="SELECT s FROM Secteur s")
+    @NamedQuery(name = "SecteurCount", query = "SELECT COUNT(s) FROM Secteur s"),
+    @NamedQuery(name = "SecteurGetAll", query = "SELECT s FROM Secteur s")
 })
-
 @XmlRootElement
 public class Secteur implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -34,9 +34,9 @@ public class Secteur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String nom;
-    
+
     public Long getId() {
         return id;
     }
@@ -77,5 +77,4 @@ public class Secteur implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
 }

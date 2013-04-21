@@ -22,8 +22,6 @@ public class MailServiceIOImpl implements MailServiceIO{
     private static String PASSWORD = "securisation";
     private static String PORT = "465";
     private static String FROM = "securisation.site.gvi@gmail.com";
-    private static String TO = "ches.damien@gmail.com";
-
     private static String STARTTLS = "true";
     private static String AUTH = "true";
     private static String DEBUG = "true";

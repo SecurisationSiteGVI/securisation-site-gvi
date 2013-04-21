@@ -26,13 +26,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="AttributionSecteurBorneAccesCount",query="SELECT COUNT(a) FROM AttributionSecteurBorneAcces a"),
-    @NamedQuery(name="AttributionSecteurBorneAccesGetAll",query="SELECT a FROM AttributionSecteurBorneAcces a"),
-    @NamedQuery(name="AttributionSecteurBorneAccesGetBySecteur",query="SELECT a FROM AttributionSecteurBorneAcces a WHERE a.secteur.id = :id"),
-    @NamedQuery(name="AttributionSecteurBorneAccesGetByBorneAcces",query="SELECT b FROM AttributionSecteurBorneAcces b JOIN b.borneAccess a WHERE a = :a")
+    @NamedQuery(name = "AttributionSecteurBorneAccesCount", query = "SELECT COUNT(a) FROM AttributionSecteurBorneAcces a"),
+    @NamedQuery(name = "AttributionSecteurBorneAccesGetAll", query = "SELECT a FROM AttributionSecteurBorneAcces a"),
+    @NamedQuery(name = "AttributionSecteurBorneAccesGetBySecteur", query = "SELECT a FROM AttributionSecteurBorneAcces a WHERE a.secteur.id = :id"),
+    @NamedQuery(name = "AttributionSecteurBorneAccesGetByBorneAcces", query = "SELECT b FROM AttributionSecteurBorneAcces b JOIN b.borneAccess a WHERE a = :a")
 })
 @XmlRootElement
 public class AttributionSecteurBorneAcces implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -42,11 +43,11 @@ public class AttributionSecteurBorneAcces implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne()
-    @JoinColumn(nullable=false)
+    @JoinColumn(nullable = false)
     private Secteur secteur;
     @OneToMany()
     private List<BorneAcces> borneAccess;
-    
+
     public Long getId() {
         return id;
     }
@@ -77,7 +78,7 @@ public class AttributionSecteurBorneAcces implements Serializable {
 
     @Override
     public String toString() {
-        return "AttributionSecteurBorneAcces sur secteur : "+getSecteur();
+        return "AttributionSecteurBorneAcces sur secteur : " + getSecteur();
     }
 
     public Secteur getSecteur() {
@@ -95,5 +96,4 @@ public class AttributionSecteurBorneAcces implements Serializable {
     public void setBorneAccess(List<BorneAcces> borneAccess) {
         this.borneAccess = borneAccess;
     }
-    
 }

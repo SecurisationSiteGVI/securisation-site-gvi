@@ -21,17 +21,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="IntrusionGetAll",query="SELECT i FROM Intrusion i")
+    @NamedQuery(name = "IntrusionGetAll", query = "SELECT i FROM Intrusion i")
 })
 @XmlRootElement
 public class Intrusion extends Evenement implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne()
     private DetecteurIntrusion detecteurIntrusion;
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -54,7 +55,7 @@ public class Intrusion extends Evenement implements Serializable {
 
     @Override
     public String toString() {
-        return "evenement sur : "+detecteurIntrusion;
+        return "evenement sur : " + detecteurIntrusion;
     }
 
     public DetecteurIntrusion getDetecteurIntrusion() {
@@ -64,5 +65,4 @@ public class Intrusion extends Evenement implements Serializable {
     public void setDetecteurIntrusion(DetecteurIntrusion detecteurIntrusion) {
         this.detecteurIntrusion = detecteurIntrusion;
     }
-    
 }

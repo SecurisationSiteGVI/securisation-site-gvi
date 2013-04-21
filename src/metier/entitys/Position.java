@@ -20,12 +20,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="PositionCount",query="SELECT COUNT(p) FROM Position p"),
-    @NamedQuery(name="PositionGetAll",query="SELECT p FROM Position p")
+    @NamedQuery(name = "PositionCount", query = "SELECT COUNT(p) FROM Position p"),
+    @NamedQuery(name = "PositionGetAll", query = "SELECT p FROM Position p")
 })
-
 @XmlRootElement
 public class Position implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -34,11 +34,11 @@ public class Position implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private double longitude;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private double latitude;
-    
+
     public Long getId() {
         return id;
     }
@@ -69,7 +69,7 @@ public class Position implements Serializable {
 
     @Override
     public String toString() {
-        return "longitude : "+longitude +" latitude : "+latitude;
+        return "longitude : " + longitude + " latitude : " + latitude;
     }
 
     public double getLongitude() {
@@ -87,5 +87,4 @@ public class Position implements Serializable {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    
 }

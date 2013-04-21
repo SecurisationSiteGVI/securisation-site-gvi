@@ -4,7 +4,6 @@
  */
 package metier.entitys;
 
-
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -22,12 +21,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-   @NamedQuery(name="NumeroPredefinisCount",query="SELECT COUNT(n) FROM NumeroPredefinis n"),
-   @NamedQuery(name="NumeroPredefinisGetAll",query="SELECT n FROM NumeroPredefinis n")
+    @NamedQuery(name = "NumeroPredefinisCount", query = "SELECT COUNT(n) FROM NumeroPredefinis n"),
+    @NamedQuery(name = "NumeroPredefinisGetAll", query = "SELECT n FROM NumeroPredefinis n")
 })
-
 @XmlRootElement
 public class NumeroPredefinis implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -36,8 +35,9 @@ public class NumeroPredefinis implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private List<String> numeros;
+
     public Long getId() {
         return id;
     }
@@ -78,6 +78,4 @@ public class NumeroPredefinis implements Serializable {
     public void setNumeros(List<String> numeros) {
         this.numeros = numeros;
     }
-
-    
 }

@@ -19,15 +19,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="AdministrateurCount",query="SELECT COUNT(a) FROM Administrateur a"),
-})
+    @NamedQuery(name = "AdministrateurCount", query = "SELECT COUNT(a) FROM Administrateur a"),})
 @XmlRootElement
 public class Administrateur extends Technicien implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
 
     @Override
     public int hashCode() {
@@ -48,6 +47,4 @@ public class Administrateur extends Technicien implements Serializable {
         }
         return true;
     }
-
-    
 }

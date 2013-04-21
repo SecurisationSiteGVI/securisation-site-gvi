@@ -28,14 +28,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="AuthorisationAccesCount",query="SELECT COUNT(a) FROM AuthorisationAcces a"),
-    @NamedQuery(name="AuthorisationAccesGetAll",query="SELECT a FROM AuthorisationAcces a"),
-    @NamedQuery(name="AuthorisationAccesGetByUtilisateur",query="SELECT a FROM AuthorisationAcces a WHERE a.utilisateur.id = :id"),
-})
+    @NamedQuery(name = "AuthorisationAccesCount", query = "SELECT COUNT(a) FROM AuthorisationAcces a"),
+    @NamedQuery(name = "AuthorisationAccesGetAll", query = "SELECT a FROM AuthorisationAcces a"),
+    @NamedQuery(name = "AuthorisationAccesGetByUtilisateur", query = "SELECT a FROM AuthorisationAcces a WHERE a.utilisateur.id = :id"),})
 @XmlRootElement
 public class AuthorisationAcces implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -47,10 +47,11 @@ public class AuthorisationAcces implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date heureFermeture;
     @OneToOne()
-    @JoinColumn(nullable=false)
+    @JoinColumn(nullable = false)
     private Utilisateur utilisateur;
     @OneToMany()
     private List<Secteur> secteurs;
+
     public Long getId() {
         return id;
     }
@@ -115,5 +116,4 @@ public class AuthorisationAcces implements Serializable {
     public void setSecteurs(List<Secteur> secteurs) {
         this.secteurs = secteurs;
     }
-    
 }

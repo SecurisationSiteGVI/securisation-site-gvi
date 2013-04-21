@@ -23,11 +23,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="PhotoCount",query="SELECT COUNT(p) FROM Photo p"),
-    @NamedQuery(name="PhotoGetAll",query="SELECT p FROM Photo p")
+    @NamedQuery(name = "PhotoCount", query = "SELECT COUNT(p) FROM Photo p"),
+    @NamedQuery(name = "PhotoGetAll", query = "SELECT p FROM Photo p")
 })
 @XmlRootElement
 public class Photo extends Evenement implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -39,7 +40,6 @@ public class Photo extends Evenement implements Serializable {
     private byte[] image;
     @OneToOne()
     private Camera camera;
-    
 
     @Override
     public int hashCode() {
@@ -63,7 +63,7 @@ public class Photo extends Evenement implements Serializable {
 
     @Override
     public String toString() {
-        return "photo de la camera " +getCamera();
+        return "photo de la camera " + getCamera();
     }
 
     public byte[] getImage() {
@@ -81,7 +81,4 @@ public class Photo extends Evenement implements Serializable {
     public void setCamera(Camera camera) {
         this.camera = camera;
     }
-
-   
-    
 }

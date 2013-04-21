@@ -22,13 +22,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="EvenementCount",query="SELECT COUNT(e) FROM Evenement e"),
-    @NamedQuery(name="EvenementGetAll",query="SELECT e FROM Evenement e"),
-    @NamedQuery(name ="EvenementGetMostRecent",query = "SELECT e FROM Evenement e ORDER BY e.dateEvt DESC")
+    @NamedQuery(name = "EvenementCount", query = "SELECT COUNT(e) FROM Evenement e"),
+    @NamedQuery(name = "EvenementGetAll", query = "SELECT e FROM Evenement e"),
+    @NamedQuery(name = "EvenementGetMostRecent", query = "SELECT e FROM Evenement e ORDER BY e.dateEvt DESC")
 })
-
 @XmlRootElement
 public class Evenement implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -38,9 +38,9 @@ public class Evenement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    @Column(nullable=false)
+    @Column(nullable = false)
     private Date dateEvt;
-    
+
     public Long getId() {
         return id;
     }
@@ -71,7 +71,7 @@ public class Evenement implements Serializable {
 
     @Override
     public String toString() {
-        return "Evenement id="+id;
+        return "Evenement id=" + id;
     }
 
     public Date getDateEvt() {
@@ -81,5 +81,4 @@ public class Evenement implements Serializable {
     public void setDateEvt(Date dateEvt) {
         this.dateEvt = dateEvt;
     }
-    
 }

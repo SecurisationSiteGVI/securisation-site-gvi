@@ -114,7 +114,7 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
     public void traitementEvenement() throws Exception {
         Intrusion e = new Intrusion();
         e.setDateEvt(new Date());
-        
+
         //e.setDetecteurIntrusion());
         this.evenementSrv.add(e);
     }
@@ -144,10 +144,10 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
 
     @Override
     public List<DetecteurIntrusion> getByPosition(Position position) {
-        List<DetecteurIntrusion> detecteurIntrusions=null;
+        List<DetecteurIntrusion> detecteurIntrusions = null;
         if (position != null) {
             if (position instanceof Position) {
-              detecteurIntrusions=  detecteurIntrusionSrv.getByPosition(position);
+                detecteurIntrusions = detecteurIntrusionSrv.getByPosition(position);
             } else {
                 System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
             }

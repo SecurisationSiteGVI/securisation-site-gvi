@@ -17,6 +17,8 @@ public interface SecteurService {
     public List<Secteur> getAll() throws Exception;
 
     public Long count();
-public List<Secteur> getAll(int index, int nbResult);
+
+    public List<Secteur> getAll(int index, int nbResult);
+
     public Secteur getById(Long id);
 }

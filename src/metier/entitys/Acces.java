@@ -25,12 +25,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="AccesCount",query="SELECT COUNT(a) FROM Acces a"),
-    @NamedQuery(name="AccesGetAll",query="SELECT a FROM Acces a"),
-    @NamedQuery(name="AccesGetByUtilisateur",query="SELECT a FROM Acces AS a WHERE a.utilisateur.id = :id")
+    @NamedQuery(name = "AccesCount", query = "SELECT COUNT(a) FROM Acces a"),
+    @NamedQuery(name = "AccesGetAll", query = "SELECT a FROM Acces a"),
+    @NamedQuery(name = "AccesGetByUtilisateur", query = "SELECT a FROM Acces AS a WHERE a.utilisateur.id = :id")
 })
 @XmlRootElement
 public class Acces extends Evenement implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -41,7 +42,7 @@ public class Acces extends Evenement implements Serializable {
     private Long id;
     @OneToOne()
     private Utilisateur utilisateur;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private Boolean passage;
     @OneToOne()
     private BorneAcces borneAcces;
@@ -69,15 +70,15 @@ public class Acces extends Evenement implements Serializable {
     @Override
     public String toString() {
         String ret = null;
-        if(utilisateur==null){
+        if (utilisateur == null) {
             ret = "Accès refusé, utilisateur inconnu.";
-        }else{
-            if(this.passage){
-                ret = "Passage de l'utilisateur : "+utilisateur;
+        } else {
+            if (this.passage) {
+                ret = "Passage de l'utilisateur : " + utilisateur;
             } else {
-                ret = "Accès refusé pour l'utilisateur : "+utilisateur;
+                ret = "Accès refusé pour l'utilisateur : " + utilisateur;
             }
-            
+
         }
         return ret;
     }
@@ -105,5 +106,4 @@ public class Acces extends Evenement implements Serializable {
     public void setBorneAcces(BorneAcces borneAcces) {
         this.borneAcces = borneAcces;
     }
-    
 }

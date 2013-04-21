@@ -25,12 +25,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="AttributionSecteurDetecteurIntrusionCount",query="SELECT COUNT(a) FROM AttributionSecteurDetecteurIntrusion a"),
-    @NamedQuery(name="AttributionSecteurDetecteurIntrusionGetAll",query="SELECT a FROM AttributionSecteurDetecteurIntrusion a"),
-    @NamedQuery(name="AttributionSecteurDetecteurIntrusionGetBySecteur",query="SELECT a FROM AttributionSecteurDetecteurIntrusion a WHERE a.secteur.id = :id")
+    @NamedQuery(name = "AttributionSecteurDetecteurIntrusionCount", query = "SELECT COUNT(a) FROM AttributionSecteurDetecteurIntrusion a"),
+    @NamedQuery(name = "AttributionSecteurDetecteurIntrusionGetAll", query = "SELECT a FROM AttributionSecteurDetecteurIntrusion a"),
+    @NamedQuery(name = "AttributionSecteurDetecteurIntrusionGetBySecteur", query = "SELECT a FROM AttributionSecteurDetecteurIntrusion a WHERE a.secteur.id = :id")
 })
 @XmlRootElement
 public class AttributionSecteurDetecteurIntrusion implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -40,7 +41,7 @@ public class AttributionSecteurDetecteurIntrusion implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne()
-    @JoinColumn(nullable=false)
+    @JoinColumn(nullable = false)
     private Secteur secteur;
     @OneToMany()
     private List<DetecteurIntrusion> detecteurIntrusions;
@@ -75,7 +76,7 @@ public class AttributionSecteurDetecteurIntrusion implements Serializable {
 
     @Override
     public String toString() {
-        return "Attribution secteur "+secteur;
+        return "Attribution secteur " + secteur;
     }
 
     public Secteur getSecteur() {
@@ -93,5 +94,4 @@ public class AttributionSecteurDetecteurIntrusion implements Serializable {
     public void setDetecteurIntrusions(List<DetecteurIntrusion> detecteurIntrusions) {
         this.detecteurIntrusions = detecteurIntrusions;
     }
-    
 }

@@ -26,9 +26,9 @@ public interface BorneAccesService {
 
     public void verificationAcces() throws Exception;
 
-    
     public List<BorneAcces> getByPosition(Position position);
+
     public BorneAcces getByNom(String nom);
-     public List<BorneAcces> getAll(int index, int nbResult);
-     
+
+    public List<BorneAcces> getAll(int index, int nbResult);
 }
