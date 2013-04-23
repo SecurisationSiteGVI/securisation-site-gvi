@@ -33,6 +33,7 @@ public class NumeroPredefinisServiceImpl implements NumeroPredefinisService {
 
     @Override
     public void ajouterUnNumero(String numero) throws Exception {
+        numero = numero.replaceAll("\\s", "");
         List<NumeroPredefinis> numeroPredefinis = this.getAll();
         if (numeroPredefinis.isEmpty()) {
             NumeroPredefinis numeroPredefini = new NumeroPredefinis();
@@ -113,5 +114,10 @@ public class NumeroPredefinisServiceImpl implements NumeroPredefinisService {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return numeroPredefinis;
+    }
+
+    @Override
+    public List<NumeroPredefinis> getAll(int index, int nbResult) {
+        return this.numeroPredefinisSrv.getAll(index, nbResult);
     }
 }

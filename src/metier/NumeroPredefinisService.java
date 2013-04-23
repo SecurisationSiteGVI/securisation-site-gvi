@@ -20,6 +20,8 @@ public interface NumeroPredefinisService {
     public void remove(NumeroPredefinis numeroPredefinis) throws Exception;
 
     public List<NumeroPredefinis> getAll() throws Exception;
+    
+    public List<NumeroPredefinis> getAll(int index,int nbResult);
 
     public void ajouterUnNumero(String numero) throws Exception;
 
