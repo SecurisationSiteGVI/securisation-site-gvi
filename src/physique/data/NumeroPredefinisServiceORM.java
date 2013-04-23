@@ -20,6 +20,8 @@ public interface NumeroPredefinisServiceORM {
     public void update(NumeroPredefinis numeroPredefinis);
 
     public List<NumeroPredefinis> getAll();
+    
+    public List<NumeroPredefinis> getAll(int index,int nbResult);
 
     public Long count();
 

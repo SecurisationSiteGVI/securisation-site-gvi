@@ -62,4 +62,15 @@ public class NumeroPredefinisServiceORMImpl implements NumeroPredefinisServiceOR
         Connexion.disconect();
         return numeroPredefinis;
     }
+
+    @Override
+    public List<NumeroPredefinis> getAll(int index, int nbResult) {
+        Connexion.getPersistance();
+        Query query = Connexion.em.createNamedQuery("NumeroPredefinisGetAll");
+        query.setFirstResult(index);
+        query.setMaxResults(nbResult);
+        List<NumeroPredefinis> numeroPredefinis = query.getResultList();
+        Connexion.disconect();
+        return numeroPredefinis;
+    }
 }
