@@ -90,4 +90,9 @@ public class CameraDriverHedenImpl implements CameraDriver {
 
         return bos.toByteArray();
     }
+
+    @Override
+    public Camera getCamera() {
+        return this.camera;
+    }
 }
