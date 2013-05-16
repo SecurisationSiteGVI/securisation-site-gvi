@@ -5,6 +5,7 @@ import metier.entitys.Camera;
 import metier.entitys.Position;
 import physique.data.CameraServiceORM;
 import physique.data.PhysiqueDataFactory;
+import physique.io.PhysiqueIOFactory;
 
 /**
  *
@@ -157,12 +158,6 @@ public class CameraServiceImpl implements CameraService {
     }
 
     @Override
-    public byte[] prendrePhoto(Camera camera) throws Exception {
-        physique.io.CameraDriver cameraDriver = PhysiqueDataFactory.getCameraDriver(camera);
-        return cameraDriver.prendrePhoto();
-    }
-
-    @Override
     public Long count() {
         return this.cameraSrv.count();
     }
@@ -196,5 +191,17 @@ public class CameraServiceImpl implements CameraService {
             throw new NullPointerException("Objet passé en parametre égale à null");
         }
         return cameras;
+    }
+
+    @Override
+    public byte[] prendrePhoto(Camera camera) throws Exception {
+        physique.io.CameraDriver cameraDriver = PhysiqueIOFactory.getCameraDriver(camera);
+        return cameraDriver.prendrePhoto();
+    }
+
+    @Override
+    public String getVideo(Camera camera) throws Exception {
+        physique.io.CameraDriver cameraDriver = PhysiqueIOFactory.getCameraDriver(camera);
+        return cameraDriver.getVideo();
     }
 }
