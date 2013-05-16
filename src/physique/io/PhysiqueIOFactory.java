@@ -37,7 +37,7 @@ public class PhysiqueIOFactory {
         return detecteurIntrusionSrv;
     }
 
-    public static CameraDriver getCameraDrivers(Camera camera) {
+    public static CameraDriver getCameraDriver(Camera camera) {
         switch (camera.getType()) {
             case HEDEN:
                 cameraDrivers = new CameraDriverHedenImpl(camera);
