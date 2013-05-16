@@ -1,5 +1,7 @@
 package physique.io;
 
+import metier.entitys.Camera;
+
 /**
  *
  * @author marvin
@@ -35,4 +37,6 @@ public interface CameraDriver {
 //    public int connectionCamera() throws Exception;
 //    public void verifierConnectionCamera() throws Exception;
 //    public void enregistrerPhoto() throws Exception;
+    
+    public Camera getCamera();
 }
