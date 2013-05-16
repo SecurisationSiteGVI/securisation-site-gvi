@@ -1,7 +1,5 @@
 package metier;
 
-import metier.entitys.AttributionSecteurBorneAcces;
-
 /**
  * @author ragotalexis
  * @author damien
