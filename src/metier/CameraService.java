@@ -67,4 +67,6 @@ public interface CameraService {
     public List<Camera> getAll(int index, int nbResult);
 
     public Camera getById(Long id);
+
+    public String getVideo(Camera camera) throws Exception;
 }
