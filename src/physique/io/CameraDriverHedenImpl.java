@@ -2,6 +2,8 @@ package physique.io;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import metier.entitys.Camera;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -25,7 +27,9 @@ public class CameraDriverHedenImpl implements CameraDriver {
 
     @Override
     public String piloterCameraGauche() throws Exception {
-        return this.protocol + this.camera.getIp() + this.piloter + "4";
+        URL u = new URL("http://"+ip+"/decoder_control.cgi?user=admin&pwd=marvin&command=4");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override
@@ -35,17 +39,23 @@ public class CameraDriverHedenImpl implements CameraDriver {
 
     @Override
     public String piloterCameraDroite() throws Exception {
-        return this.protocol + this.camera.getIp() + this.piloter + "6";
+        URL u = new URL("http://"+ip+"/decoder_control.cgi?user=admin&pwd=marvin&command=6");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override
     public String piloterCameraHaut() throws Exception {
-        return this.protocol + this.camera.getIp() + this.piloter + "0";
+        URL u = new URL("http://"+ip+"/decoder_control.cgi?user=admin&pwd=marvin&command=0'");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override
     public String piloterCameraBas() throws Exception {
-        return this.protocol + this.camera.getIp() + this.piloter + "2";
+        URL u = new URL("http://"+ip+"/decoder_control.cgi?user=admin&pwd=marvin&command=2");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override

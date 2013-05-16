@@ -6,6 +6,8 @@ package physique.io;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import metier.entitys.Camera;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -34,22 +36,30 @@ public class CameraDriverSonyImpl implements CameraDriver {
 
     @Override
     public String piloterCameraGauche() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        URL u = new URL("http://"+ip+"/command/ptzf.cgi?Move=left,8");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override
     public String piloterCameraDroite() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        URL u = new URL("http://"+ip+"/command/ptzf.cgi?Move=right,8");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override
     public String piloterCameraHaut() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        URL u = new URL("http://"+ip+"/command/ptzf.cgi?Move=up,8");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override
     public String piloterCameraBas() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        URL u = new URL("http://"+ip+"/command/ptzf.cgi?Move=down,8");
+        URLConnection connection = (URLConnection) u.openConnection();
+        return null;
     }
 
     @Override
