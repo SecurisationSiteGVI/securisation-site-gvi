@@ -158,7 +158,8 @@ public class CameraServiceImpl implements CameraService {
 
     @Override
     public byte[] prendrePhoto(Camera camera) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        physique.io.CameraDriver cameraDriver = PhysiqueDataFactory.getCameraDriver(camera);
+        return cameraDriver.prendrePhoto();
     }
 
     @Override
