@@ -7,7 +7,7 @@ import metier.entitys.Camera;
 /**
  * @author ragotalexis
  * @author BlondelleMarvin
- * @author
+ * @author Pierre
  */
 public class PhysiqueIOFactory {
 
