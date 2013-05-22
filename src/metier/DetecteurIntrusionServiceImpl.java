@@ -14,7 +14,6 @@ import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.NumeroPredefinis;
-import metier.entitys.Position;
 import physique.data.DetecteurIntrusionServiceORM;
 import physique.data.NumeroPredefinisServiceORM;
 import physique.data.PhysiqueDataFactory;
@@ -104,7 +103,8 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
             try {
                 DetecteurIntrusionServiceIOImpl oo = (DetecteurIntrusionServiceIOImpl) o;
                 this.traitementEvenement();
-                this.traitementSms();
+                this.traitementSms(Long.parseLong(oo.getNumeroGrillage()));
+                
             } catch (Exception ex) {
                 Logger.getLogger(DetecteurIntrusionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -114,17 +114,22 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
     public void traitementEvenement() throws Exception {
         Intrusion e = new Intrusion();
         e.setDateEvt(new Date());
-
+        
         //e.setDetecteurIntrusion());
         this.evenementSrv.add(e);
     }
 
-    public void traitementSms() throws Exception {
+    public void traitementSms(Long id) throws Exception {
         NumeroPredefinis numeroPredefinis = this.numeroPredefinisSrv.getAll().get(0);
         List<String> numeros = numeroPredefinis.getNumeros();
+        DetecteurIntrusion detecteurIntrusion=this.getById(id);
         for (int i = 0; i < numeros.size(); i++) {
-            this.smsSrv.envoie(numeros.get(i));
-            Thread.sleep(500);
+            if(detecteurIntrusion.getId() <= 10 && detecteurIntrusion.getId() >= 0) {
+                this.smsSrv.envoie(numeros.get(i), 0 + String.valueOf(detecteurIntrusion.getId()));
+            } else {
+                this.smsSrv.envoie(numeros.get(i), String.valueOf(detecteurIntrusion.getId()));
+                Thread.sleep(500);
+            }
         }
     }
 
@@ -135,25 +140,5 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
         } catch (Exception ex) {
             Logger.getLogger(DetecteurIntrusionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public List<DetecteurIntrusion> getAll(int index, int nbResult) {
-        return this.detecteurIntrusionSrv.getAll(index, nbResult);
-    }
-
-    @Override
-    public List<DetecteurIntrusion> getByPosition(Position position) {
-        List<DetecteurIntrusion> detecteurIntrusions = null;
-        if (position != null) {
-            if (position instanceof Position) {
-                detecteurIntrusions = detecteurIntrusionSrv.getByPosition(position);
-            } else {
-                System.out.println("L'instance de l'objet ne coresspond pas veuiller utiliser la bonne classe de service.");
-            }
-        } else {
-            throw new NullPointerException("Objet passé en parametre égale à null");
-        }
-        return detecteurIntrusions;
     }
 }
