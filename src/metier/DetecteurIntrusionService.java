@@ -26,6 +26,10 @@ public interface DetecteurIntrusionService {
     public Long count();
 
     public DetecteurIntrusion getById(Long id);
+    
+    public List<DetecteurIntrusion> getAll(int index, int nbResult);
+    
+    public List<DetecteurIntrusion> getByPosition(Position position);
 
     public void startThread();
 }
