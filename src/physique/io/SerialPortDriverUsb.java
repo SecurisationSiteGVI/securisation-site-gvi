@@ -19,7 +19,7 @@ import lml.tsiris.serialcomm.SerialComImpl;
  *
  * @author saturne
  */
-public class SerialPortDriverUsb{
+public class SerialPortDriverUsb {
 
     private boolean serialOpen;
     private CommPortIdentifier portId; //identifiant du port
@@ -30,19 +30,21 @@ public class SerialPortDriverUsb{
     private InputStreamReader isr;
     private final int tailleBloc = 8;
 
-
     public SerialPortDriverUsb() {
     }
 
-    public void writeToSerial(String s) {
-        int i = Integer.parseInt(s);
-        try {
-            os.write(i);
-        } catch (IOException ex) {
-            System.out.print("Impossible d'écrire");
+    public void writeToSerial(String tel, String grillage) throws IOException {
+        byte[] bytes = ("\2" + tel + grillage + "\3").getBytes();
+        for (byte b : bytes) {
+            try {
+                os.write(b);
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SerialPortDriverUsb.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-    
+
     public String read() throws IOException {
         String data = null;
         byte[] buff = new byte[500];
@@ -61,6 +63,7 @@ public class SerialPortDriverUsb{
     /**
      *
      * Permet la lecture ligne par ligne
+     *
      * @return chaine de caratcére représentant ligne par ligne
      * @throws IOException
      */
@@ -99,12 +102,14 @@ public class SerialPortDriverUsb{
 
     /**
      * Permet l'ouverture de la communication physique
+     *
      * @param port Chemin de la communication physique
      * @param speed Vitesse de lecture de la communication physique
      * @param dataBits Nombre de bits de donnée
      * @param stopBits Bits de stop
      * @param parity Parité de la communication
-     * @return True(vrai) si la communication à bien été ouverte ou False(faux) si elle à échouée
+     * @return True(vrai) si la communication à bien été ouverte ou False(faux)
+     * si elle à échouée
      */
     public boolean open(String port, int speed, int dataBits, int stopBits, int parity) throws Exception {
         this.serialOpen = false;
@@ -128,8 +133,10 @@ public class SerialPortDriverUsb{
 
     /**
      * Permet de savoir si la communication est toujours ouverte
-     * @return Vrai(true) si la communication est ouverte False(faux) si ce n'est plus le cas
-     * 
+     *
+     * @return Vrai(true) si la communication est ouverte False(faux) si ce
+     * n'est plus le cas
+     *
      */
     public boolean isOpen() {
         return this.serialOpen;
