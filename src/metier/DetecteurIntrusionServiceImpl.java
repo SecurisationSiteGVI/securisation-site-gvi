@@ -14,6 +14,7 @@ import metier.entitys.DetecteurIntrusion;
 import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.NumeroPredefinis;
+import metier.entitys.Position;
 import physique.data.DetecteurIntrusionServiceORM;
 import physique.data.NumeroPredefinisServiceORM;
 import physique.data.PhysiqueDataFactory;
@@ -140,5 +141,15 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
         } catch (Exception ex) {
             Logger.getLogger(DetecteurIntrusionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public List<DetecteurIntrusion> getAll(int index, int nbResult) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<DetecteurIntrusion> getByPosition(Position position) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
