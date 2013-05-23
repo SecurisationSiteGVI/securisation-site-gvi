@@ -13,7 +13,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lml.tsiris.serialcomm.SerialComImpl;
 
 /**
  *
@@ -75,7 +74,7 @@ public class SerialPortDriverUsb {
         try {
             Thread.sleep(20);
         } catch (InterruptedException ex) {
-            Logger.getLogger(SerialComImpl.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }
 
