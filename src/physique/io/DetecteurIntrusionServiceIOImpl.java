@@ -47,7 +47,7 @@ public class DetecteurIntrusionServiceIOImpl extends Observable implements Detec
             numeroGrillage = _portDriver.readLine();
             this.setChanged();
             this.notifyObservers();
-            System.out.println("Information reçu " + numeroGrillage);
+            System.out.println("Information reçu " + getNumeroGrillage());
             //PhysiqueIOFactory.getSmsServiceIO().envoie(numeroGrillage);
         } catch (Exception ex) {
             Logger.getLogger(DetecteurIntrusionServiceIOImpl.class.getName()).log(Level.SEVERE, null, ex);
