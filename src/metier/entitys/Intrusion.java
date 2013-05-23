@@ -55,7 +55,7 @@ public class Intrusion extends Evenement implements Serializable {
 
     @Override
     public String toString() {
-        return "evenement sur : " + detecteurIntrusion;
+        return "evenement sur le grillage : " + detecteurIntrusion;
     }
 
     public DetecteurIntrusion getDetecteurIntrusion() {
