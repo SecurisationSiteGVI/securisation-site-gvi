@@ -135,13 +135,22 @@ public class BorneAccesServiceImpl implements BorneAccesService, Observer {
             List<Secteur> secteursUtilisateur = authorisationAcces.getSecteurs();
             if (!secteursUtilisateur.isEmpty()) {
                 for (int j = 0; j < secteursUtilisateur.size(); j++) {
-                    AttributionSecteurBorneAcces attributionSecteurBorneAcces = PhysiqueDataFactory.getAttributionSecteurBorneAccesServiceORM().getBySecteur(secteursUtilisateur.get(j));
-                    List<BorneAcces> listBorneAcces = attributionSecteurBorneAcces.getBorneAccess();
-                    authorisationPassage = false;
-                    for (int k = 0; k < listBorneAcces.size(); k++) {
-                        if (listBorneAcces.get(k).getNom().equals(this.borneAcces.getNom())) {
-                            authorisationPassage = verificationHoraire(authorisationAcces);
-                            borne = listBorneAcces.get(k);
+                    if (authorisationPassage != true) {
+                        AttributionSecteurBorneAcces attributionSecteurBorneAcces = PhysiqueDataFactory.getAttributionSecteurBorneAccesServiceORM().getBySecteur(secteursUtilisateur.get(j));
+                        List<BorneAcces> listBorneAcces = null;
+                        try {
+                            if (attributionSecteurBorneAcces != null) {
+                                listBorneAcces = attributionSecteurBorneAcces.getBorneAccess();
+                                authorisationPassage = false;
+                                for (int k = 0; k < listBorneAcces.size(); k++) {
+                                    if (listBorneAcces.get(k).getNom().equals(this.borneAcces.getNom())) {
+                                        authorisationPassage = verificationHoraire(authorisationAcces);
+                                        borne = listBorneAcces.get(k);
+                                    }
+                                }
+                            }
+                        } catch (Exception ex) {
+                            System.out.println("Le secteur n'a pas de borne acces");
                         }
                     }
                 }
