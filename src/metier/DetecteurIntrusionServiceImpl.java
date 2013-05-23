@@ -103,7 +103,7 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
         if (o instanceof DetecteurIntrusionServiceIOImpl) {
             try {
                 DetecteurIntrusionServiceIOImpl oo = (DetecteurIntrusionServiceIOImpl) o;
-                this.traitementEvenement();
+                this.traitementEvenement(oo.getNumeroGrillage());
                 this.traitementSms(Long.parseLong(oo.getNumeroGrillage()));
 
             } catch (Exception ex) {
@@ -112,11 +112,10 @@ public class DetecteurIntrusionServiceImpl implements DetecteurIntrusionService,
         }
     }
 
-    public void traitementEvenement() throws Exception {
+    public void traitementEvenement(String numero) throws Exception {
         Intrusion e = new Intrusion();
         e.setDateEvt(new Date());
-
-        //e.setDetecteurIntrusion());
+        e.setDetecteurIntrusion(this.getById(Long.parseLong(numero)));
         this.evenementSrv.add(e);
     }
 
