@@ -5,10 +5,6 @@
 package physique.io;
 
 import gnu.io.SerialPort;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import lml.tsiris.serialcomm.SerialCom;
-import lml.tsiris.serialcomm.SerialComImpl;
 
 /**
  *
@@ -18,7 +14,7 @@ public class SmsServiceIOImpl implements SmsServiceIO {
 
     SerialPortDriverUsb _portDriver = null;
     private boolean messageEnvoyer = false;
-    private SerialCom is;
+    //private SerialCom is;
 
     @Override
     public void creationPort() throws Exception {
