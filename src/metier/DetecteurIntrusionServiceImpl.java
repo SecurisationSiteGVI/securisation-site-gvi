@@ -11,7 +11,6 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import metier.entitys.DetecteurIntrusion;
-import metier.entitys.Evenement;
 import metier.entitys.Intrusion;
 import metier.entitys.NumeroPredefinis;
 import metier.entitys.Position;
